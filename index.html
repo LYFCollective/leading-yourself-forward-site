@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script async src="https://static.memberstack.com/scripts/v1/memberstack.js" data-memberstack-id="app_cmmf547vo00s60stf6bz38hjb"></script>
+<script src="https://static.memberstack.com/scripts/v1/memberstack.js" data-memberstack-id="app_cmmf547vo00s60stf6bz38hjb"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1378,9 +1378,10 @@ body.portal-active #portal-root { display: block !important; }
   }
 
   function handleLogin() {
-    const email = document.getElementById('login-email').value;
+    const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
     const errorEl = document.getElementById('login-error');
+    const btn = document.querySelector('.btn-login');
     errorEl.classList.remove('visible');
 
     if (!email || !password) {
@@ -1389,20 +1390,44 @@ body.portal-active #portal-root { display: block !important; }
       return;
     }
 
-    if (window.$memberstackDom) {
+    btn.textContent = 'Signing in…';
+    btn.disabled = true;
+
+    function attemptLogin() {
       window.$memberstackDom.loginMemberEmailPassword({ email, password })
         .then(({ data: member }) => {
+          btn.textContent = 'Sign In';
+          btn.disabled = false;
           closePortalLogin();
           activatePortal(member);
         })
         .catch((err) => {
+          btn.textContent = 'Sign In';
+          btn.disabled = false;
+          console.error('Memberstack login error:', err);
           errorEl.textContent = 'Incorrect email or password. Please try again.';
           errorEl.classList.add('visible');
         });
+    }
+
+    // Wait for Memberstack SDK to be ready
+    if (window.$memberstackDom) {
+      attemptLogin();
     } else {
-      // Memberstack not available — dev preview mode
-      errorEl.textContent = 'Authentication service loading. Please try again in a moment.';
-      errorEl.classList.add('visible');
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        if (window.$memberstackDom) {
+          clearInterval(interval);
+          attemptLogin();
+        } else if (attempts > 20) {
+          clearInterval(interval);
+          btn.textContent = 'Sign In';
+          btn.disabled = false;
+          errorEl.textContent = 'Connection error. Please refresh the page and try again.';
+          errorEl.classList.add('visible');
+        }
+      }, 250);
     }
   }
 
