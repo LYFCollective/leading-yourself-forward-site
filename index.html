@@ -590,6 +590,44 @@ body.portal-active #portal-root { display: block !important; }
   display: flex; align-items: center; gap: 6px;
 }
 
+/* Form list */
+.form-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.form-row {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--portal-card); border: 1px solid var(--portal-border);
+  border-radius: 6px; padding: 18px 22px;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-row:hover { border-color: rgba(0,181,173,0.4); background: rgba(0,181,173,0.04); }
+.form-row-icon {
+  width: 38px; height: 38px; border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.icon-teal { background: rgba(0,181,173,0.12); }
+.icon-gold { background: rgba(201,148,26,0.12); }
+.icon-navy { background: rgba(255,255,255,0.06); }
+.form-row-body { flex: 1; min-width: 0; }
+.form-row-title {
+  font-size: 0.9rem; font-weight: 600; color: var(--white);
+  margin-bottom: 3px;
+}
+.form-row-meta {
+  font-size: 0.75rem; color: var(--portal-muted); line-height: 1.4;
+}
+.form-row-timing {
+  font-family: "DM Mono", monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+}
+.timing-before { background: rgba(0,181,173,0.1); color: var(--teal); }
+.timing-during { background: rgba(201,148,26,0.1); color: var(--gold); }
+.timing-after  { background: rgba(0,181,173,0.08); color: rgba(0,181,173,0.7); }
+.timing-bridge { background: rgba(255,255,255,0.05); color: var(--portal-muted); }
+.form-row-arrow { color: var(--portal-muted); font-size: 0.85rem; flex-shrink: 0; margin-left: 4px; transition: color 0.2s, transform 0.2s; }
+.form-row:hover .form-row-arrow { color: var(--teal); transform: translateX(3px); }
+
 /* Output tracker */
 .output-tracker {
   background: var(--portal-card); border: 1px solid var(--portal-border);
@@ -1189,46 +1227,62 @@ body.portal-active #portal-root { display: block !important; }
             </div>
           </div>
 
-          <!-- Session documents -->
-          <div class="session-docs-grid">
-            <div class="doc-card">
-              <span class="doc-card-tag tag-teal">Pre-Work</span>
-              <h4>Session 1 Pre-Work</h4>
-              <p>Complete before the session. Surfaces your raw material. 20 minutes of honest reflection.</p>
-              <div class="doc-card-footer">
-                🔗 &nbsp;Link active 48hrs before session
+          <!-- Session forms label -->
+          <div style="margin-bottom:14px;">
+            <span class="portal-card-label">Session 1 Forms</span>
+          </div>
+
+          <!-- Form list -->
+          <div class="form-list">
+
+            <a class="form-row" href="https://tally.so/r/1AKd21?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Pre-Work — Self-Leadership</div>
+                <div class="form-row-meta">Complete 48 hrs before the session · 15–20 min · Surfaces your raw material so the session moves fast</div>
               </div>
-            </div>
-            <div class="doc-card">
-              <span class="doc-card-tag tag-gold">Live Worksheet</span>
-              <h4>Session 1 Worksheet</h4>
-              <p>Worked through together during the live 90-minute session. Bring this up on the call.</p>
-              <div class="doc-card-footer">
-                🔗 &nbsp;Link active day of session
+              <span class="form-row-timing timing-before">Before Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/2EkabD?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-gold">⚙️</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Live Worksheet — Self-Leadership</div>
+                <div class="form-row-meta">Open during the 90-min session · Work through it live with the group · Your thinking tool for the call</div>
               </div>
-            </div>
-            <div class="doc-card">
-              <span class="doc-card-tag tag-teal">Post-Session</span>
-              <h4>Commitment Close</h4>
-              <p>Complete same day. Locks your output, one decision, and one action with a deadline.</p>
-              <div class="doc-card-footer">
-                🔗 &nbsp;Link active after session
+              <span class="form-row-timing timing-during">During Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/MeONdk?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Post-Session Commitment</div>
+                <div class="form-row-meta">Complete same day · Locks your output, one decision, and one action with a deadline · What gets written gets done</div>
               </div>
-            </div>
+              <span class="form-row-timing timing-after">After Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/J9RpVK?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body">
+                <div class="form-row-title">72-Hour Bridge</div>
+                <div class="form-row-meta">Due before Session 2 opens · One specific action taken in the world · Not homework — execution · Report back here</div>
+              </div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
           </div>
 
           <!-- Session output -->
           <div class="portal-card" style="margin-bottom:20px;">
             <span class="portal-card-label">Session 1 Output</span>
             <div class="divider-sm"></div>
-            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Practitioner Identity Statement</h3>
-            <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has kept you stuck. This becomes the foundation every future session is built on.</p>
-          </div>
-
-          <!-- 72hr bridge -->
-          <div class="prework-card">
-            <h3>⚡ &nbsp;72-Hour Bridge</h3>
-            <p>Between Session 1 and Session 2, you have one specific action to take in the world. It is not homework — it is execution. You will submit your result before Session 2 opens. The Slack channel is your accountability channel for this.</p>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Leadership Decision + Stuck Diagnosis</h3>
+            <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has been keeping you stuck. This becomes the foundation every future session builds on.</p>
           </div>
 
           <!-- Remaining sessions locked -->
@@ -1456,7 +1510,18 @@ body.portal-active #portal-root { display: block !important; }
 
     // Display member name
     const name = member?.customFields?.['first-name'] || member?.auth?.email?.split('@')[0] || member?.email?.split('@')[0] || 'Member';
+    const email = member?.auth?.email || member?.email || '';
     document.getElementById('portal-member-display').textContent = name;
+
+    // Inject member name + email into all Tally form links
+    document.querySelectorAll('a.form-row[href*="tally.so"]').forEach(link => {
+      try {
+        const url = new URL(link.href);
+        url.searchParams.set('participant_name', name);
+        url.searchParams.set('participant_email', email);
+        link.href = url.toString();
+      } catch(e) {}
+    });
 
     switchView('welcome', document.querySelector('[data-view="welcome"]'));
     window.history.pushState({}, '', '#portal');
