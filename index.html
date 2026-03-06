@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://static.memberstack.com/scripts/v1/memberstack.js" data-memberstack-id="app_cmmf547vo00s60stf6bz38hjb"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -241,6 +242,469 @@ footer p { font-size: 0.75rem; color: var(--slate); }
   .rhythm-grid { grid-template-columns: 1fr; }
   .cohort-stats { gap: 28px; }
 }
+
+/* ── PORTAL STYLES ── */
+:root {
+  --portal-bg:    #0F1923;
+  --portal-card:  #16242F;
+  --portal-card2: #1C2F3D;
+  --portal-border: rgba(0,181,173,0.12);
+  --portal-text:  #C8D8D6;
+  --portal-muted: #5A7A80;
+}
+
+/* Hide portal by default; show when #portal-root is active */
+#portal-root { display: none; }
+#portal-root.active { display: block; }
+
+/* When portal is active, hide public site */
+body.portal-active > *:not(#portal-root):not(script) { display: none !important; }
+body.portal-active #portal-root { display: block !important; }
+
+/* Portal shell */
+.portal-shell {
+  min-height: 100vh;
+  background: var(--portal-bg);
+  font-family: "DM Sans", sans-serif;
+  color: var(--portal-text);
+}
+
+/* Portal nav */
+.portal-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
+  background: rgba(15,25,35,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--portal-border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+}
+.portal-nav-logo {
+  display: flex; flex-direction: column; gap: 1px; line-height: 1;
+}
+.portal-nav-logo-top {
+  font-family: "DM Mono", monospace; font-size: 0.55rem;
+  letter-spacing: 0.26em; text-transform: uppercase; color: var(--teal);
+}
+.portal-nav-logo-main {
+  font-family: "Cormorant Garamond", serif; font-size: 1.1rem;
+  font-weight: 700; color: var(--white);
+}
+.portal-nav-logo-main em { font-style: italic; color: var(--teal); }
+.portal-nav-right { display: flex; align-items: center; gap: 20px; }
+.portal-member-name {
+  font-size: 0.8rem; color: var(--portal-muted);
+  font-family: "DM Mono", monospace; letter-spacing: 0.06em;
+}
+.portal-logout-btn {
+  font-family: "DM Mono", monospace; font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 3px; cursor: pointer;
+  background: transparent; color: var(--portal-muted);
+  border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+}
+.portal-logout-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+/* Portal sidebar */
+.portal-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+  padding-top: 64px;
+}
+.portal-sidebar {
+  background: rgba(12,20,28,0.6);
+  border-right: 1px solid var(--portal-border);
+  padding: 32px 0;
+  position: sticky; top: 64px; height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+.portal-sidebar-section {
+  padding: 0 20px 24px;
+}
+.portal-sidebar-label {
+  font-family: "DM Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--portal-muted); margin-bottom: 10px;
+  padding: 0 8px;
+}
+.portal-nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 4px; cursor: pointer;
+  font-size: 0.85rem; color: var(--portal-text);
+  transition: all 0.18s; border: 1px solid transparent;
+  margin-bottom: 2px;
+}
+.portal-nav-item:hover { background: rgba(0,181,173,0.06); color: var(--white); }
+.portal-nav-item.active {
+  background: rgba(0,181,173,0.1); color: var(--teal);
+  border-color: rgba(0,181,173,0.2);
+}
+.portal-nav-item .nav-icon {
+  width: 16px; height: 16px; opacity: 0.6; flex-shrink: 0;
+}
+.portal-nav-item.active .nav-icon { opacity: 1; }
+.portal-session-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 4px; cursor: pointer;
+  font-size: 0.82rem; color: var(--portal-text);
+  transition: all 0.18s; margin-bottom: 2px;
+}
+.portal-session-item:hover { background: rgba(0,181,173,0.06); }
+.portal-session-item.active { color: var(--teal); background: rgba(0,181,173,0.08); }
+.portal-session-item.locked { color: var(--portal-muted); cursor: default; }
+.portal-session-item.locked:hover { background: transparent; }
+.session-num {
+  font-family: "DM Mono", monospace; font-size: 0.65rem;
+  color: var(--teal); flex-shrink: 0; width: 20px;
+}
+.session-num.locked-num { color: var(--portal-muted); }
+.lock-icon { margin-left: auto; opacity: 0.4; font-size: 0.7rem; }
+
+/* Portal content area */
+.portal-content { padding: 40px 48px; }
+
+/* Page views */
+.portal-view { display: none; }
+.portal-view.active { display: block; }
+
+/* Welcome page */
+.welcome-header {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--portal-border);
+}
+.welcome-eyebrow {
+  font-family: "DM Mono", monospace; font-size: 0.65rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 12px; display: block;
+}
+.welcome-header h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+  color: var(--white); line-height: 1.1; margin-bottom: 12px;
+}
+.welcome-header h1 em { font-style: italic; color: var(--teal); }
+.welcome-header p {
+  font-size: 1rem; color: var(--portal-text);
+  line-height: 1.7; max-width: 600px;
+}
+.portal-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.portal-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+.portal-card {
+  background: var(--portal-card);
+  border: 1px solid var(--portal-border);
+  border-radius: 6px; padding: 24px;
+}
+.portal-card-label {
+  font-family: "DM Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px; display: block;
+}
+.portal-card-label.gold { color: var(--gold); }
+.portal-card h3 {
+  font-size: 0.95rem; font-weight: 600; color: var(--white);
+  margin-bottom: 8px;
+}
+.portal-card p {
+  font-size: 0.85rem; color: var(--portal-text); line-height: 1.65;
+}
+.portal-card .divider-sm {
+  width: 28px; height: 2px; background: var(--teal);
+  margin: 10px 0;
+}
+.portal-card .divider-sm.gold { background: var(--gold); }
+
+/* Schedule card */
+.schedule-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.schedule-item:last-child { border-bottom: none; padding-bottom: 0; }
+.schedule-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0; margin-top: 5px;
+}
+.schedule-item p { font-size: 0.82rem; color: var(--portal-text); line-height: 1.5; }
+.schedule-item p strong { color: var(--white); font-size: 0.85rem; }
+
+/* Welcome message */
+.welcome-msg-card {
+  background: var(--portal-card);
+  border: 1px solid var(--portal-border);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 6px 6px 0; padding: 28px 32px;
+  margin-bottom: 24px;
+}
+.welcome-msg-card p {
+  font-size: 0.95rem; color: var(--portal-text);
+  line-height: 1.8; margin-bottom: 14px;
+}
+.welcome-msg-card p:last-child { margin-bottom: 0; }
+.welcome-msg-card p em { color: var(--white); font-style: italic; }
+.welcome-msg-sig {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--gold);
+  margin-top: 20px; display: block;
+}
+
+/* Download card */
+.download-card {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--portal-card);
+  border: 1px solid rgba(201,148,26,0.2);
+  border-radius: 6px; padding: 20px 24px;
+  margin-bottom: 24px;
+}
+.download-icon {
+  width: 44px; height: 54px; flex-shrink: 0;
+  background: linear-gradient(145deg, var(--portal-card2), var(--portal-card));
+  border: 1px solid rgba(201,148,26,0.3); border-radius: 3px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 4px;
+}
+.download-icon-top {
+  font-family: "DM Mono", monospace; font-size: 7px;
+  letter-spacing: 0.1em; color: var(--teal); text-transform: uppercase;
+}
+.download-icon-type {
+  font-family: "DM Mono", monospace; font-size: 9px;
+  font-weight: 500; color: var(--gold);
+}
+.download-info { flex: 1; }
+.download-info h4 {
+  font-size: 0.9rem; font-weight: 600; color: var(--white);
+  margin-bottom: 4px;
+}
+.download-info p { font-size: 0.8rem; color: var(--portal-text); }
+.btn-download {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; background: var(--gold); color: var(--ink);
+  border-radius: 3px; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.05em; cursor: pointer; border: none;
+  transition: all 0.2s; text-decoration: none; white-space: nowrap;
+  font-family: "DM Sans", sans-serif;
+}
+.btn-download:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+/* Pre-work instruction */
+.prework-card {
+  background: rgba(0,181,173,0.04);
+  border: 1px solid rgba(0,181,173,0.18);
+  border-radius: 6px; padding: 24px 28px;
+  margin-bottom: 24px;
+}
+.prework-card h3 {
+  font-size: 0.95rem; font-weight: 600; color: var(--white);
+  margin-bottom: 6px;
+}
+.prework-card p { font-size: 0.85rem; color: var(--portal-text); line-height: 1.7; }
+.prework-card a {
+  color: var(--teal); text-decoration: underline; cursor: pointer;
+}
+.prework-steps { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+.prework-step {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.prework-step-num {
+  font-family: "DM Mono", monospace; font-size: 0.65rem;
+  color: var(--teal); flex-shrink: 0; padding-top: 2px;
+}
+.prework-step p { font-size: 0.85rem; color: var(--portal-text); line-height: 1.6; }
+.prework-step p strong { color: var(--white); }
+
+/* Slack card */
+.link-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--portal-card); border: 1px solid var(--portal-border);
+  border-radius: 6px; padding: 16px 20px;
+}
+.link-card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: #4A154B; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 1.1rem;
+}
+.link-card-text { flex: 1; }
+.link-card-text h4 { font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.link-card-text p { font-size: 0.75rem; color: var(--portal-muted); }
+.btn-link-sm {
+  padding: 8px 16px; background: transparent; border: 1px solid var(--portal-border);
+  border-radius: 3px; font-size: 0.75rem; color: var(--portal-text);
+  cursor: pointer; font-family: "DM Sans", sans-serif;
+  transition: all 0.2s; text-decoration: none; white-space: nowrap;
+}
+.btn-link-sm:hover { border-color: var(--teal); color: var(--teal); }
+
+/* Session 1 page */
+.session-header {
+  margin-bottom: 36px; padding-bottom: 28px;
+  border-bottom: 1px solid var(--portal-border);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px;
+}
+.session-header-left {}
+.session-eyebrow {
+  font-family: "DM Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px; display: block;
+}
+.session-header h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
+  color: var(--white); line-height: 1.1; margin-bottom: 10px;
+}
+.session-header p { font-size: 0.9rem; color: var(--portal-text); line-height: 1.7; max-width: 520px; }
+.session-status-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 20px;
+  font-family: "DM Mono", monospace; font-size: 0.65rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  white-space: nowrap; flex-shrink: 0;
+}
+.badge-active { background: rgba(0,181,173,0.1); color: var(--teal); border: 1px solid rgba(0,181,173,0.25); }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+
+.session-docs-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+  margin-bottom: 28px;
+}
+.doc-card {
+  background: var(--portal-card); border: 1px solid var(--portal-border);
+  border-radius: 6px; padding: 20px; cursor: pointer;
+  transition: all 0.2s;
+}
+.doc-card:hover { border-color: rgba(0,181,173,0.3); transform: translateY(-2px); }
+.doc-card-tag {
+  font-family: "DM Mono", monospace; font-size: 0.58rem;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 10px;
+  display: inline-block; padding: 3px 8px; border-radius: 2px;
+}
+.tag-teal { background: rgba(0,181,173,0.1); color: var(--teal); }
+.tag-gold { background: rgba(201,148,26,0.1); color: var(--gold); }
+.doc-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.doc-card p { font-size: 0.78rem; color: var(--portal-text); line-height: 1.55; }
+.doc-card-footer {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.72rem; color: var(--portal-muted);
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* Output tracker */
+.output-tracker {
+  background: var(--portal-card); border: 1px solid var(--portal-border);
+  border-radius: 6px; padding: 24px; margin-bottom: 24px;
+}
+.output-tracker h3 {
+  font-size: 0.9rem; font-weight: 600; color: var(--white);
+  margin-bottom: 16px;
+}
+.output-row-portal {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.output-row-portal:last-child { border-bottom: none; }
+.output-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.output-check.done { background: var(--teal); border-color: var(--teal); }
+.output-check.done::after { content: "✓"; font-size: 10px; color: var(--ink); font-weight: 700; }
+.output-row-portal p { font-size: 0.82rem; color: var(--portal-text); }
+.output-row-portal p strong { color: var(--white); }
+.output-session-tag {
+  margin-left: auto; font-family: "DM Mono", monospace;
+  font-size: 0.58rem; letter-spacing: 0.1em;
+  color: var(--portal-muted); white-space: nowrap;
+}
+
+/* Coming soon sessions */
+.sessions-coming-grid {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.session-coming-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; background: var(--portal-card);
+  border: 1px solid var(--portal-border); border-radius: 4px;
+  opacity: 0.5;
+}
+.session-coming-num {
+  font-family: "Cormorant Garamond", serif; font-size: 2rem;
+  font-weight: 700; color: rgba(255,255,255,0.06); line-height: 1;
+  flex-shrink: 0; width: 40px;
+}
+.session-coming-info h4 { font-size: 0.88rem; color: var(--portal-muted); font-weight: 500; margin-bottom: 2px; }
+.session-coming-info p { font-size: 0.78rem; color: var(--portal-muted); }
+.lock-badge {
+  margin-left: auto; font-family: "DM Mono", monospace;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 2px;
+  background: rgba(255,255,255,0.04); color: var(--portal-muted);
+}
+
+/* Login overlay */
+#portal-login-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(8,14,20,0.97);
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+}
+#portal-login-overlay.active { display: flex; }
+.login-box {
+  background: var(--portal-card); border: 1px solid var(--portal-border);
+  border-radius: 8px; padding: 48px; width: 100%; max-width: 420px;
+  text-align: center;
+}
+.login-logo { margin-bottom: 32px; }
+.login-logo-top {
+  font-family: "DM Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--teal);
+  display: block; margin-bottom: 4px;
+}
+.login-logo-main {
+  font-family: "Cormorant Garamond", serif; font-size: 1.5rem;
+  font-weight: 700; color: var(--white);
+}
+.login-logo-main em { font-style: italic; color: var(--teal); }
+.login-divider { width: 40px; height: 1px; background: var(--gold); margin: 12px auto 0; }
+.login-box h2 {
+  font-family: "Cormorant Garamond", serif; font-size: 1.5rem;
+  font-weight: 600; color: var(--white); margin-bottom: 8px;
+}
+.login-box > p { font-size: 0.85rem; color: var(--portal-muted); margin-bottom: 32px; }
+.login-field {
+  width: 100%; padding: 13px 16px; margin-bottom: 12px;
+  background: var(--ink); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px; font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem; color: var(--white); outline: none;
+  transition: border-color 0.2s; box-sizing: border-box;
+}
+.login-field::placeholder { color: var(--slate); }
+.login-field:focus { border-color: var(--teal); }
+.btn-login {
+  width: 100%; padding: 14px; background: var(--teal); color: var(--ink);
+  border: none; border-radius: 3px; font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; letter-spacing: 0.04em;
+}
+.btn-login:hover { background: var(--teal-d); }
+.login-note { margin-top: 16px; font-size: 0.72rem; color: var(--portal-muted); }
+.login-error {
+  background: rgba(220,50,50,0.1); border: 1px solid rgba(220,50,50,0.25);
+  border-radius: 3px; padding: 10px 14px; margin-bottom: 12px;
+  font-size: 0.8rem; color: #FF7070; display: none;
+}
+.login-error.visible { display: block; }
+
+@media (max-width: 900px) {
+  .portal-layout { grid-template-columns: 1fr; }
+  .portal-sidebar { display: none; }
+  .portal-content { padding: 24px 20px; }
+  .portal-grid-2, .session-docs-grid { grid-template-columns: 1fr; }
+  .portal-grid-3 { grid-template-columns: 1fr 1fr; }
+  .session-header { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -257,6 +721,7 @@ footer p { font-size: 0.75rem; color: var(--slate); }
     <li><a href="#sessions">The Program</a></li>
     <li><a href="#about">About Jimmy</a></li>
     <li><a href="#waitlist" class="btn btn-primary" style="padding:10px 24px;">Join the Waitlist</a></li>
+    <li><a href="#" id="nav-portal-link" class="btn btn-outline" style="padding:10px 24px;" onclick="openPortal(event)">Member Login</a></li>
   </ul>
 </nav>
 
@@ -519,7 +984,355 @@ footer p { font-size: 0.75rem; color: var(--slate); }
   </div>
 </footer>
 
+<!-- ── PORTAL LOGIN OVERLAY ── -->
+<div id="portal-login-overlay">
+  <div class="login-box">
+    <div class="login-logo">
+      <span class="login-logo-top">Member Portal</span>
+      <span class="login-logo-main">Leading <em>YourSelf</em> Forward</span>
+      <div class="login-divider"></div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Sign in to access your cohort portal.</p>
+    <div class="login-error" id="login-error">Incorrect email or password. Please try again.</div>
+    <input type="email" class="login-field" id="login-email" placeholder="Email address">
+    <input type="password" class="login-field" id="login-password" placeholder="Password">
+    <button class="btn-login" onclick="handleLogin()">Sign In</button>
+    <p class="login-note">Not yet a member? <a href="#waitlist" onclick="closePortalLogin()" style="color:var(--teal);">Join the waitlist.</a></p>
+  </div>
+</div>
+
+<!-- ── PORTAL ROOT ── -->
+<div id="portal-root">
+  <div class="portal-shell">
+
+    <!-- Portal Nav -->
+    <nav class="portal-nav">
+      <div class="portal-nav-logo">
+        <span class="portal-nav-logo-top">Member Portal</span>
+        <span class="portal-nav-logo-main">Leading <em>YourSelf</em> Forward</span>
+      </div>
+      <div class="portal-nav-right">
+        <span class="portal-member-name" id="portal-member-display"></span>
+        <button class="portal-logout-btn" onclick="handleLogout()">Sign Out</button>
+      </div>
+    </nav>
+
+    <!-- Portal Layout -->
+    <div class="portal-layout">
+
+      <!-- Sidebar -->
+      <aside class="portal-sidebar">
+        <div class="portal-sidebar-section">
+          <div class="portal-sidebar-label">Navigation</div>
+          <div class="portal-nav-item active" data-view="welcome" onclick="switchView('welcome', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l6-4 6 4v8H2V6z"/></svg>
+            Welcome
+          </div>
+          <div class="portal-nav-item" data-view="session1" onclick="switchView('session1', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M5 8h6M5 5h6M5 11h4"/></svg>
+            Session Hub
+          </div>
+          <div class="portal-nav-item" data-view="outputs" onclick="switchView('outputs', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h10M3 12h6"/><circle cx="13" cy="12" r="2"/></svg>
+            My Outputs
+          </div>
+        </div>
+        <div class="portal-sidebar-section">
+          <div class="portal-sidebar-label">Sessions</div>
+          <div class="portal-session-item active" onclick="switchView('session1', document.querySelector('[data-view=session1]'))">
+            <span class="session-num">01</span> Self-Leadership
+          </div>
+          <div class="portal-session-item locked">
+            <span class="session-num locked-num">02</span> Identity
+            <span class="lock-icon">🔒</span>
+          </div>
+          <div class="portal-session-item locked">
+            <span class="session-num locked-num">03</span> Who You Serve
+            <span class="lock-icon">🔒</span>
+          </div>
+          <div class="portal-session-item locked">
+            <span class="session-num locked-num">04</span> Choose Your Lane
+            <span class="lock-icon">🔒</span>
+          </div>
+          <div class="portal-session-item locked">
+            <span class="session-num locked-num">05</span> The Container
+            <span class="lock-icon">🔒</span>
+          </div>
+          <div class="portal-session-item locked">
+            <span class="session-num locked-num">06</span> Momentum
+            <span class="lock-icon">🔒</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="portal-content">
+
+        <!-- ── WELCOME VIEW ── -->
+        <div class="portal-view active" id="view-welcome">
+
+          <div class="welcome-header">
+            <span class="welcome-eyebrow">Cohort 1 · 2026</span>
+            <h1>Welcome to <em>Leading YourSelf Forward.</em></h1>
+            <p>You made a decision. That is already the first act of self-leadership. Everything in this portal is here to support your six sessions and the eight outputs you will build from them.</p>
+          </div>
+
+          <!-- Welcome message -->
+          <div class="welcome-msg-card">
+            <p>You are here because you are ready. Not because everything is figured out — but because you have decided it is time to stop managing and start leading. That decision is the foundation everything else is built on.</p>
+            <p>Over the next twelve weeks, we are going to build your positioning foundation from the inside out. Not from a template. Not borrowed from someone else's framework. <em>From who you actually are.</em></p>
+            <p>You will leave this program with eight concrete outputs that belong to you. A practitioner identity statement. A vision. A brand voice. A value proposition. An ideal client portrait. A primary offer. A core message. And a 90-day plan to move on all of it.</p>
+            <p>Show up fully. Do the pre-work honestly. The sessions will move fast if you do.</p>
+            <span class="welcome-msg-sig">— Jimmy Clarke</span>
+          </div>
+
+          <!-- Welcome packet download -->
+          <div class="download-card">
+            <div class="download-icon">
+              <span class="download-icon-top">LYF</span>
+              <span class="download-icon-type">PDF</span>
+            </div>
+            <div class="download-info">
+              <h4>Welcome Packet — Cohort 1</h4>
+              <p>Program overview, schedule, community guidelines, and what to expect across all six sessions.</p>
+            </div>
+            <a href="/welcome-packet-cohort1.pdf" class="btn-download" download>
+              ↓ Download
+            </a>
+          </div>
+
+          <!-- Cohort schedule + Community -->
+          <div class="portal-grid-2">
+            <div class="portal-card">
+              <span class="portal-card-label">Cohort Schedule</span>
+              <div class="divider-sm"></div>
+              <div class="schedule-item">
+                <div class="schedule-dot"></div>
+                <div><p><strong>Session 1 — Self-Leadership</strong><br>Date TBD · 90 min via Zoom</p></div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-dot" style="background:var(--gold)"></div>
+                <div><p><strong>Session 2 — Identity</strong><br>Date TBD · 90 min via Zoom</p></div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-dot"></div>
+                <div><p><strong>Sessions 3–6</strong><br>Dates TBD · Bi-weekly rhythm</p></div>
+              </div>
+              <p style="font-size:0.75rem;color:var(--portal-muted);margin-top:14px;">Exact dates will be confirmed and updated here before the first session.</p>
+            </div>
+
+            <div class="portal-card">
+              <span class="portal-card-label gold">Community</span>
+              <div class="divider-sm gold"></div>
+              <p style="margin-bottom:16px;">Your cohort Slack workspace is where accountability happens between sessions. Post your wins, ask questions, and hold each other to commitments.</p>
+              <div class="link-card">
+                <div class="link-card-icon">💬</div>
+                <div class="link-card-text">
+                  <h4>Cohort Slack</h4>
+                  <p>LYF Cohort 1 workspace</p>
+                </div>
+                <a href="#" class="btn-link-sm">Join →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pre-work for Session 1 -->
+          <div class="prework-card">
+            <h3>📋 &nbsp;Pre-Work: Session 1 — Self-Leadership</h3>
+            <p>Complete this before your first session. It takes 20 minutes. The more honestly you answer, the faster Session 1 moves. This pre-work surfaces the raw material we will work with together.</p>
+            <div class="prework-steps">
+              <div class="prework-step">
+                <span class="prework-step-num">01</span>
+                <p><strong>Block the time.</strong> Find 20 uninterrupted minutes before Session 1. No multitasking. This is thinking work.</p>
+              </div>
+              <div class="prework-step">
+                <span class="prework-step-num">02</span>
+                <p><strong>Complete the pre-work form.</strong> The form will be linked here 48–72 hours before Session 1. Watch for an email notification.</p>
+              </div>
+              <div class="prework-step">
+                <span class="prework-step-num">03</span>
+                <p><strong>Submit before the session.</strong> Your responses help me build the coaching brief and identify where the group needs the most attention.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- What to expect -->
+          <div class="portal-grid-3">
+            <div class="portal-card">
+              <span class="portal-card-label">Before Each Session</span>
+              <p>Pre-work form arrives 48–72 hrs prior. 20 minutes. Surfaces your raw material so the session hits the ground running.</p>
+            </div>
+            <div class="portal-card">
+              <span class="portal-card-label gold">During Each Session</span>
+              <p>90 minutes on Zoom. Teaching, silent worksheet work, and two live hot seats working directly with the coach.</p>
+            </div>
+            <div class="portal-card">
+              <span class="portal-card-label">After Each Session</span>
+              <p>Commitment form locks your key output, one decision, and one action with a deadline. What gets written gets done.</p>
+            </div>
+          </div>
+
+        </div><!-- /view-welcome -->
+
+        <!-- ── SESSION 1 VIEW ── -->
+        <div class="portal-view" id="view-session1">
+
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 01 · Foundation</span>
+              <h2>Self-Leadership</h2>
+              <p>A leadership decision and a clear diagnosis of what has been keeping you stuck. The first act of leading yourself forward — made in writing, held by the cohort.</p>
+            </div>
+            <div class="session-status-badge badge-active">
+              <span class="badge-dot"></span> Now Active
+            </div>
+          </div>
+
+          <!-- Session documents -->
+          <div class="session-docs-grid">
+            <div class="doc-card">
+              <span class="doc-card-tag tag-teal">Pre-Work</span>
+              <h4>Session 1 Pre-Work</h4>
+              <p>Complete before the session. Surfaces your raw material. 20 minutes of honest reflection.</p>
+              <div class="doc-card-footer">
+                🔗 &nbsp;Link active 48hrs before session
+              </div>
+            </div>
+            <div class="doc-card">
+              <span class="doc-card-tag tag-gold">Live Worksheet</span>
+              <h4>Session 1 Worksheet</h4>
+              <p>Worked through together during the live 90-minute session. Bring this up on the call.</p>
+              <div class="doc-card-footer">
+                🔗 &nbsp;Link active day of session
+              </div>
+            </div>
+            <div class="doc-card">
+              <span class="doc-card-tag tag-teal">Post-Session</span>
+              <h4>Commitment Close</h4>
+              <p>Complete same day. Locks your output, one decision, and one action with a deadline.</p>
+              <div class="doc-card-footer">
+                🔗 &nbsp;Link active after session
+              </div>
+            </div>
+          </div>
+
+          <!-- Session output -->
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 1 Output</span>
+            <div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Practitioner Identity Statement</h3>
+            <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has kept you stuck. This becomes the foundation every future session is built on.</p>
+          </div>
+
+          <!-- 72hr bridge -->
+          <div class="prework-card">
+            <h3>⚡ &nbsp;72-Hour Bridge</h3>
+            <p>Between Session 1 and Session 2, you have one specific action to take in the world. It is not homework — it is execution. You will submit your result before Session 2 opens. The Slack channel is your accountability channel for this.</p>
+          </div>
+
+          <!-- Remaining sessions locked -->
+          <div style="margin-top:32px;">
+            <span class="portal-card-label" style="display:block;margin-bottom:16px;padding:0;">Sessions 2–6 unlock sequentially</span>
+            <div class="sessions-coming-grid">
+              <div class="session-coming-row">
+                <span class="session-coming-num">02</span>
+                <div class="session-coming-info"><h4>Identity</h4><p>Nine words. A positioning statement built from them.</p></div>
+                <span class="lock-badge">Coming Soon</span>
+              </div>
+              <div class="session-coming-row">
+                <span class="session-coming-num">03</span>
+                <div class="session-coming-info"><h4>Who You Serve</h4><p>Your ideal client statement. A real person, not a demographic.</p></div>
+                <span class="lock-badge">Coming Soon</span>
+              </div>
+              <div class="session-coming-row">
+                <span class="session-coming-num">04</span>
+                <div class="session-coming-info"><h4>Choose Your Lane</h4><p>Strategic commitment. Your lane and your first offer.</p></div>
+                <span class="lock-badge">Coming Soon</span>
+              </div>
+              <div class="session-coming-row">
+                <span class="session-coming-num">05</span>
+                <div class="session-coming-info"><h4>The Container</h4><p>Your presence statement and core message.</p></div>
+                <span class="lock-badge">Coming Soon</span>
+              </div>
+              <div class="session-coming-row">
+                <span class="session-coming-num">06</span>
+                <div class="session-coming-info"><h4>Momentum & Reflection</h4><p>Everything brought together. Your 90-day plan.</p></div>
+                <span class="lock-badge">Coming Soon</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /view-session1 -->
+
+        <!-- ── OUTPUTS VIEW ── -->
+        <div class="portal-view" id="view-outputs">
+
+          <div class="welcome-header">
+            <span class="welcome-eyebrow">Your Portfolio</span>
+            <h1>My <em>Outputs</em></h1>
+            <p>Eight concrete deliverables built across the six sessions. Each one yours. This page tracks your progress and will hold your completed outputs as the program advances.</p>
+          </div>
+
+          <div class="output-tracker">
+            <h3>Output Portfolio — Cohort 1</h3>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Practitioner Identity Statement</strong> — Who you are as a leader and practitioner</p>
+              <span class="output-session-tag">Session 1</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Vision Statement</strong> — Where you are going and why</p>
+              <span class="output-session-tag">Session 2</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Brand Voice Profile</strong> — Nine words. Vision, Value, Voice</p>
+              <span class="output-session-tag">Session 2</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Value Proposition</strong> — What you do, for whom, and why it matters</p>
+              <span class="output-session-tag">Session 2</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Ideal Client Portrait</strong> — A real person with a specific worldview</p>
+              <span class="output-session-tag">Session 3</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Primary Offer Definition</strong> — Your lane and first offer structure</p>
+              <span class="output-session-tag">Session 4</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>Presence Statement & Core Message</strong> — The sentence that makes your ideal client feel found</p>
+              <span class="output-session-tag">Session 5</span>
+            </div>
+            <div class="output-row-portal">
+              <div class="output-check"></div>
+              <p><strong>90-Day Momentum Plan</strong> — Your complete operating document</p>
+              <span class="output-session-tag">Session 6</span>
+            </div>
+          </div>
+
+          <div class="portal-card">
+            <span class="portal-card-label">How This Works</span>
+            <div class="divider-sm"></div>
+            <p>As you complete each session's Commitment Close form, your outputs are saved here. After Session 6, this page becomes your complete positioning portfolio — a PDF download containing everything you built. Yours to keep and operate from.</p>
+          </div>
+
+        </div><!-- /view-outputs -->
+
+      </main>
+    </div><!-- /portal-layout -->
+  </div><!-- /portal-shell -->
+</div><!-- /portal-root -->
+
 <script>
+  // ── SCROLL REVEAL (public site) ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -534,6 +1347,136 @@ footer p { font-size: 0.75rem; color: var(--slate); }
       const t = document.querySelector(a.getAttribute("href"));
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth" }); }
     });
+  });
+
+  // ── PORTAL STATE ──
+  let portalActive = false;
+
+  function openPortal(e) {
+    if (e) e.preventDefault();
+    // Check if Memberstack has a logged-in member
+    if (window.$memberstackDom) {
+      window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
+        if (member) {
+          activatePortal(member);
+        } else {
+          showLoginOverlay();
+        }
+      }).catch(() => showLoginOverlay());
+    } else {
+      // Memberstack not yet loaded — show login
+      showLoginOverlay();
+    }
+  }
+
+  function showLoginOverlay() {
+    document.getElementById('portal-login-overlay').classList.add('active');
+  }
+
+  function closePortalLogin() {
+    document.getElementById('portal-login-overlay').classList.remove('active');
+  }
+
+  function handleLogin() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const errorEl = document.getElementById('login-error');
+    errorEl.classList.remove('visible');
+
+    if (!email || !password) {
+      errorEl.textContent = 'Please enter your email and password.';
+      errorEl.classList.add('visible');
+      return;
+    }
+
+    if (window.$memberstackDom) {
+      window.$memberstackDom.loginMemberEmailPassword({ email, password })
+        .then(({ data: member }) => {
+          closePortalLogin();
+          activatePortal(member);
+        })
+        .catch((err) => {
+          errorEl.textContent = 'Incorrect email or password. Please try again.';
+          errorEl.classList.add('visible');
+        });
+    } else {
+      // Memberstack not available — dev preview mode
+      errorEl.textContent = 'Authentication service loading. Please try again in a moment.';
+      errorEl.classList.add('visible');
+    }
+  }
+
+  // Allow Enter key in login fields
+  document.addEventListener('DOMContentLoaded', () => {
+    ['login-email','login-password'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+    });
+
+    // Auto-check for existing Memberstack session
+    if (window.$memberstackDom) {
+      window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
+        if (member && window.location.hash === '#portal') activatePortal(member);
+      });
+    }
+  });
+
+  function activatePortal(member) {
+    portalActive = true;
+    document.body.classList.add('portal-active');
+    document.getElementById('portal-root').classList.add('active');
+
+    // Display member name
+    const name = member?.customFields?.['first-name'] || member?.auth?.email?.split('@')[0] || 'Member';
+    document.getElementById('portal-member-display').textContent = name;
+
+    switchView('welcome', document.querySelector('[data-view="welcome"]'));
+    window.history.pushState({}, '', '#portal');
+  }
+
+  function handleLogout() {
+    if (window.$memberstackDom) {
+      window.$memberstackDom.logout().then(() => deactivatePortal());
+    } else {
+      deactivatePortal();
+    }
+  }
+
+  function deactivatePortal() {
+    portalActive = false;
+    document.body.classList.remove('portal-active');
+    document.getElementById('portal-root').classList.remove('active');
+    window.history.pushState({}, '', window.location.pathname);
+  }
+
+  // ── VIEW SWITCHING ──
+  function switchView(viewId, navEl) {
+    // Hide all views
+    document.querySelectorAll('.portal-view').forEach(v => v.classList.remove('active'));
+    // Remove active from nav items
+    document.querySelectorAll('.portal-nav-item').forEach(n => n.classList.remove('active'));
+    // Update sidebar session items
+    document.querySelectorAll('.portal-session-item').forEach(n => n.classList.remove('active'));
+
+    // Show target view
+    const target = document.getElementById('view-' + viewId);
+    if (target) target.classList.add('active');
+
+    // Activate nav item
+    if (navEl) navEl.classList.add('active');
+
+    // Sync session sidebar
+    if (viewId === 'session1') {
+      const s1 = document.querySelector('.portal-session-item:first-of-type');
+      if (s1) s1.classList.add('active');
+    }
+  }
+
+  // Handle browser back from portal
+  window.addEventListener('popstate', () => {
+    if (portalActive && window.location.hash !== '#portal') {
+      deactivatePortal();
+    }
   });
 </script>
 </body>
