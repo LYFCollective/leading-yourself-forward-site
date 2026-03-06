@@ -628,6 +628,50 @@ body.portal-active #portal-root { display: block !important; }
 .form-row-arrow { color: var(--portal-muted); font-size: 0.85rem; flex-shrink: 0; margin-left: 4px; transition: color 0.2s, transform 0.2s; }
 .form-row:hover .form-row-arrow { color: var(--teal); transform: translateX(3px); }
 
+/* Slack card */
+.slack-card {
+  background: rgba(74,21,75,0.15); border: 1px solid rgba(74,21,75,0.35);
+  border-radius: 6px; padding: 20px 22px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 16px;
+}
+.slack-icon {
+  width: 42px; height: 42px; border-radius: 8px;
+  background: rgba(74,21,75,0.4); display: flex; align-items: center;
+  justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.slack-body { flex: 1; }
+.slack-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.slack-body p { font-size: 0.78rem; color: var(--portal-text); line-height: 1.5; margin: 0; }
+.slack-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(74,21,75,0.5); border: 1px solid rgba(74,21,75,0.6);
+  color: #e8b4e8; font-size: 0.75rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 4px; text-decoration: none;
+  white-space: nowrap; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.slack-btn:hover { background: rgba(74,21,75,0.7); border-color: rgba(74,21,75,0.9); }
+
+/* Session guide banner */
+.guide-banner {
+  background: rgba(201,148,26,0.08); border: 1px solid rgba(201,148,26,0.2);
+  border-radius: 6px; padding: 16px 20px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.guide-banner-icon { font-size: 1.2rem; flex-shrink: 0; }
+.guide-banner-body { flex: 1; }
+.guide-banner-body h4 { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 3px; }
+.guide-banner-body p { font-size: 0.75rem; color: var(--portal-text); margin: 0; }
+.guide-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,148,26,0.15); border: 1px solid rgba(201,148,26,0.3);
+  color: var(--gold); font-size: 0.72rem; font-weight: 600;
+  padding: 7px 13px; border-radius: 4px; text-decoration: none;
+  white-space: nowrap; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.guide-btn:hover { background: rgba(201,148,26,0.25); }
+
 /* Output tracker */
 .output-tracker {
   background: var(--portal-card); border: 1px solid var(--portal-border);
@@ -869,7 +913,7 @@ body.portal-active #portal-root { display: block !important; }
     <div class="rhythm-grid">
       <div class="rhythm-card reveal" data-bg="B"><div class="rhythm-lbl">Before</div><h3>Pre-Work</h3><p>Arrives 48 to 72 hours before each session. 20 minutes. Surfaces the raw material the session needs. The more honestly you answer, the faster the session moves.</p></div>
       <div class="rhythm-card reveal" data-bg="D"><div class="rhythm-lbl">During</div><h3>Live Session</h3><p>90 minutes on Zoom. Teaching, silent worksheet work, and two live hot seats where participants work through their material directly with the coach.</p></div>
-      <div class="rhythm-card reveal" data-bg="A"><div class="rhythm-lbl">After</div><h3>Commitment Close</h3><p>A post session form locks your key output, one decision, and one action with a deadline. What gets written gets done.</p></div>
+      <div class="rhythm-card reveal" data-bg="A"><div class="rhythm-lbl">After</div><h3>Post-Session Commitment</h3><p>A post session form locks your key output, one decision, and one action with a deadline. What gets written gets done.</p></div>
       <div class="rhythm-card reveal" data-bg="B"><div class="rhythm-lbl">Between</div><h3>Real World Action</h3><p>One specific action within 72 hours. Slack for accountability, wins, and clarifying questions between sessions.</p></div>
     </div>
   </div>
@@ -1285,6 +1329,27 @@ body.portal-active #portal-root { display: block !important; }
             <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has been keeping you stuck. This becomes the foundation every future session builds on.</p>
           </div>
 
+
+          <!-- Slack community -->
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body">
+              <h4>Accountability Channel — #leading-yourself-forward</h4>
+              <p>Post your 72-Hour Bridge result here. Share wins, ask brief questions, stay in motion between sessions. If it's not in Slack, it doesn't exist.</p>
+            </div>
+            <a class="slack-btn" href="https://jimmyclarke11-t5m6553.slack.com/archives/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+
+          <!-- Session Guide download -->
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 1 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
+            </div>
+            <a class="guide-btn" href="/session-1-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+
           <!-- Remaining sessions locked -->
           <div style="margin-top:32px;">
             <span class="portal-card-label" style="display:block;margin-bottom:16px;padding:0;">Sessions 2–6 unlock sequentially</span>
@@ -1375,7 +1440,7 @@ body.portal-active #portal-root { display: block !important; }
           <div class="portal-card">
             <span class="portal-card-label">How This Works</span>
             <div class="divider-sm"></div>
-            <p>As you complete each session's Commitment Close form, your outputs are saved here. After Session 6, this page becomes your complete positioning portfolio — a PDF download containing everything you built. Yours to keep and operate from.</p>
+            <p>As you complete each session's Post-Session Commitment form, your outputs are saved here. After Session 6, this page becomes your complete positioning portfolio — a PDF download containing everything you built. Yours to keep and operate from.</p>
           </div>
 
         </div><!-- /view-outputs -->
