@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter to Your Future Self · Leading YourSelf Forward</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+
+  :root {
+    --navy: #080E14;
+    --navy2: #0D1A24;
+    --navy3: #142230;
+    --navy4: #1A2C3D;
+    --teal: #00B5AD;
+    --teal-dim: rgba(0,181,173,0.15);
+    --gold: #C9941A;
+    --gold-dim: rgba(201,148,26,0.15);
+    --white: #F4F6F8;
+    --mist: #A8BFBD;
+    --slate: #4A6670;
+    --border: rgba(0,181,173,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    background: var(--navy2);
+    border-bottom: 1px solid var(--teal);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .doc-header-left { display: flex; flex-direction: column; gap: 2px; }
+  .doc-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+  .doc-title-bar {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .doc-badge {
+    background: var(--teal-dim);
+    border: 1px solid var(--border);
+    color: var(--teal);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 48px 0;
+  }
+
+  /* ── HERO ── */
+  .hero { margin-bottom: 48px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+  .hero-rule {
+    width: 220px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 24px;
+  }
+  .hero-intro {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--mist);
+    max-width: 580px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--teal);
+    opacity: 0.4;
+    line-height: 1;
+    min-width: 28px;
+  }
+  .section-label-group { display: flex; flex-direction: column; gap: 3px; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+  .section-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+  }
+  .section-prompt {
+    font-size: 12.5px;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  /* ── FIELD ── */
+  .field { margin-bottom: 16px; }
+  .field-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--slate);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  textarea, input[type="text"] {
+    width: 100%;
+    background: var(--navy3);
+    border: 1px solid rgba(74,102,112,0.4);
+    border-radius: 3px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 14px 16px;
+    resize: vertical;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--teal);
+    background: var(--navy4);
+  }
+  textarea::placeholder, input::placeholder {
+    color: var(--slate);
+    font-style: italic;
+  }
+  .textarea-sm { min-height: 80px; }
+  .textarea-md { min-height: 120px; }
+  .textarea-lg { min-height: 180px; }
+  .textarea-xl { min-height: 320px; }
+
+  /* Three column grid for priorities */
+  .field-trio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .field-trio .field { margin-bottom: 0; }
+
+  /* ── LETTER SECTION ── */
+  .letter-section {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+  .letter-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .letter-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .letter-prompt {
+    font-size: 12.5px;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .letter-starter {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: var(--teal-dim);
+    border-left: 2px solid var(--teal);
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ── SEAL BLOCK ── */
+  .seal-block {
+    background: var(--navy3);
+    border: 1px solid rgba(201,148,26,0.3);
+    border-radius: 4px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .seal-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .seal-text-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .seal-text-body {
+    font-size: 12.5px;
+    color: var(--mist);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--navy2);
+    border-top: 1px solid rgba(0,181,173,0.15);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-dot {
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+  .footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--slate);
+    text-transform: uppercase;
+  }
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 32px 24px 0; }
+    .doc-header { padding: 16px 24px; }
+    .doc-footer { padding: 12px 24px; }
+    .field-trio { grid-template-columns: 1fr; }
+    .letter-section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-header-left">
+    <span class="doc-eyebrow">Leading YourSelf Forward · Session 6</span>
+    <span class="doc-title-bar">A Letter to Your Future Self</span>
+  </div>
+  <span class="doc-badge">Written Today · Opened in 90 Days</span>
+</header>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Session 6 · Graduation Document</div>
+    <h1 class="hero-heading">A Letter to<br>Your Future Self</h1>
+    <div class="hero-sub">Written today. Opened in 90 days.</div>
+    <div class="hero-rule"></div>
+    <p class="hero-intro">This letter is written in your own words in the final moments of Session 6. It is not a worksheet. It is not a template. It is a message from the person you are right now to the person you will be in 90 days. Write it as if you are speaking to someone you care about who needs to remember what was decided in this room today.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <div class="section-label-group">
+        <span class="section-label">Section 1</span>
+        <span class="section-name">Who I Am Now</span>
+      </div>
+    </div>
+    <p class="section-prompt">Not a summary of the program. A statement of identity. Who are you now that you were not before? What do you know about yourself that changes the way you operate?</p>
+    <div class="field">
+      <label class="field-label">In your own words — what you now know about yourself as a leader</label>
+      <textarea class="textarea-lg" placeholder="Write from the identity you claimed, not from memory of the sessions…"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <div class="section-label-group">
+        <span class="section-label">Section 2</span>
+        <span class="section-name">The Pattern I Am Watching</span>
+      </div>
+    </div>
+    <p class="section-prompt">Named and witnessed in the room today. Write the pattern by name. Write when it shows up. Write what it sounds like when it speaks. And write what you will say back to it when it does.</p>
+    <div class="field">
+      <label class="field-label">The pattern, named directly</label>
+      <textarea class="textarea-sm" placeholder="Name it specifically — not 'fear' but what kind of fear, not 'avoidance' but what you avoid and why…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">What it sounds like when it speaks — the exact thought or feeling that signals it is running</label>
+      <textarea class="textarea-md" placeholder="The internal voice, the feeling in the body, the behavior you default to…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">What I will say back to it — my response as the leader I am now</label>
+      <textarea class="textarea-md" placeholder="Not suppression. A direct reply from the person who made a decision in that room today…"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <div class="section-label-group">
+        <span class="section-label">Section 3</span>
+        <span class="section-name">My Three 90-Day Priorities</span>
+      </div>
+    </div>
+    <p class="section-prompt">Write each priority as a leadership statement. Not a task. A decision about how you will operate. These should be recognizable to you in 90 days as the commitments you made in this room.</p>
+    <div class="field-trio">
+      <div class="field">
+        <label class="field-label">Priority 1</label>
+        <textarea class="textarea-md" placeholder="A leadership decision, not a to-do…"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label">Priority 2</label>
+        <textarea class="textarea-md" placeholder="A leadership decision, not a to-do…"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label">Priority 3</label>
+        <textarea class="textarea-md" placeholder="A leadership decision, not a to-do…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <div class="section-label-group">
+        <span class="section-label">Section 4</span>
+        <span class="section-name">The Monthly Question</span>
+      </div>
+    </div>
+    <p class="section-prompt">One question. Specific enough to be useful. Honest enough to be uncomfortable when the answer is no. Write it here and write it at the front of wherever you keep notes so you see it every month.</p>
+    <div class="field">
+      <label class="field-label">My monthly leadership question</label>
+      <textarea class="textarea-sm" placeholder="Make it specific to your pattern and your identity — not generic…"></textarea>
+    </div>
+  </div>
+
+  <!-- THE LETTER -->
+  <div class="letter-section">
+    <div class="letter-eyebrow">The Letter Itself</div>
+    <div class="letter-heading">Dear Future Me&hellip;</div>
+    <p class="letter-prompt">Write it here. In your voice. To the version of you who will open this in 90 days.</p>
+    <div class="letter-starter">Start with: When I graduated from this program, here is what I knew to be true&hellip;</div>
+    <div class="field">
+      <textarea class="textarea-xl" placeholder="Write freely. This is yours. No one grades it. The only requirement is that it is honest."></textarea>
+    </div>
+  </div>
+
+  <!-- SEAL -->
+  <div class="seal-block">
+    <div class="seal-icon">🔒</div>
+    <div>
+      <div class="seal-text-head">Seal this. Set a reminder for 90 days from today.</div>
+      <p class="seal-text-body">When you open it, read it as the person you were in that room. Not who you have become since. Who you were when the decisions were fresh and the commitment was clear.</p>
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<footer class="doc-footer">
+  <div class="footer-left">
+    <div class="footer-dot"></div>
+    <span class="footer-text">#leading-yourself-forward &nbsp;·&nbsp; Slack</span>
+  </div>
+  <span class="footer-right">leadingyourselfforward.com</span>
+</footer>
+
+</body>
+</html>

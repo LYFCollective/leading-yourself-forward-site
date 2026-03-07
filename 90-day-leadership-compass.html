@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90-Day Leadership Compass · Leading YourSelf Forward</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+
+  :root {
+    --navy: #080E14;
+    --navy2: #0D1A24;
+    --navy3: #142230;
+    --navy4: #1A2C3D;
+    --teal: #00B5AD;
+    --teal-dim: rgba(0,181,173,0.12);
+    --gold: #C9941A;
+    --gold-dim: rgba(201,148,26,0.12);
+    --white: #F4F6F8;
+    --mist: #A8BFBD;
+    --slate: #4A6670;
+    --border: rgba(0,181,173,0.2);
+    --border-gold: rgba(201,148,26,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  .doc-header {
+    background: var(--navy2);
+    border-bottom: 1px solid var(--gold);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .doc-header-left { display: flex; flex-direction: column; gap: 2px; }
+  .doc-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .doc-title-bar {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .doc-badge {
+    background: var(--gold-dim);
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 48px 0;
+  }
+
+  /* HERO */
+  .hero { margin-bottom: 48px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero-rule {
+    width: 260px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    margin-bottom: 24px;
+  }
+  .hero-intro {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--mist);
+    max-width: 580px;
+  }
+
+  /* BLOCK */
+  .block {
+    margin-bottom: 44px;
+  }
+  .block-head {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 20px;
+  }
+  .block-accent {
+    width: 3px;
+    height: 36px;
+    border-radius: 2px;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+  .block-accent-teal { background: var(--teal); }
+  .block-accent-gold { background: var(--gold); }
+  .block-label-group { display: flex; flex-direction: column; gap: 3px; }
+  .block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--mist);
+    text-transform: uppercase;
+  }
+  .block-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+  }
+  .block-prompt {
+    font-size: 12.5px;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    font-style: italic;
+    padding-left: 17px;
+  }
+
+  /* FIELD */
+  .field { margin-bottom: 14px; }
+  .field-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--slate);
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    display: block;
+  }
+  textarea, input[type="text"] {
+    width: 100%;
+    background: var(--navy3);
+    border: 1px solid rgba(74,102,112,0.4);
+    border-radius: 3px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 14px 16px;
+    resize: vertical;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--teal);
+    background: var(--navy4);
+  }
+  textarea::placeholder, input::placeholder {
+    color: var(--slate);
+    font-style: italic;
+  }
+  .textarea-xs  { min-height: 56px; }
+  .textarea-sm  { min-height: 80px; }
+  .textarea-md  { min-height: 110px; }
+  .textarea-lg  { min-height: 150px; }
+
+  .field-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .field-two .field { margin-bottom: 0; }
+
+  /* PRIORITY CARDS */
+  .priority-stack { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+  .priority-card {
+    background: var(--navy3);
+    border: 1px solid rgba(74,102,112,0.3);
+    border-radius: 4px;
+    padding: 16px 18px 14px;
+    border-left: 3px solid var(--gold);
+  }
+  .priority-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .priority-card textarea {
+    border: none;
+    border-bottom: 1px solid rgba(74,102,112,0.3);
+    border-radius: 0;
+    padding: 8px 0;
+    background: transparent;
+    font-size: 14px;
+  }
+  .priority-card textarea:focus {
+    background: transparent;
+    border-bottom-color: var(--teal);
+  }
+
+  /* CHECKIN ROW */
+  .checkin-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .checkin-card {
+    background: var(--navy3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .checkin-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+  .checkin-card input[type="text"] {
+    border: none;
+    border-bottom: 1px solid rgba(74,102,112,0.4);
+    border-radius: 0;
+    padding: 6px 0;
+    background: transparent;
+    font-size: 12px;
+  }
+  .checkin-card input:focus {
+    background: transparent;
+    border-bottom-color: var(--teal);
+  }
+  .checkin-card textarea {
+    border: none;
+    border-bottom: 1px solid rgba(74,102,112,0.3);
+    border-radius: 0;
+    padding: 6px 0;
+    background: transparent;
+    font-size: 12.5px;
+    min-height: 72px;
+  }
+  .checkin-card textarea:focus {
+    background: transparent;
+    border-bottom-color: var(--teal);
+  }
+
+  /* CLOSING STATEMENT */
+  .closing {
+    background: var(--navy2);
+    border: 1px solid var(--border-gold);
+    border-top: 2px solid var(--gold);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .closing-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .closing-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--teal);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 36px 0;
+  }
+
+  .doc-footer {
+    background: var(--navy2);
+    border-top: 1px solid rgba(201,148,26,0.15);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+  }
+  .footer-left { display: flex; align-items: center; gap: 8px; }
+  .footer-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--slate);
+    text-transform: uppercase;
+  }
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 32px 24px 0; }
+    .doc-header { padding: 16px 24px; }
+    .doc-footer { padding: 12px 24px; }
+    .field-two { grid-template-columns: 1fr; }
+    .checkin-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-header-left">
+    <span class="doc-eyebrow">Leading YourSelf Forward · Session 6</span>
+    <span class="doc-title-bar">90-Day Leadership Compass</span>
+  </div>
+  <span class="doc-badge">Keep It Visible · Return Monthly</span>
+</header>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Session 6 · Operating Document</div>
+    <h1 class="hero-heading">90-Day Leadership<br>Compass</h1>
+    <div class="hero-sub">The program is complete. The leadership is not.</div>
+    <div class="hero-rule"></div>
+    <p class="hero-intro">What you built in this program is not a completed project. It is a foundation. The 90-day compass is the tool that keeps you operating from that foundation when the program is no longer holding you accountable. Keep it visible. Return to it monthly. Let it do its job.</p>
+  </div>
+
+  <!-- IDENTITY FOUNDATION -->
+  <div class="block">
+    <div class="block-head">
+      <div class="block-accent block-accent-gold"></div>
+      <div class="block-label-group">
+        <span class="block-label">Part 1</span>
+        <span class="block-name">Your Identity Foundation</span>
+      </div>
+    </div>
+    <p class="block-prompt">The decisions you leave with. Write the final versions here. Not drafts. Not intentions. The decisions as they stand today.</p>
+
+    <div class="field">
+      <label class="field-label">My nine words — Vision · Voice · Value</label>
+      <textarea class="textarea-xs" placeholder="Three words for Vision, three for Voice, three for Value…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">My positioning statement</label>
+      <textarea class="textarea-sm" placeholder="The full statement as you finalized it in Session 2…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">My ideal client avatar in one clear sentence</label>
+      <textarea class="textarea-xs" placeholder="The avatar as you named it in Session 3…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">My lane and why it gives me the most access to my ideal client</label>
+      <textarea class="textarea-sm" placeholder="The lane decision from Session 4 and the reason it is the right one for you…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">My journey archetype, touchpoint sequence, and access point</label>
+      <textarea class="textarea-sm" placeholder="Archetype from Session 5, your five-touchpoint sequence, and your named access point…"></textarea>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE PATTERN -->
+  <div class="block">
+    <div class="block-head">
+      <div class="block-accent block-accent-teal"></div>
+      <div class="block-label-group">
+        <span class="block-label">Part 2</span>
+        <span class="block-name">The Pattern I Am Watching</span>
+      </div>
+    </div>
+    <p class="block-prompt">Named publicly today. Held by the group. Write it here so you see it every time you open this document. The pattern does not disappear. It becomes manageable when you know its name and when others know it too.</p>
+
+    <div class="field-two">
+      <div class="field">
+        <label class="field-label">My pattern, named directly</label>
+        <textarea class="textarea-md" placeholder="Specific, not general…"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label">What I will say to myself when it appears</label>
+        <textarea class="textarea-md" placeholder="A direct response, not a reminder…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 90-DAY PRIORITIES -->
+  <div class="block">
+    <div class="block-head">
+      <div class="block-accent block-accent-gold"></div>
+      <div class="block-label-group">
+        <span class="block-label">Part 3</span>
+        <span class="block-name">The 90-Day Leadership Compass</span>
+      </div>
+    </div>
+    <p class="block-prompt">Three priorities. No renegotiation until day 91. These are not tasks. They are decisions about how you lead.</p>
+
+    <div class="priority-stack">
+      <div class="priority-card">
+        <span class="priority-card-label">Priority 1 — Who I am leading as</span>
+        <textarea class="textarea-sm" placeholder="How I will measure alignment with my nine words in the next 90 days…"></textarea>
+      </div>
+      <div class="priority-card">
+        <span class="priority-card-label">Priority 2 — Who I am building for</span>
+        <textarea class="textarea-sm" placeholder="What discipline I am committing to around my ideal client, my lane, and my container…"></textarea>
+      </div>
+      <div class="priority-card">
+        <span class="priority-card-label">Priority 3 — How I will stay on course</span>
+        <textarea class="textarea-sm" placeholder="The monthly question I will ask myself to check whether I am leading from identity or from fear…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MONTHLY CHECK-IN -->
+  <div class="block">
+    <div class="block-head">
+      <div class="block-accent block-accent-teal"></div>
+      <div class="block-label-group">
+        <span class="block-label">Part 4</span>
+        <span class="block-name">The Monthly Check-In</span>
+      </div>
+    </div>
+    <p class="block-prompt">One question. Asked every 30 days. <em style="color:var(--teal)">Am I making decisions from my identity and my values, or am I making decisions from fear and habit?</em></p>
+
+    <div class="field">
+      <label class="field-label">My personalized monthly question, in my own words</label>
+      <textarea class="textarea-sm" placeholder="Make it specific to your pattern and your priorities — not a generic version of the one above…"></textarea>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHECK-IN DATES -->
+  <div class="block">
+    <div class="block-head">
+      <div class="block-accent block-accent-teal"></div>
+      <div class="block-label-group">
+        <span class="block-label">Part 5</span>
+        <span class="block-name">Check-In Dates</span>
+      </div>
+    </div>
+    <p class="block-prompt">Set three calendar reminders right now. At each one: open this document, read your letter, answer your monthly question, and write one honest sentence about where you are.</p>
+
+    <div class="checkin-row">
+      <div class="checkin-card">
+        <span class="checkin-label">Day 30 Check-In</span>
+        <input type="text" placeholder="Date: ____________________">
+        <textarea placeholder="One honest sentence about where you are…"></textarea>
+      </div>
+      <div class="checkin-card">
+        <span class="checkin-label">Day 60 Check-In</span>
+        <input type="text" placeholder="Date: ____________________">
+        <textarea placeholder="One honest sentence about where you are…"></textarea>
+      </div>
+      <div class="checkin-card">
+        <span class="checkin-label">Day 90 Check-In</span>
+        <input type="text" placeholder="Date: ____________________">
+        <textarea placeholder="One honest sentence about where you are…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="closing-main">You did not come this far to drift.</div>
+    <div class="closing-sub">The compass is in your hands now. Use it.</div>
+  </div>
+
+</div>
+
+<footer class="doc-footer">
+  <div class="footer-left">
+    <div class="footer-dot"></div>
+    <span class="footer-text">#leading-yourself-forward &nbsp;·&nbsp; Slack</span>
+  </div>
+  <span class="footer-right">leadingyourselfforward.com</span>
+</footer>
+
+</body>
+</html>
