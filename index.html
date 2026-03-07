@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://static.memberstack.com/scripts/v2/memberstack.js" data-memberstack-app="app_cmmf547vo00s60stf6bz38hjb"></script>
+
+<style>
+  /* Hide Memberstack floating badge */
+  #ms-badge,
+  .ms-badge,
+  [id*="memberstack-badge"],
+  [class*="memberstack-badge"],
+  iframe[src*="memberstack"],
+  div[data-ms-badge] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+</style>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1266,6 +1281,16 @@ body.portal-active #portal-root { display: block !important; }
             </div>
           </div>
 
+          <!-- Session Guide download -->
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 1 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
+            </div>
+            <a class="guide-btn" href="/session-1-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+
           <!-- Session forms label -->
           <div style="margin-bottom:14px;">
             <span class="portal-card-label">Session 1 Forms</span>
@@ -1335,15 +1360,7 @@ body.portal-active #portal-root { display: block !important; }
             <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
           </div>
 
-          <!-- Session Guide download -->
-          <div class="guide-banner">
-            <div class="guide-banner-icon">📄</div>
-            <div class="guide-banner-body">
-              <h4>Session 1 Guide — Reference During the Live Call</h4>
-              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
-            </div>
-            <a class="guide-btn" href="/session-1-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
-          </div>
+
 
           <!-- Remaining sessions locked -->
           <div style="margin-top:32px;">
@@ -1392,6 +1409,15 @@ body.portal-active #portal-root { display: block !important; }
             <div class="session-status-badge badge-active">
               <span class="badge-dot"></span> Now Active
             </div>
+          </div>
+
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 2 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
+            </div>
+            <a class="guide-btn" href="/session-2-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
           </div>
 
           <!-- Session forms label -->
@@ -1529,6 +1555,15 @@ body.portal-active #portal-root { display: block !important; }
             </div>
           </div>
 
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 3 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
+            </div>
+            <a class="guide-btn" href="/session-3-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+
           <!-- Session forms label -->
           <div style="margin-bottom:14px;">
             <span class="portal-card-label">Session 3 Forms</span>
@@ -1621,6 +1656,15 @@ body.portal-active #portal-root { display: block !important; }
             <div class="session-status-badge badge-active">
               <span class="badge-dot"></span> Now Active
             </div>
+          </div>
+
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 4 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are. Your Worksheet in the portal is the official record.</p>
+            </div>
+            <a class="guide-btn" href="/session-4-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
           </div>
 
           <div style="margin-bottom:14px;">
@@ -1885,7 +1929,7 @@ body.portal-active #portal-root { display: block !important; }
               <h4>A Letter to Your Future Self — Keepsake PDF</h4>
               <p>Print it. Fill it in during the session. Set a reminder to open it in 90 days.</p>
             </div>
-            <a class="guide-btn" href="/letter-to-future-self.pdf" target="_blank" rel="noopener">↓ Download</a>
+            <a class="guide-btn" href="/letter-to-future-self.html" download="Letter-to-Your-Future-Self.html">↓ Download</a>
           </div>
           <div class="guide-banner" style="margin-top:10px;">
             <div class="guide-banner-icon">🧭</div>
@@ -1893,7 +1937,7 @@ body.portal-active #portal-root { display: block !important; }
               <h4>90-Day Leadership Compass — Keepsake PDF</h4>
               <p>Your operating document. Keep it visible. Return to it at Day 30, 60, and 90.</p>
             </div>
-            <a class="guide-btn" href="/90-day-leadership-compass.pdf" target="_blank" rel="noopener">↓ Download</a>
+            <a class="guide-btn" href="/90-day-leadership-compass.html" download="90-Day-Leadership-Compass.html">↓ Download</a>
           </div>
 
           <!-- Forms -->
