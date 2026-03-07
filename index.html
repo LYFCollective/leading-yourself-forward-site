@@ -1131,9 +1131,8 @@ body.portal-active #portal-root { display: block !important; }
           <div class="portal-session-item" onclick="switchView('session3', document.querySelector('[data-view=session3]'))">
             <span class="session-num">03</span> Who You Serve
           </div>
-          <div class="portal-session-item locked">
-            <span class="session-num locked-num">04</span> Choose Your Lane
-            <span class="lock-icon">🔒</span>
+          <div class="portal-session-item" onclick="switchView('session4', document.querySelector('[data-view=session4]'))">
+            <span class="session-num">04</span> Choose Your Lane
           </div>
           <div class="portal-session-item locked">
             <span class="session-num locked-num">05</span> The Container
@@ -1362,10 +1361,10 @@ body.portal-active #portal-root { display: block !important; }
                 <div class="session-coming-info"><h4 style="color:var(--teal);">Who You Serve</h4><p>Your ideal client statement. A real person, not a demographic.</p></div>
                 <span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span>
               </div>
-              <div class="session-coming-row">
-                <span class="session-coming-num">04</span>
-                <div class="session-coming-info"><h4>Choose Your Lane</h4><p>Strategic commitment. Your lane and your first offer.</p></div>
-                <span class="lock-badge">Coming Soon</span>
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session4', document.querySelector('[data-view=session4]'))">
+                <span class="session-coming-num" style="color:rgba(0,181,173,0.4);">04</span>
+                <div class="session-coming-info"><h4 style="color:var(--teal);">Choose Your Lane</h4><p>Strategic commitment. Your lane and your first offer.</p></div>
+                <span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span>
               </div>
               <div class="session-coming-row">
                 <span class="session-coming-num">05</span>
@@ -1611,6 +1610,96 @@ body.portal-active #portal-root { display: block !important; }
           </div>
 
         </div><!-- /view-session3 -->
+
+        <!-- SESSION 4 VIEW -->
+        <div class="portal-view" id="view-session4">
+
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 04 · Strategy</span>
+              <h2>Choose Your Lane</h2>
+              <p>Your nine words, your ideal client, and your bridge reflection are three signals. In most cases they all point in the same direction. Session 4 is not about searching for a lane. It is about confirming the conclusion the data has already reached and committing to it.</p>
+            </div>
+            <div class="session-status-badge badge-active">
+              <span class="badge-dot"></span> Now Active
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <span class="portal-card-label">Session 4 Forms</span>
+          </div>
+
+          <div class="form-list">
+
+            <a class="form-row" href="https://tally.so/r/QKrRy7?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Pre Work — Choose Your Lane</div>
+                <div class="form-row-meta">Complete before Session 4 · 20 min · Review your three signals from Session 3, identify where they point, and name the resistance if any</div>
+              </div>
+              <span class="form-row-timing timing-before">Before Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/9q1Z5Q?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-gold">⚙️</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Session Worksheet — Choose Your Lane</div>
+                <div class="form-row-meta">Open during Session 4 · Data summary, lane commitment with the why, first offer structure, 90 day plan, and 12 month vision — completed live with the group</div>
+              </div>
+              <span class="form-row-timing timing-during">During Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/eqArPe?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body">
+                <div class="form-row-title">Post Session Commitment — Your Lane Is Locked</div>
+                <div class="form-row-meta">Complete within 24 hrs · Locks your lane, first offer structure, three 90 day commitments with deadlines, and your 12 month vision</div>
+              </div>
+              <span class="form-row-timing timing-after">After Session</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+            <a class="form-row" href="https://tally.so/r/WOoRdN?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body">
+                <div class="form-row-title">72 Hour Bridge — You Chose Your Lane.</div>
+                <div class="form-row-meta">Due before Session 5 · One move inside your lane — build your offer, have a lane conversation, create content, or make yourself visible · Bring the reflection back</div>
+              </div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span>
+              <span class="form-row-arrow">→</span>
+            </a>
+
+          </div>
+
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 4 Output</span>
+            <div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Lane Declaration + First Offer + 90 Day Plan</h3>
+            <p>By the end of Session 4 you will have named your lane and locked it, designed your first offer structure from what the lane requires energetically, committed to three specific actions in the next 90 days, and made one real move in your lane before Session 5.</p>
+          </div>
+
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body">
+              <h4>Accountability Channel — #leading-yourself-forward</h4>
+              <p>Post your 72 hour bridge move here. Name your lane and what you did inside it. The more specific your move, the more useful the group's reflection becomes.</p>
+            </div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body">
+              <h4>Session 4 Guide — Reference During the Live Call</h4>
+              <p>Print it or keep it open in a second tab. Shows the session arc, the six lanes, and the offer structure framework.</p>
+            </div>
+            <a class="guide-btn" href="/session-4-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+
+        </div><!-- /view-session4 -->
+
         <div class="portal-view" id="view-outputs">
 
           <div class="welcome-header">
@@ -1850,7 +1939,7 @@ body.portal-active #portal-root { display: block !important; }
     if (navEl) navEl.classList.add('active');
 
     // Sync session sidebar
-    const sessionMap = { session1: 0, session2: 1, session3: 2 };
+    const sessionMap = { session1: 0, session2: 1, session3: 2, session4: 3 };
     if (sessionMap[viewId] !== undefined) {
       const items = document.querySelectorAll('.portal-session-item');
       if (items[sessionMap[viewId]]) items[sessionMap[viewId]].classList.add('active');
