@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 6  ·  Momentum and Reflection</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: #fff;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+@media print {
+  .no-print { display: none; }
+  body { font-size: 11px; }
+  .page-break { page-break-before: always; }
+}
+
+/* HEADER */
+.doc-header {
+  background: #080E14;
+  padding: 20px 36px 16px;
+  border-bottom: 3px solid #00B5AD;
+}
+.doc-header .eyebrow {
+  font-size: 9px;
+  color: #899AAF;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.doc-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #F4F6F7;
+  margin-bottom: 4px;
+}
+.doc-header .tagline {
+  font-size: 10px;
+  color: #00B5AD;
+  letter-spacing: 0.04em;
+}
+
+/* SUBMISSION BAR */
+.submission-bar {
+  background: #F4F6F7;
+  border-left: 4px solid #00B5AD;
+  padding: 10px 36px;
+  font-size: 11px;
+  color: #444;
+}
+.submission-bar strong { color: #00B5AD; }
+
+/* META ROW */
+.meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 16px 36px;
+  background: #fff;
+  border-bottom: 1px solid #E8EDF2;
+}
+.meta-field label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  color: #899AAF;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.meta-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #E8EDF2;
+  padding: 4px 0;
+  font-size: 12px;
+  outline: none;
+  background: transparent;
+}
+.meta-field input:focus { border-bottom-color: #00B5AD; }
+
+/* CONTENT */
+.content { padding: 20px 36px 40px; }
+
+/* SECTION */
+.section { margin-bottom: 28px; }
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #00B5AD;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.section h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 4px;
+}
+.section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 4px;
+}
+.section .intro {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.section p {
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* ACCENT BOX (callout) */
+.accent-box {
+  background: #F4F6F7;
+  border-left: 4px solid #C9941A;
+  padding: 10px 14px;
+  margin: 10px 0 14px;
+  font-size: 11px;
+  color: #444;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid #E8EDF2;
+  margin: 20px 0;
+}
+.gold-divider {
+  border: none;
+  border-top: 1.5px solid #C9941A;
+  margin: 24px 0;
+}
+
+/* TEXT AREA FIELD */
+.field {
+  margin-bottom: 14px;
+}
+.field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #899AAF;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.field textarea {
+  width: 100%;
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 70px;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+.field textarea:focus { border-color: #00B5AD; }
+.field input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #E8EDF2;
+  padding: 6px 0;
+  font-size: 12px;
+  outline: none;
+  background: transparent;
+}
+.field input[type=text]:focus { border-bottom-color: #00B5AD; }
+
+/* TWO COL TABLE */
+.two-col-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.two-col-table th {
+  background: #00B5AD;
+  color: #fff;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.two-col-table td {
+  border: 1px solid #E8EDF2;
+  padding: 0;
+  vertical-align: top;
+  width: 50%;
+}
+.two-col-table td textarea {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 52px;
+  background: transparent;
+}
+.two-col-table td textarea:focus { background: #f9fbfc; }
+
+/* THREE COL TABLE */
+.three-col-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.three-col-table th {
+  background: #080E14;
+  color: #F4F6F7;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.three-col-table td {
+  border: 1px solid #E8EDF2;
+  padding: 0;
+  vertical-align: top;
+}
+.three-col-table td textarea {
+  width: 100%;
+  border: none;
+  padding: 8px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 52px;
+  background: transparent;
+}
+
+/* WORD GRID */
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #E8EDF2;
+  border: 1px solid #E8EDF2;
+  margin: 10px 0 14px;
+}
+.word-cell {
+  background: #fff;
+  padding: 10px 12px;
+}
+.word-cell .word {
+  font-size: 13px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 2px;
+}
+.word-cell .word-type {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.word-cell .word-type.cause  { color: #00B5AD; }
+.word-cell .word-type.result { color: #C9941A; }
+.word-cell .word-type.either { color: #899AAF; }
+
+/* LEGEND */
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: #F4F6F7;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* MY THREE WORDS */
+.three-words {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 14px 0;
+}
+.word-box {
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.word-box .word-box-header {
+  background: #080E14;
+  color: #00B5AD;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 10px;
+  text-transform: uppercase;
+}
+.word-box textarea {
+  width: 100%;
+  border: none;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 60px;
+}
+
+/* CHECKBOX LIST */
+.check-list { list-style: none; margin: 10px 0 14px; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #333;
+  line-height: 1.5;
+}
+.check-list li input[type=checkbox] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #00B5AD;
+  width: 14px;
+  height: 14px;
+}
+
+/* AUDIENCE TABLE */
+.audience-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.audience-table th {
+  background: #080E14;
+  color: #F4F6F7;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.audience-table td {
+  border: 1px solid #E8EDF2;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+.audience-table tr:nth-child(even) td { background: #fafbfc; }
+.audience-type { font-weight: 700; color: #080E14; }
+.audience-desc { font-size: 11px; color: #666; margin-top: 2px; }
+.audience-table td:last-child {
+  text-align: center;
+}
+.audience-table select {
+  border: 1px solid #E8EDF2;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 11px;
+  outline: none;
+  background: #fff;
+}
+
+/* PATTERN STATEMENT */
+.pattern-statement {
+  background: #F4F6F7;
+  border-left: 4px solid #080E14;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #333;
+  margin: 10px 0 14px;
+  line-height: 1.7;
+}
+.pattern-statement input[type=text] {
+  border: none;
+  border-bottom: 1.5px solid #899AAF;
+  background: transparent;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  outline: none;
+  width: 180px;
+  padding: 2px 4px;
+}
+
+/* FOOTER */
+.doc-footer {
+  background: #080E14;
+  border-top: 2px solid #00B5AD;
+  padding: 12px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #899AAF;
+  margin-top: 40px;
+}
+.doc-footer .dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: #00B5AD;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* PART HEADER */
+.part-header {
+  background: #080E14;
+  color: #00B5AD;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+.part-header span { color: #F4F6F7; font-size: 13px; margin-left: 8px; }
+
+/* NUMBERED QUESTION BOX */
+.q-box {
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.q-box .q-header {
+  background: #F4F6F7;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #080E14;
+  border-bottom: 1px solid #E8EDF2;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.q-box .q-header .q-num {
+  color: #00B5AD;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.q-box .q-prompt {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  padding: 8px 14px 4px;
+  line-height: 1.6;
+}
+.q-box textarea {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #E8EDF2;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 80px;
+  background: #fff;
+}
+.q-box textarea:focus { background: #f9fbfc; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="eyebrow">GET UNSTUCK  ·  LEADING YOURSELF FORWARD  ·  SESSION 6</div>
+  <h1>Session 6  ·  Momentum and Reflection</h1>
+  <div class="tagline">The reckoning. The declaration. The launch. Everything built. Said out loud.</div>
+</div>
+
+<div class="submission-bar">
+  <strong>SUBMISSION:</strong> When complete, save this document and upload it using the worksheet upload field in your Post Session Commitment form in the portal at leadingyourselfforward.com.
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>NAME</label><input type="text" placeholder="Your full name"></div>
+  <div class="meta-field"><label>DATE</label><input type="text" placeholder="Session date"></div>
+  <div class="meta-field"><label>EMAIL</label><input type="text" placeholder="Your email"></div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="intro">This session does not teach anything new. It integrates everything you have built. You arrived knowing you were stuck. You leave knowing exactly who you are, who you serve, how you reach them, and how you lead. Today you say that out loud.</div>
+</div>
+
+<div class="part-header">PART 1 <span>Carry Your Work Forward</span></div>
+<div class="section">
+  <p>Before the hot seat, write these down. Not from memory. From the documents you built across the program. This is the architecture of who you are now as a leader.</p>
+  <table class="audience-table">
+    <tr><th style="width:10%">Session</th><th>Your Decision</th></tr>
+    <tr><td style="font-weight:700;color:#00B5AD;text-align:center;">S2</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="My nine words: Vision, Voice, Value..."></textarea></td></tr>
+    <tr><td style="font-weight:700;color:#C9941A;text-align:center;">S2</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="My positioning statement..."></textarea></td></tr>
+    <tr><td style="font-weight:700;color:#00B5AD;text-align:center;">S3</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="My ideal client avatar in one sentence..."></textarea></td></tr>
+    <tr><td style="font-weight:700;color:#C9941A;text-align:center;">S4</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="My lane and why it gives me the most access..."></textarea></td></tr>
+    <tr><td style="font-weight:700;color:#00B5AD;text-align:center;">S5</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="My journey archetype and access point..."></textarea></td></tr>
+    <tr><td style="font-weight:700;color:#C9941A;text-align:center;">S6</td><td><textarea style="width:100%;border:none;min-height:44px;padding:8px;font-size:12px;font-family:Helvetica,Arial,sans-serif;outline:none;" placeholder="The pattern I am watching and leaving behind..."></textarea></td></tr>
+  </table>
+</div>
+
+<div class="part-header">PART 2 <span>The Hot Seat</span></div>
+<div class="section">
+  <p>Four questions. Answer from the truth. The hot seat in Session 6 is not diagnostic. It is revelatory. You are not discovering something new. You are putting into words something you already know.</p>
+
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">01</span>How were you leading your business before this program?</div>
+    <div class="q-prompt">Be specific. What decisions were you avoiding? What were you building toward and why?</div>
+    <textarea rows="5"></textarea>
+  </div>
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">02</span>What patterns did you see about yourself that kept you from growing?</div>
+    <div class="q-prompt">Name it directly. The more specific you are, the more useful this becomes for you and the group.</div>
+    <textarea rows="5"></textarea>
+  </div>
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">03</span>How will you show up now?</div>
+    <div class="q-prompt">Not who you want to be. Who you are deciding to be. What decisions will you make differently?</div>
+    <textarea rows="5"></textarea>
+  </div>
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">04</span>Are you confident you have the tools and the belief to build the future you described?</div>
+    <div class="q-prompt">A genuine yes carries weight. A hesitation carries even more. Be honest.</div>
+    <textarea rows="5"></textarea>
+  </div>
+</div>
+
+<div class="part-header">PART 3 <span>The Pattern Watch</span></div>
+<div class="section">
+  <p>After you name your pattern, the group answers one question out loud. Write down what they say. These are the people who will hold you to the version of yourself you described today.</p>
+  <div class="field"><label>My Pattern, Named Specifically:</label><textarea rows="4" placeholder="Name it clearly and specifically enough that someone else could recognize it if they saw it..."></textarea></div>
+  <div class="field"><label>What the Group Said They Would Say to Me If They See Me Falling Back Into It:</label><textarea rows="4" placeholder="Write what the group said..."></textarea></div>
+</div>
+
+<div class="part-header">PART 4 <span>The 90 Day Leadership Compass</span></div>
+<div class="section">
+  <p>Three priorities. Leadership level only. These are not tasks. They are decisions about how you lead. They flow from your identity, your avatar, your lane, and your container.</p>
+  <div class="field"><label>Priority 1: Who I Am Leading As &mdash; How I will measure alignment with my nine words in the next 90 days.</label><textarea rows="4" placeholder="Your first priority..."></textarea></div>
+  <div class="field"><label>Priority 2: Who I Am Building For &mdash; What discipline I am committing to around my ideal client, my lane, and my container.</label><textarea rows="4" placeholder="Your second priority..."></textarea></div>
+  <div class="field"><label>Priority 3: How I Will Stay on Course &mdash; The monthly question I will ask myself to check whether I am leading from identity or from fear.</label><textarea rows="4" placeholder="Your third priority and your monthly question..."></textarea></div>
+  <div class="accent-box">Three priorities. Ninety days. No exceptions and no renegotiation until the 90 days are complete.</div>
+</div>
+
+</div>
+
+<div class="doc-footer">
+  <div><span class="dot"></span>#leading-yourself-forward &mdash; Slack</div>
+  <div>leadingyourselfforward.com</div>
+</div>
+
+</body>
+</html>

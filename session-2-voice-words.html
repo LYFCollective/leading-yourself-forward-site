@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 2  ·  Voice Words</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: #fff;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+@media print {
+  .no-print { display: none; }
+  body { font-size: 11px; }
+  .page-break { page-break-before: always; }
+}
+
+/* HEADER */
+.doc-header {
+  background: #080E14;
+  padding: 20px 36px 16px;
+  border-bottom: 3px solid #00B5AD;
+}
+.doc-header .eyebrow {
+  font-size: 9px;
+  color: #899AAF;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.doc-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #F4F6F7;
+  margin-bottom: 4px;
+}
+.doc-header .tagline {
+  font-size: 10px;
+  color: #00B5AD;
+  letter-spacing: 0.04em;
+}
+
+/* SUBMISSION BAR */
+.submission-bar {
+  background: #F4F6F7;
+  border-left: 4px solid #00B5AD;
+  padding: 10px 36px;
+  font-size: 11px;
+  color: #444;
+}
+.submission-bar strong { color: #00B5AD; }
+
+/* META ROW */
+.meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 16px 36px;
+  background: #fff;
+  border-bottom: 1px solid #E8EDF2;
+}
+.meta-field label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  color: #899AAF;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.meta-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #E8EDF2;
+  padding: 4px 0;
+  font-size: 12px;
+  outline: none;
+  background: transparent;
+}
+.meta-field input:focus { border-bottom-color: #00B5AD; }
+
+/* CONTENT */
+.content { padding: 20px 36px 40px; }
+
+/* SECTION */
+.section { margin-bottom: 28px; }
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #00B5AD;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.section h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 4px;
+}
+.section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 4px;
+}
+.section .intro {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.section p {
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* ACCENT BOX (callout) */
+.accent-box {
+  background: #F4F6F7;
+  border-left: 4px solid #C9941A;
+  padding: 10px 14px;
+  margin: 10px 0 14px;
+  font-size: 11px;
+  color: #444;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid #E8EDF2;
+  margin: 20px 0;
+}
+.gold-divider {
+  border: none;
+  border-top: 1.5px solid #C9941A;
+  margin: 24px 0;
+}
+
+/* TEXT AREA FIELD */
+.field {
+  margin-bottom: 14px;
+}
+.field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #899AAF;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.field textarea {
+  width: 100%;
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 70px;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+.field textarea:focus { border-color: #00B5AD; }
+.field input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #E8EDF2;
+  padding: 6px 0;
+  font-size: 12px;
+  outline: none;
+  background: transparent;
+}
+.field input[type=text]:focus { border-bottom-color: #00B5AD; }
+
+/* TWO COL TABLE */
+.two-col-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.two-col-table th {
+  background: #00B5AD;
+  color: #fff;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.two-col-table td {
+  border: 1px solid #E8EDF2;
+  padding: 0;
+  vertical-align: top;
+  width: 50%;
+}
+.two-col-table td textarea {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 52px;
+  background: transparent;
+}
+.two-col-table td textarea:focus { background: #f9fbfc; }
+
+/* THREE COL TABLE */
+.three-col-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.three-col-table th {
+  background: #080E14;
+  color: #F4F6F7;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.three-col-table td {
+  border: 1px solid #E8EDF2;
+  padding: 0;
+  vertical-align: top;
+}
+.three-col-table td textarea {
+  width: 100%;
+  border: none;
+  padding: 8px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 52px;
+  background: transparent;
+}
+
+/* WORD GRID */
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #E8EDF2;
+  border: 1px solid #E8EDF2;
+  margin: 10px 0 14px;
+}
+.word-cell {
+  background: #fff;
+  padding: 10px 12px;
+}
+.word-cell .word {
+  font-size: 13px;
+  font-weight: 700;
+  color: #080E14;
+  margin-bottom: 2px;
+}
+.word-cell .word-type {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.word-cell .word-type.cause  { color: #00B5AD; }
+.word-cell .word-type.result { color: #C9941A; }
+.word-cell .word-type.either { color: #899AAF; }
+
+/* LEGEND */
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: #F4F6F7;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* MY THREE WORDS */
+.three-words {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 14px 0;
+}
+.word-box {
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.word-box .word-box-header {
+  background: #080E14;
+  color: #00B5AD;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 10px;
+  text-transform: uppercase;
+}
+.word-box textarea {
+  width: 100%;
+  border: none;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 60px;
+}
+
+/* CHECKBOX LIST */
+.check-list { list-style: none; margin: 10px 0 14px; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #333;
+  line-height: 1.5;
+}
+.check-list li input[type=checkbox] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #00B5AD;
+  width: 14px;
+  height: 14px;
+}
+
+/* AUDIENCE TABLE */
+.audience-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: 12px;
+}
+.audience-table th {
+  background: #080E14;
+  color: #F4F6F7;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.audience-table td {
+  border: 1px solid #E8EDF2;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+.audience-table tr:nth-child(even) td { background: #fafbfc; }
+.audience-type { font-weight: 700; color: #080E14; }
+.audience-desc { font-size: 11px; color: #666; margin-top: 2px; }
+.audience-table td:last-child {
+  text-align: center;
+}
+.audience-table select {
+  border: 1px solid #E8EDF2;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 11px;
+  outline: none;
+  background: #fff;
+}
+
+/* PATTERN STATEMENT */
+.pattern-statement {
+  background: #F4F6F7;
+  border-left: 4px solid #080E14;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #333;
+  margin: 10px 0 14px;
+  line-height: 1.7;
+}
+.pattern-statement input[type=text] {
+  border: none;
+  border-bottom: 1.5px solid #899AAF;
+  background: transparent;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  outline: none;
+  width: 180px;
+  padding: 2px 4px;
+}
+
+/* FOOTER */
+.doc-footer {
+  background: #080E14;
+  border-top: 2px solid #00B5AD;
+  padding: 12px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #899AAF;
+  margin-top: 40px;
+}
+.doc-footer .dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: #00B5AD;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* PART HEADER */
+.part-header {
+  background: #080E14;
+  color: #00B5AD;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+.part-header span { color: #F4F6F7; font-size: 13px; margin-left: 8px; }
+
+/* NUMBERED QUESTION BOX */
+.q-box {
+  border: 1.5px solid #E8EDF2;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.q-box .q-header {
+  background: #F4F6F7;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #080E14;
+  border-bottom: 1px solid #E8EDF2;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.q-box .q-header .q-num {
+  color: #00B5AD;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.q-box .q-prompt {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  padding: 8px 14px 4px;
+  line-height: 1.6;
+}
+.q-box textarea {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #E8EDF2;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: vertical;
+  outline: none;
+  min-height: 80px;
+  background: #fff;
+}
+.q-box textarea:focus { background: #f9fbfc; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="eyebrow">GET UNSTUCK  ·  LEADING YOURSELF FORWARD  ·  SESSION 2</div>
+  <h1>Session 2  ·  Voice Words</h1>
+  <div class="tagline">Who you are in the work. Your tone, presence, and quality.</div>
+</div>
+
+<div class="submission-bar">
+  <strong>SUBMISSION:</strong> When complete, save this document and upload it using the worksheet upload field in your Post Session Commitment form in the portal at leadingyourselfforward.com.
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>NAME</label><input type="text" placeholder="Your full name"></div>
+  <div class="meta-field"><label>DATE</label><input type="text" placeholder="Session date"></div>
+  <div class="meta-field"><label>EMAIL</label><input type="text" placeholder="Your email"></div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <h2>VOICE</h2>
+  <p class="intro">Who you are in the work. Your tone, presence, and quality.</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#00B5AD"></div><strong>CAUSE</strong> &mdash; Who you are: identity and belief</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C9941A"></div><strong>RESULT</strong> &mdash; What you produce: the visible outcome</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#899AAF"></div><strong>EITHER</strong> &mdash; Depends on how you hold it</div>
+  </div>
+  <div class="accent-box">Read through all the words first without stopping. Notice which ones pull at you. Then go back and circle three, following the Cause / Cause / Result rule. Instinct first. Analysis second.</div>
+  <div class="word-grid"><div class="word-cell"><div class="word">Authentic</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Heart Centered</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Compassionate</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Vulnerable</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Honest</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Empathetic</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Grounded</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Soulful</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Raw</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Wise</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Real</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Generous</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Knowledgeable</div><div class="word-type cause">cause</div></div><div class="word-cell"><div class="word">Energetic</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Fierce</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Passionate</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Confident</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Bold</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Magnetic</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Warm</div><div class="word-type either">either</div></div><div class="word-cell"><div class="word">Inspirational</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Nurturing</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Commanding</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Playful</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Witty</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Calm</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Provocative</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Luminous</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Trustworthy</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Encouraging</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Disruptive</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Elevating</div><div class="word-type result">result</div></div><div class="word-cell"><div class="word">Conversational</div><div class="word-type result">result</div></div></div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="field">
+    <label>Is there a word that describes you that you do not see on this page? Add it here.</label>
+    <div style="display:flex;gap:20px;align-items:center;margin-top:6px;">
+      <div><strong>Word:</strong> <input type="text" style="width:160px;border:none;border-bottom:1.5px solid #ccc;padding:2px 4px;font-size:12px;"></div>
+      <div><strong>Is it a cause or a result?</strong> <input type="text" style="width:120px;border:none;border-bottom:1.5px solid #ccc;padding:2px 4px;font-size:12px;"></div>
+    </div>
+  </div>
+</div>
+
+<hr class="gold-divider">
+
+<div class="section">
+  <h3>My Three Voice Words</h3>
+  <div class="three-words">
+    <div class="word-box"><div class="word-box-header">CAUSE &middot; 1ST WORD</div><textarea placeholder="Word and why you chose it..."></textarea></div>
+    <div class="word-box"><div class="word-box-header">CAUSE &middot; 2ND WORD</div><textarea placeholder="Word and why you chose it..."></textarea></div>
+    <div class="word-box"><div class="word-box-header" style="color:#C9941A">RESULT &middot; 3RD WORD</div><textarea placeholder="Word and why you chose it..."></textarea></div>
+  </div>
+</div>
+
+</div>
+
+<div class="doc-footer">
+  <div><span class="dot"></span>#leading-yourself-forward &mdash; Slack</div>
+  <div>leadingyourselfforward.com</div>
+</div>
+
+</body>
+</html>
