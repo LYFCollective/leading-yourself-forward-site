@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Session 4 — Choose Your Lane | Leading YourSelf Forward</title>
+  <title>Session 6 — Momentum and Reflection | Leading YourSelf Forward</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ─────────────────────────────────────────────────────────── */
     :root {
       --navy:   #080E14;
       --navy2:  #0D1620;
@@ -20,11 +19,8 @@
       --border: rgba(0,181,173,0.15);
       --border2:rgba(201,148,26,0.2);
     }
-
-    /* ── RESET ──────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--navy);
       color: var(--text);
@@ -34,8 +30,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    /* ── BACKGROUND TEXTURE ─────────────────────────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -46,11 +40,7 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ── LAYOUT ─────────────────────────────────────────────────────────── */
     .page { position: relative; z-index: 1; }
-
-    /* ── TOP NAV ─────────────────────────────────────────────────────────── */
     .top-nav {
       display: flex;
       align-items: center;
@@ -63,445 +53,252 @@
       top: 0;
       z-index: 100;
     }
-
-    .nav-brand {
-      display: flex;
-      flex-direction: column;
-    }
+    .nav-brand { display: flex; flex-direction: column; }
     .nav-brand-top {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
       color: var(--teal);
     }
     .nav-brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: 0.04em;
+      font-size: 18px; font-weight: 400;
+      color: var(--text); letter-spacing: 0.04em;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--teal); }
     .nav-links a.active { color: var(--teal); }
-
     .nav-session-badge {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--navy);
-      background: var(--teal);
-      padding: 5px 14px;
-      border-radius: 2px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--navy); background: var(--teal);
+      padding: 5px 14px; border-radius: 2px;
     }
-
-    /* ── HERO ────────────────────────────────────────────────────────────── */
     .hero {
       padding: 80px 48px 64px;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
     }
-
     .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 28px;
+      display: flex; align-items: center;
+      gap: 16px; margin-bottom: 28px;
     }
-    .hero-eyebrow-line {
-      width: 40px;
-      height: 1px;
-      background: var(--teal);
-    }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--teal); }
     .hero-eyebrow-text {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--teal);
     }
-
     .hero-number {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(80px, 12vw, 140px);
-      font-weight: 300;
-      line-height: 0.85;
+      font-weight: 300; line-height: 0.85;
       color: rgba(0,181,173,0.08);
       letter-spacing: -0.02em;
-      position: absolute;
-      right: 48px;
-      top: 80px;
+      position: absolute; right: 48px; top: 80px;
       user-select: none;
     }
-
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(42px, 6vw, 72px);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: var(--text);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.01em; color: var(--text);
       margin-bottom: 12px;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--teal);
-    }
-
+    .hero-title em { font-style: italic; color: var(--teal); }
     .hero-subtitle {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 32px;
+      font-size: 16px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
     }
-
-    .hero-desc {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 620px;
-      line-height: 1.8;
-    }
-
+    .hero-desc { font-size: 16px; color: var(--muted); max-width: 620px; line-height: 1.8; }
     .hero-meta {
-      display: flex;
-      gap: 40px;
-      margin-top: 40px;
-      padding-top: 40px;
+      display: flex; gap: 40px;
+      margin-top: 40px; padding-top: 40px;
       border-top: 1px solid var(--border);
     }
-    .hero-meta-item {}
     .hero-meta-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px;
     }
     .hero-meta-value {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--text);
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--text);
     }
-
-    /* ── SESSION OUTCOME BOX ────────────────────────────────────────────── */
-    .outcome-bar {
-      max-width: 1100px;
-      margin: 0 auto 64px;
-      padding: 0 48px;
-    }
+    .outcome-bar { max-width: 1100px; margin: 0 auto 64px; padding: 0 48px; }
     .outcome-box {
       background: var(--navy3);
       border: 1px solid var(--border2);
       border-left: 3px solid var(--gold);
       padding: 28px 36px;
-      display: flex;
-      gap: 48px;
-      align-items: flex-start;
+      display: flex; gap: 48px; align-items: flex-start;
     }
     .outcome-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
-      padding-top: 3px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap; padding-top: 3px;
     }
-    .outcome-text {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-    .outcome-text strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── SECTION TITLES ─────────────────────────────────────────────────── */
-    .section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 48px 96px;
-    }
-
+    .outcome-text { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .outcome-text strong { color: var(--text); font-weight: 500; }
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px 96px; }
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 40px;
+      display: flex; align-items: center;
+      gap: 20px; margin-bottom: 40px;
     }
     .section-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--teal);
-      letter-spacing: 0.1em;
+      font-size: 13px; font-weight: 400;
+      color: var(--teal); letter-spacing: 0.1em;
     }
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--text);
     }
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── FORM CARDS ─────────────────────────────────────────────────────── */
-    .forms-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .forms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
     .form-card {
       background: var(--navy2);
       border: 1px solid var(--border);
-      padding: 40px;
-      position: relative;
+      padding: 40px; position: relative;
       overflow: hidden;
       transition: border-color 0.3s, background 0.3s;
-      text-decoration: none;
-      display: block;
-      cursor: pointer;
+      text-decoration: none; display: block; cursor: pointer;
     }
     .form-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 0;
-      background: var(--teal);
-      transition: height 0.3s ease;
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 3px; height: 0;
+      background: var(--teal); transition: height 0.3s ease;
     }
     .form-card:hover { border-color: rgba(0,181,173,0.35); background: var(--navy3); }
     .form-card:hover::before { height: 100%; }
-
     .form-card-seq {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 16px;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 16px;
     }
-
     .form-card-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-size: 26px; font-weight: 400;
+      color: var(--text); line-height: 1.2; margin-bottom: 12px;
     }
-
     .form-card-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 28px;
+      font-size: 13px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 28px;
     }
-
     .form-card-timing {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 32px;
+      display: flex; align-items: center;
+      gap: 10px; margin-bottom: 32px;
     }
     .form-card-timing-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
     }
     .form-card-timing-text {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--gold);
     }
-
     .form-card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--teal);
-      text-decoration: none;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--teal); text-decoration: none;
       border: 1px solid rgba(0,181,173,0.3);
       padding: 10px 20px;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .form-card-btn:hover {
-      background: var(--teal);
-      color: var(--navy);
-      border-color: var(--teal);
-    }
-    .form-card-btn svg {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.2s;
-    }
+    .form-card-btn:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+    .form-card-btn svg { width: 12px; height: 12px; transition: transform 0.2s; }
     .form-card:hover .form-card-btn svg { transform: translateX(3px); }
-
-    /* ── FRAMEWORK SECTION ──────────────────────────────────────────────── */
-    .framework-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 2px;
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      border: 1px solid rgba(201,148,26,0.35);
+      padding: 10px 20px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .framework-card {
-      background: var(--navy2);
-      border: 1px solid var(--border);
-      padding: 32px;
-    }
+    .download-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .framework-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+    .framework-card { background: var(--navy2); border: 1px solid var(--border); padding: 32px; }
     .framework-card-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 14px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 14px;
     }
     .framework-card-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
+      font-size: 22px; font-weight: 400;
+      color: var(--text); margin-bottom: 12px; line-height: 1.2;
     }
-    .framework-card-body {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── SEQUENCE STRIP ─────────────────────────────────────────────────── */
-    .sequence-strip {
-      max-width: 1100px;
-      margin: 0 auto 0;
-      padding: 0 48px 64px;
-    }
+    .framework-card-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .sequence-strip { max-width: 1100px; margin: 0 auto 0; padding: 0 48px 64px; }
     .sequence-inner {
-      background: var(--navy2);
-      border: 1px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      gap: 0;
+      background: var(--navy2); border: 1px solid var(--border);
+      padding: 32px 40px; display: flex; align-items: center; gap: 0;
     }
     .seq-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      text-align: center;
-      padding: 0 16px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      flex: 1; text-align: center; padding: 0 16px;
       position: relative;
     }
     .seq-item:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--teal);
-      font-size: 12px;
-      opacity: 0.5;
+      content: '→'; position: absolute;
+      right: -8px; top: 50%; transform: translateY(-50%);
+      color: var(--teal); font-size: 12px; opacity: 0.5;
     }
     .seq-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 300;
-      color: rgba(0,181,173,0.25);
-      line-height: 1;
+      font-size: 28px; font-weight: 300;
+      color: rgba(0,181,173,0.25); line-height: 1;
     }
     .seq-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--muted);
     }
-    .seq-title {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text);
-    }
+    .seq-title { font-size: 13px; font-weight: 400; color: var(--text); }
     .seq-item.active .seq-num { color: var(--teal); }
     .seq-item.active .seq-label { color: var(--teal); }
     .seq-item.active .seq-title { color: var(--text); font-weight: 500; }
-
-    /* ── FOOTER ─────────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
     }
     .footer-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0.06em;
+      font-size: 14px; font-weight: 300;
+      color: var(--muted); letter-spacing: 0.06em;
     }
     .footer-note {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(138,155,176,0.4);
     }
-
-    /* ── ANIMATIONS ─────────────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -512,8 +309,6 @@
     .hero-desc     { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
     .hero-meta     { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
     .outcome-box   { animation: fadeUp 0.6s ease both; animation-delay: 0.55s; }
-
-    /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
     @media (max-width: 860px) {
       .top-nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -525,30 +320,27 @@
       .hero-meta { flex-wrap: wrap; gap: 20px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
-  </style>
+</style>
 </head>
 <body>
 <div class="page">
 
-  <!-- NAV -->
   <nav class="top-nav">
     <div class="nav-brand">
       <span class="nav-brand-top">Get Unstuck</span>
       <span class="nav-brand-name">Leading YourSelf Forward</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Overview</a></li>
-      <li><a href="session1.html">Session 1</a></li>
-      <li><a href="session2.html">Session 2</a></li>
-      <li><a href="session6.html" class="active">Session 6</a></li>
-      <li><a href="session4.html">Session 4</a></li>
-      <li><a href="session5.html">Session 5</a></li>
-      <li><a href="session6.html">Session 6</a></li>
-    </ul>
+    <ul class="nav-links"><li><a href="index.html">Overview</a></li>
+<li><a href="session1.html">Session 1</a></li>
+<li><a href="session2.html">Session 2</a></li>
+<li><a href="session3.html">Session 3</a></li>
+<li><a href="session4.html">Session 4</a></li>
+<li><a href="session5.html">Session 5</a></li>
+<li><a href="session6.html" class="active">Session 6</a></li>
+</ul>
     <span class="nav-session-badge">Session 6 of 6</span>
   </nav>
 
-  <!-- HERO -->
   <section class="hero" style="position:relative;">
     <div class="hero-number">06</div>
     <div class="hero-eyebrow">
@@ -557,46 +349,24 @@
     </div>
     <h1 class="hero-title">Momentum<br><em>&amp; Reflection</em></h1>
     <p class="hero-subtitle">Who Am I Now</p>
-    <p class="hero-desc">
-      This session does not teach anything new. It integrates everything you have built. You arrived knowing you were stuck. You leave knowing exactly who you are, who you serve, how you reach them, and how you lead. Today you say that out loud in front of the group.
-    </p>
+    <p class="hero-desc">This session does not teach anything new. It integrates everything you have built. You arrived knowing you were stuck. You leave knowing exactly who you are, who you serve, how you reach them, and how you lead. Today you say that out loud in front of the group.</p>
     <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Format</div>
-        <div class="hero-meta-value">Declaration + Integration</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Duration</div>
-        <div class="hero-meta-value">90 Minutes</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Key Output</div>
-        <div class="hero-meta-value">90-Day Compass + Letter to Your Future Self</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Bridges To</div>
-        <div class="hero-meta-value">The foundation is permanent. The work continues.</div>
-      </div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">Declaration + Integration</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Duration</div><div class="hero-meta-value">90 Minutes</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Key Output</div><div class="hero-meta-value">90 Day Compass + Letter to Your Future Self</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Bridges To</div><div class="hero-meta-value">The foundation is permanent. The work continues.</div></div>
     </div>
   </section>
 
-  <!-- OUTCOME BOX -->
   <div class="outcome-bar">
     <div class="outcome-box">
       <div class="outcome-label">Session Outcome</div>
-      <div class="outcome-text">
-        You leave with <strong>your declaration made out loud</strong>, your pattern named in front of the group, your 90-Day Leadership Compass completed, and your Letter to Your Future Self written. Download both documents before you close this tab. The program ends. The foundation stays.
-      </div>
+      <div class="outcome-text">You leave with <strong>your declaration made out loud</strong>, your pattern named in front of the group, your 90 Day Leadership Compass completed, and your Letter to Your Future Self written. Download both documents before you close this tab. The program ends. The foundation stays.</div>
     </div>
   </div>
 
-  <!-- SESSION FRAMEWORK -->
   <div class="section-wrap">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">Session Framework</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">Session Framework</span><div class="section-line"></div></div>
     <div class="framework-grid">
       <div class="framework-card">
         <div class="framework-card-label">The Reckoning</div>
@@ -611,173 +381,121 @@
       <div class="framework-card">
         <div class="framework-card-label">The Launch</div>
         <div class="framework-card-heading">The Program Ends. The Foundation Does Not.</div>
-        <div class="framework-card-body">The 90-Day Compass and the Letter to Your Future Self are the tools that keep you operating from the foundation when the program is no longer holding you accountable. Three priorities. One monthly question. Day 30, 60, and 90 check-ins. The compass is in your hands now.</div>
+        <div class="framework-card-body">The 90 Day Compass and the Letter to Your Future Self are the tools that keep you operating from the foundation when the program is no longer holding you accountable. Three priorities. One monthly question. Day 30, 60, and 90 check ins. The compass is in your hands now.</div>
       </div>
     </div>
   </div>
 
-
-  <!-- KEEPSAKE DOWNLOADS -->
-  <div class="section-wrap" style="padding-top:0; padding-bottom:0;">
-    <div class="section-header">
-      <span class="section-num">00</span>
-      <span class="section-title">Your Keepsake Downloads</span>
-      <div class="section-line"></div>
-    </div>
+  <div class="section-wrap" style="padding-top:0; padding-bottom:48px;">
+    <div class="section-header"><span class="section-num">00</span><span class="section-title">Your Keepsake Downloads</span><div class="section-line"></div></div>
     <div class="framework-grid">
-      <div class="framework-card" style="border-top-color: var(--teal, #00B5AD);">
-        <div class="framework-card-label">📜 Graduation Document</div>
+      <div class="framework-card">
+        <div class="framework-card-label">Graduation Document</div>
         <div class="framework-card-heading">A Letter to Your Future Self</div>
-        <div class="framework-card-body">Fill it in during the session. Type directly into the fields. Set a reminder to open it in 90 days. This is yours to keep — it does not go to the program.</div>
+        <div class="framework-card-body">Fill it in during the session. Type directly into the fields. Set a reminder to open it in 90 days. This is yours to keep.</div>
         <div style="margin-top:16px;">
-          <a href="/letter-to-future-self.html" download="Letter-to-Your-Future-Self.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,181,173,0.12);border:1px solid rgba(0,181,173,0.3);color:#00B5AD;font-size:11px;font-family:monospace;letter-spacing:0.12em;padding:10px 16px;border-radius:2px;text-decoration:none;text-transform:uppercase;">
-            ↓ Download HTML
-          </a>
+          <a href="/letter-to-future-self.html" download="Letter-to-Your-Future-Self.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,181,173,0.12);border:1px solid rgba(0,181,173,0.3);color:#00B5AD;font-size:11px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.15em;padding:10px 16px;text-decoration:none;text-transform:uppercase;font-weight:700;">&#8595; Download HTML</a>
         </div>
       </div>
-      <div class="framework-card" style="border-top-color: var(--gold, #C9941A);">
-        <div class="framework-card-label">🧭 Operating Document</div>
-        <div class="framework-card-heading">90-Day Leadership Compass</div>
-        <div class="framework-card-body">Your working document for the next 90 days. Fill in your identity foundation, the pattern you are watching, three priorities, and your monthly question. Return to it at Day 30, 60, and 90.</div>
+      <div class="framework-card">
+        <div class="framework-card-label">Operating Document</div>
+        <div class="framework-card-heading">90 Day Leadership Compass</div>
+        <div class="framework-card-body">Your working document for the next 90 days. Fill in your identity foundation, your pattern, three priorities, and your monthly question. Return to it at Day 30, 60, and 90.</div>
         <div style="margin-top:16px;">
-          <a href="/90-day-leadership-compass.html" download="90-Day-Leadership-Compass.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,148,26,0.12);border:1px solid rgba(201,148,26,0.3);color:#C9941A;font-size:11px;font-family:monospace;letter-spacing:0.12em;padding:10px 16px;border-radius:2px;text-decoration:none;text-transform:uppercase;">
-            ↓ Download HTML
-          </a>
+          <a href="/90-day-leadership-compass.html" download="90-Day-Leadership-Compass.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,148,26,0.12);border:1px solid rgba(201,148,26,0.3);color:#C9941A;font-size:11px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.15em;padding:10px 16px;text-decoration:none;text-transform:uppercase;font-weight:700;">&#8595; Download HTML</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FORMS -->
   <div class="section-wrap" style="padding-top:0;">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Your Session 6 Forms</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-num">02</span><span class="section-title">Your Session 6 Forms</span><div class="section-line"></div></div>
     <div class="forms-grid">
-
-      <!-- PRE-WORK -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 01 · Before the Session</div>
-        <div class="form-card-title">Pre-Work</div>
-        <div class="form-card-desc">
-          Complete before Session 6. Reflect on who you were when you arrived, the pattern you saw across the six sessions, the shift you experienced, and prepare your four declaration answers to speak out loud in the room.
-        </div>
+        <div class="form-card-seq">Form 01 &middot; Before the Session</div>
+        <div class="form-card-title">Pre Work</div>
+        <div class="form-card-desc">Complete before Session 6. Reflect on who you were when you arrived, the pattern you saw across the six sessions, the shift you experienced, and prepare your four declaration answers to speak out loud in the room.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
           <span class="form-card-timing-text">Due before Session 6</span>
         </div>
-        <a href="https://tally.so/r/gDAG5D" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/gDAG5D" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
-      <!-- WORKSHEET -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 02 · During the Session</div>
+        <div class="form-card-seq">Form 02 &middot; During the Session</div>
         <div class="form-card-title">Session Worksheet</div>
-        <div class="form-card-desc">
-          The Reckoning. The Declaration. The Launch. Carry your six decisions forward, answer the four Hot Seat questions, name your pattern publicly, and lock your three 90-day priorities. Completed live with the group.
-        </div>
+        <div class="form-card-desc">Your in session working document. Download, open in your browser, and work through it live. Carry your six decisions forward, answer the four Hot Seat questions, name your pattern publicly, and lock your three 90 day priorities. Upload the completed file using the Post Session Commitment form.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Open and complete during Session 6</span>
+          <span class="form-card-timing-text">Download and complete during Session 6</span>
         </div>
-        <a href="https://tally.so/r/yPyYlX" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="/session-6-worksheet.html" download="session-6-worksheet.html" class="download-btn"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2v6M3 6l3 3 3-3M2 10h8"/></svg> Download Worksheet</a>
       </div>
-
-      <!-- POST-SESSION -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 03 · During the Session</div>
+        <div class="form-card-seq">Form 03 &middot; During the Session</div>
         <div class="form-card-title">A Letter to Your Future Self</div>
-        <div class="form-card-desc">
-          Written in your own voice in the final minutes of Session 6. A message from who you are today to who you will be in 90 days. Also download the fillable HTML version to keep as your personal keepsake.
-        </div>
+        <div class="form-card-desc">Written in your own voice in the final minutes of Session 6. A message from who you are today to who you will be in 90 days. Also download the fillable HTML version above to keep as your personal keepsake.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Complete during Session 6 · written live</span>
+          <span class="form-card-timing-text">Complete during Session 6 &middot; written live</span>
         </div>
-        <a href="https://tally.so/r/XxG0eL" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/XxG0eL" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
-      <!-- 72-HOUR BRIDGE -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 04 · During the Session</div>
-        <div class="form-card-title">90-Day Leadership Compass</div>
-        <div class="form-card-desc">
-          Your identity foundation, the pattern you are watching, three 90-day priorities, your monthly question, and Day 30, 60, and 90 check-in fields. Also download the fillable HTML version — your operating document to return to monthly.
-        </div>
+        <div class="form-card-seq">Form 04 &middot; During the Session</div>
+        <div class="form-card-title">90 Day Leadership Compass</div>
+        <div class="form-card-desc">Your identity foundation, the pattern you are watching, three 90 day priorities, your monthly question, and Day 30, 60, and 90 check in fields. Also download the fillable HTML version above, your operating document to return to monthly.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Complete during Session 6 · yours to keep</span>
+          <span class="form-card-timing-text">Complete during Session 6 &middot; yours to keep</span>
         </div>
-        <a href="https://tally.so/r/81kxdz" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/81kxdz" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
     </div>
   </div>
 
-  <!-- PROGRAM SEQUENCE -->
   <div class="sequence-strip">
     <div class="sequence-inner">
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">01</div>
         <div class="seq-label">Session</div>
-        <div class="seq-title">Self-Leadership</div>
+        <div class="seq-title">Self Leadership</div>
       </div>
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">02</div>
         <div class="seq-label">Session</div>
-        <div class="seq-title">Identity &amp; Voice</div>
+        <div class="seq-title">Identity and Voice</div>
       </div>
-      <div class="seq-item active">
+      <div class="seq-item ">
         <div class="seq-num">03</div>
+        <div class="seq-label">Session</div>
+        <div class="seq-title">Who You Serve</div>
+      </div>
+      <div class="seq-item ">
+        <div class="seq-num">04</div>
         <div class="seq-label">Session</div>
         <div class="seq-title">Choose Your Lane</div>
       </div>
-      <div class="seq-item inactive">
-        <div class="seq-num">04</div>
-        <div class="seq-label">Session</div>
-        <div class="seq-title">Strategy First</div>
-      </div>
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">05</div>
         <div class="seq-label">Session</div>
         <div class="seq-title">The Container</div>
       </div>
       <div class="seq-item active">
         <div class="seq-num">06</div>
-        <div class="seq-label">Session · Current</div>
+        <div class="seq-label">Session &middot; Current</div>
         <div class="seq-title">Graduation</div>
       </div>
     </div>
   </div>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">Leading YourSelf Forward · Get Unstuck</div>
-    <div class="footer-note">Confidential · Cohort Use Only</div>
+    <div class="footer-brand">Leading YourSelf Forward &middot; Get Unstuck</div>
+    <div class="footer-note">Confidential &middot; Cohort Use Only</div>
   </footer>
-
 </div>
 </body>
 </html>

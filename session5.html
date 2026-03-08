@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Session 4 — Choose Your Lane | Leading YourSelf Forward</title>
+  <title>Session 5 — Container: Customer Journey Model | Leading YourSelf Forward</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ─────────────────────────────────────────────────────────── */
     :root {
       --navy:   #080E14;
       --navy2:  #0D1620;
@@ -20,11 +19,8 @@
       --border: rgba(0,181,173,0.15);
       --border2:rgba(201,148,26,0.2);
     }
-
-    /* ── RESET ──────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--navy);
       color: var(--text);
@@ -34,8 +30,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    /* ── BACKGROUND TEXTURE ─────────────────────────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -46,11 +40,7 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ── LAYOUT ─────────────────────────────────────────────────────────── */
     .page { position: relative; z-index: 1; }
-
-    /* ── TOP NAV ─────────────────────────────────────────────────────────── */
     .top-nav {
       display: flex;
       align-items: center;
@@ -63,445 +53,252 @@
       top: 0;
       z-index: 100;
     }
-
-    .nav-brand {
-      display: flex;
-      flex-direction: column;
-    }
+    .nav-brand { display: flex; flex-direction: column; }
     .nav-brand-top {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
       color: var(--teal);
     }
     .nav-brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: 0.04em;
+      font-size: 18px; font-weight: 400;
+      color: var(--text); letter-spacing: 0.04em;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--teal); }
     .nav-links a.active { color: var(--teal); }
-
     .nav-session-badge {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--navy);
-      background: var(--teal);
-      padding: 5px 14px;
-      border-radius: 2px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--navy); background: var(--teal);
+      padding: 5px 14px; border-radius: 2px;
     }
-
-    /* ── HERO ────────────────────────────────────────────────────────────── */
     .hero {
       padding: 80px 48px 64px;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
     }
-
     .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 28px;
+      display: flex; align-items: center;
+      gap: 16px; margin-bottom: 28px;
     }
-    .hero-eyebrow-line {
-      width: 40px;
-      height: 1px;
-      background: var(--teal);
-    }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--teal); }
     .hero-eyebrow-text {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--teal);
     }
-
     .hero-number {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(80px, 12vw, 140px);
-      font-weight: 300;
-      line-height: 0.85;
+      font-weight: 300; line-height: 0.85;
       color: rgba(0,181,173,0.08);
       letter-spacing: -0.02em;
-      position: absolute;
-      right: 48px;
-      top: 80px;
+      position: absolute; right: 48px; top: 80px;
       user-select: none;
     }
-
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(42px, 6vw, 72px);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: var(--text);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.01em; color: var(--text);
       margin-bottom: 12px;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--teal);
-    }
-
+    .hero-title em { font-style: italic; color: var(--teal); }
     .hero-subtitle {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 32px;
+      font-size: 16px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
     }
-
-    .hero-desc {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 620px;
-      line-height: 1.8;
-    }
-
+    .hero-desc { font-size: 16px; color: var(--muted); max-width: 620px; line-height: 1.8; }
     .hero-meta {
-      display: flex;
-      gap: 40px;
-      margin-top: 40px;
-      padding-top: 40px;
+      display: flex; gap: 40px;
+      margin-top: 40px; padding-top: 40px;
       border-top: 1px solid var(--border);
     }
-    .hero-meta-item {}
     .hero-meta-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px;
     }
     .hero-meta-value {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--text);
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--text);
     }
-
-    /* ── SESSION OUTCOME BOX ────────────────────────────────────────────── */
-    .outcome-bar {
-      max-width: 1100px;
-      margin: 0 auto 64px;
-      padding: 0 48px;
-    }
+    .outcome-bar { max-width: 1100px; margin: 0 auto 64px; padding: 0 48px; }
     .outcome-box {
       background: var(--navy3);
       border: 1px solid var(--border2);
       border-left: 3px solid var(--gold);
       padding: 28px 36px;
-      display: flex;
-      gap: 48px;
-      align-items: flex-start;
+      display: flex; gap: 48px; align-items: flex-start;
     }
     .outcome-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
-      padding-top: 3px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap; padding-top: 3px;
     }
-    .outcome-text {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-    .outcome-text strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── SECTION TITLES ─────────────────────────────────────────────────── */
-    .section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 48px 96px;
-    }
-
+    .outcome-text { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .outcome-text strong { color: var(--text); font-weight: 500; }
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px 96px; }
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 40px;
+      display: flex; align-items: center;
+      gap: 20px; margin-bottom: 40px;
     }
     .section-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--teal);
-      letter-spacing: 0.1em;
+      font-size: 13px; font-weight: 400;
+      color: var(--teal); letter-spacing: 0.1em;
     }
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--text);
     }
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── FORM CARDS ─────────────────────────────────────────────────────── */
-    .forms-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .forms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
     .form-card {
       background: var(--navy2);
       border: 1px solid var(--border);
-      padding: 40px;
-      position: relative;
+      padding: 40px; position: relative;
       overflow: hidden;
       transition: border-color 0.3s, background 0.3s;
-      text-decoration: none;
-      display: block;
-      cursor: pointer;
+      text-decoration: none; display: block; cursor: pointer;
     }
     .form-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 0;
-      background: var(--teal);
-      transition: height 0.3s ease;
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 3px; height: 0;
+      background: var(--teal); transition: height 0.3s ease;
     }
     .form-card:hover { border-color: rgba(0,181,173,0.35); background: var(--navy3); }
     .form-card:hover::before { height: 100%; }
-
     .form-card-seq {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 16px;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 16px;
     }
-
     .form-card-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-size: 26px; font-weight: 400;
+      color: var(--text); line-height: 1.2; margin-bottom: 12px;
     }
-
     .form-card-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 28px;
+      font-size: 13px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 28px;
     }
-
     .form-card-timing {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 32px;
+      display: flex; align-items: center;
+      gap: 10px; margin-bottom: 32px;
     }
     .form-card-timing-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
     }
     .form-card-timing-text {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--gold);
     }
-
     .form-card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--teal);
-      text-decoration: none;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--teal); text-decoration: none;
       border: 1px solid rgba(0,181,173,0.3);
       padding: 10px 20px;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .form-card-btn:hover {
-      background: var(--teal);
-      color: var(--navy);
-      border-color: var(--teal);
-    }
-    .form-card-btn svg {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.2s;
-    }
+    .form-card-btn:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+    .form-card-btn svg { width: 12px; height: 12px; transition: transform 0.2s; }
     .form-card:hover .form-card-btn svg { transform: translateX(3px); }
-
-    /* ── FRAMEWORK SECTION ──────────────────────────────────────────────── */
-    .framework-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 2px;
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      border: 1px solid rgba(201,148,26,0.35);
+      padding: 10px 20px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .framework-card {
-      background: var(--navy2);
-      border: 1px solid var(--border);
-      padding: 32px;
-    }
+    .download-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .framework-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+    .framework-card { background: var(--navy2); border: 1px solid var(--border); padding: 32px; }
     .framework-card-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 14px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 14px;
     }
     .framework-card-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
+      font-size: 22px; font-weight: 400;
+      color: var(--text); margin-bottom: 12px; line-height: 1.2;
     }
-    .framework-card-body {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── SEQUENCE STRIP ─────────────────────────────────────────────────── */
-    .sequence-strip {
-      max-width: 1100px;
-      margin: 0 auto 0;
-      padding: 0 48px 64px;
-    }
+    .framework-card-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .sequence-strip { max-width: 1100px; margin: 0 auto 0; padding: 0 48px 64px; }
     .sequence-inner {
-      background: var(--navy2);
-      border: 1px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      gap: 0;
+      background: var(--navy2); border: 1px solid var(--border);
+      padding: 32px 40px; display: flex; align-items: center; gap: 0;
     }
     .seq-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      text-align: center;
-      padding: 0 16px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      flex: 1; text-align: center; padding: 0 16px;
       position: relative;
     }
     .seq-item:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--teal);
-      font-size: 12px;
-      opacity: 0.5;
+      content: '→'; position: absolute;
+      right: -8px; top: 50%; transform: translateY(-50%);
+      color: var(--teal); font-size: 12px; opacity: 0.5;
     }
     .seq-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 300;
-      color: rgba(0,181,173,0.25);
-      line-height: 1;
+      font-size: 28px; font-weight: 300;
+      color: rgba(0,181,173,0.25); line-height: 1;
     }
     .seq-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--muted);
     }
-    .seq-title {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text);
-    }
+    .seq-title { font-size: 13px; font-weight: 400; color: var(--text); }
     .seq-item.active .seq-num { color: var(--teal); }
     .seq-item.active .seq-label { color: var(--teal); }
     .seq-item.active .seq-title { color: var(--text); font-weight: 500; }
-
-    /* ── FOOTER ─────────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
     }
     .footer-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0.06em;
+      font-size: 14px; font-weight: 300;
+      color: var(--muted); letter-spacing: 0.06em;
     }
     .footer-note {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(138,155,176,0.4);
     }
-
-    /* ── ANIMATIONS ─────────────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -512,8 +309,6 @@
     .hero-desc     { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
     .hero-meta     { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
     .outcome-box   { animation: fadeUp 0.6s ease both; animation-delay: 0.55s; }
-
-    /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
     @media (max-width: 860px) {
       .top-nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -525,227 +320,161 @@
       .hero-meta { flex-wrap: wrap; gap: 20px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
-  </style>
+</style>
 </head>
 <body>
 <div class="page">
 
-  <!-- NAV -->
   <nav class="top-nav">
     <div class="nav-brand">
       <span class="nav-brand-top">Get Unstuck</span>
       <span class="nav-brand-name">Leading YourSelf Forward</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Overview</a></li>
-      <li><a href="session1.html">Session 1</a></li>
-      <li><a href="session2.html">Session 2</a></li>
-      <li><a href="session4.html" class="active">Session 4</a></li>
-      <li><a href="session4.html">Session 4</a></li>
-      <li><a href="session5.html">Session 5</a></li>
-      <li><a href="session6.html">Session 6</a></li>
-    </ul>
-    <span class="nav-session-badge">Session 4 of 6</span>
+    <ul class="nav-links"><li><a href="index.html">Overview</a></li>
+<li><a href="session1.html">Session 1</a></li>
+<li><a href="session2.html">Session 2</a></li>
+<li><a href="session3.html">Session 3</a></li>
+<li><a href="session4.html">Session 4</a></li>
+<li><a href="session5.html" class="active">Session 5</a></li>
+<li><a href="session6.html">Session 6</a></li>
+</ul>
+    <span class="nav-session-badge">Session 5 of 6</span>
   </nav>
 
-  <!-- HERO -->
   <section class="hero" style="position:relative;">
-    <div class="hero-number">03</div>
+    <div class="hero-number">05</div>
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">Session Three</span>
+      <span class="hero-eyebrow-text">Session Five</span>
     </div>
-    <h1 class="hero-title">Who You<br><em>Serve</em></h1>
-    <p class="hero-subtitle">Identity Meets the Market</p>
-    <p class="hero-desc">
-      Your nine words told you who you are. Your ideal client told you who you are for. Your bridge reflection told you what happened when you showed up as that person. Session 4 is not about searching for a lane. It is about confirming the conclusion the data has already reached — and committing to it.
-    </p>
+    <h1 class="hero-title">Container:<br><em>Customer Journey Model</em></h1>
+    <p class="hero-subtitle">Design the Experience</p>
+    <p class="hero-desc">You know who you are, who you serve, and which lane you are in. Session 5 is the design question: what does the path look like for the right person to say yes? You are not building yet. You are deciding.</p>
     <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Format</div>
-        <div class="hero-meta-value">Hot Seat + Group Work</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Duration</div>
-        <div class="hero-meta-value">90 Minutes</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Key Output</div>
-        <div class="hero-meta-value">Your Customer Journey Model + 90 Day Plan</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Bridges To</div>
-        <div class="hero-meta-value">Session 5 — Show Up and Be Heard</div>
-      </div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">Hot Seat + Group Work</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Duration</div><div class="hero-meta-value">90 Minutes</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Key Output</div><div class="hero-meta-value">Your Customer Journey Model + Access Point</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Bridges To</div><div class="hero-meta-value">Session 6 &mdash; Momentum and Reflection</div></div>
     </div>
   </section>
 
-  <!-- OUTCOME BOX -->
   <div class="outcome-bar">
     <div class="outcome-box">
       <div class="outcome-label">Session Outcome</div>
-      <div class="outcome-text">
-        You leave with <strong>your lane named and locked</strong> — not discovered, confirmed. Your first offer structure designed from what the lane requires energetically. A 90 day action plan with three specific commitments. And a 72 hour move that makes the lane real before Session 5.
-      </div>
+      <div class="outcome-text">You leave with <strong>your journey archetype named</strong>, your five touchpoints mapped, your access point defined, and your container tested against four alignment questions. You are not building yet. You are deciding. The container that passes all four tests is the one you build first.</div>
     </div>
   </div>
 
-  <!-- SESSION FRAMEWORK -->
   <div class="section-wrap">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">Session Framework</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">Session Framework</span><div class="section-line"></div></div>
     <div class="framework-grid">
       <div class="framework-card">
         <div class="framework-card-label">The Principle</div>
-        <div class="framework-card-heading">You Are Not Making a Decision. You Are Confirming a Conclusion.</div>
-        <div class="framework-card-body">The data from Sessions 2 and 3 has already pointed somewhere. Your nine words, your ideal client statement, and your bridge reflection are three signals. In most cases they all point in the same direction. The lane is not waiting to be found. It is waiting to be said out loud.</div>
+        <div class="framework-card-heading">The Container Serves the Avatar. Not the Practitioner.</div>
+        <div class="framework-card-body">Every decision about how your work is delivered should be filtered through one question: does this make it easier for the right person to say yes and experience transformation? Format, duration, price, sequence, access point &mdash; all of it flows from the avatar and the lane, not from what is convenient or familiar.</div>
       </div>
       <div class="framework-card">
         <div class="framework-card-label">The Work</div>
-        <div class="framework-card-heading">Depth in One Lane Produces What Breadth Never Can.</div>
-        <div class="framework-card-body">The practitioner who tries to serve everyone first builds nothing recognizable. No reputation, no referral network, no pricing power. The practitioner known for something specific gets recommended by name. Their rates reflect expertise, not availability. Every other lane opens to them from a position of proven depth.</div>
+        <div class="framework-card-heading">Your Journey Archetype Is Already There in the Data.</div>
+        <div class="framework-card-body">How your ideal client moves toward a yes is not random. It follows a pattern that matches who they are. Your archetype is the one that fits that pattern &mdash; not the one you would prefer to use, not the one that seems most scalable. The work of this session is to identify the match and build from it.</div>
       </div>
       <div class="framework-card">
         <div class="framework-card-label">The Commitment</div>
-        <div class="framework-card-heading">Your Ideal Client Travels With You.</div>
-        <div class="framework-card-body">The lane you choose today is not a ceiling. It is the foundation from which every future stage is built. The person you described in Session 3 will find you in every lane you grow into. The magnet does not change. Only the stage gets bigger. Commit to the lane as an investment, not a sacrifice.</div>
+        <div class="framework-card-heading">One Container. Fully Built. Before Anything Else.</div>
+        <div class="framework-card-body">The practitioner with three half built containers has nothing. The practitioner with one container that passes all four alignment tests has a business. Session 5 ends with one container decided. The bridge puts it into the world once before Session 6.</div>
       </div>
     </div>
   </div>
 
-  <!-- FORMS -->
+
   <div class="section-wrap" style="padding-top:0;">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Your Session Forms</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-num">02</span><span class="section-title">Your Session Forms</span><div class="section-line"></div></div>
     <div class="forms-grid">
-
-      <!-- PRE-WORK -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 01 · Before the Session</div>
-        <div class="form-card-title">Pre-Work</div>
-        <div class="form-card-desc">
-          Complete before Session 4. Review your three signals from Session 3 — your fit map, your ideal client statement, and your bridge reflection. Identify where they point and name the resistance, if any. 20 minutes. Arrive at the session clear, not searching.
-        </div>
+        <div class="form-card-seq">Form 01 &middot; Before the Session</div>
+        <div class="form-card-title">Pre Work</div>
+        <div class="form-card-desc">Complete before Session 5. Review your lane and your ideal client. Identify which journey archetype you believe fits your avatar and describe the current state of your access point, if any exists. 20 minutes. Arrive with a starting position, not a blank page.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Due before Session 4</span>
+          <span class="form-card-timing-text">Due before Session 5</span>
         </div>
-        <a href="https://tally.so/r/1AK4YW" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/1AK4YW" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
-      <!-- WORKSHEET -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 02 · During the Session</div>
+        <div class="form-card-seq">Form 02 &middot; During the Session</div>
         <div class="form-card-title">Session Worksheet</div>
-        <div class="form-card-desc">
-          Your in-session working document. Data summary across three signals, lane commitment with the why underneath it and the growth logic, first offer structure, 90 day action plan with three specific commitments, and the 12 month vision. Completed live with the group.
-        </div>
+        <div class="form-card-desc">Your in session working document. Download, open in your browser, and work through it live during the session. Journey archetype, five touchpoints, access point definition, and four alignment tests. Upload the completed file using the Post Session Commitment form.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Open and complete during Session 4</span>
+          <span class="form-card-timing-text">Download and complete during Session 5</span>
         </div>
-        <a href="https://tally.so/r/MeOa2X" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="/session-5-worksheet.html" download="session-5-worksheet.html" class="download-btn"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2v6M3 6l3 3 3-3M2 10h8"/></svg> Download Worksheet</a>
       </div>
-
-      <!-- POST-SESSION -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 03 · After the Session</div>
-        <div class="form-card-title">Post-Session Commitment</div>
-        <div class="form-card-desc">
-          Locks your lane, your first offer structure, your three 90 day commitments with individual deadlines, and your 12 month vision paragraph. What gets written gets done. Complete within 24 hours of Session 4.
-        </div>
+        <div class="form-card-seq">Form 03 &middot; After the Session</div>
+        <div class="form-card-title">Post Session Commitment</div>
+        <div class="form-card-desc">Locks your container decision: archetype, access point name and structure, what the client walks away with, and your 72 hour bridge action. Upload your completed worksheet here. Complete within 24 hours of Session 5.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Due within 24 hours of Session 4 · locks lane and offer</span>
+          <span class="form-card-timing-text">Due within 24 hours of Session 5</span>
         </div>
-        <a href="https://tally.so/r/J9Rlrd" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/J9Rlrd" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
-      <!-- 72-HOUR BRIDGE -->
+      
       <div class="form-card">
-        <div class="form-card-seq">Form 04 · Between Sessions</div>
-        <div class="form-card-title">72-Hour Bridge</div>
-        <div class="form-card-desc">
-          One move inside your lane. Build your first offer, have one lane conversation, create one piece of lane specific content, or make yourself visible in your lane. One action that makes your lane more real than it was before. Bring the reflection back to Session 5.
-        </div>
+        <div class="form-card-seq">Form 04 &middot; Between Sessions</div>
+        <div class="form-card-title">72 Hour Bridge</div>
+        <div class="form-card-desc">Put your container into the world once before Session 6. Describe your access point to one real person. Write the offer. Post about the work. One visible move that makes the container real. Bring what you learned back to Session 6.</div>
         <div class="form-card-timing">
           <div class="form-card-timing-dot"></div>
-          <span class="form-card-timing-text">Complete before Session 4</span>
+          <span class="form-card-timing-text">Complete before Session 6</span>
         </div>
-        <a href="https://tally.so/r/gDAqVd" target="_blank" class="form-card-btn">
-          Open Form
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 6h8M6 2l4 4-4 4"/>
-          </svg>
-        </a>
+        <a href="https://tally.so/r/gDAqVd" target="_blank" class="form-card-btn">Open Form <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-
     </div>
   </div>
 
-  <!-- PROGRAM SEQUENCE -->
   <div class="sequence-strip">
     <div class="sequence-inner">
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">01</div>
         <div class="seq-label">Session</div>
-        <div class="seq-title">Self-Leadership</div>
+        <div class="seq-title">Self Leadership</div>
       </div>
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">02</div>
         <div class="seq-label">Session</div>
-        <div class="seq-title">Identity &amp; Voice</div>
+        <div class="seq-title">Identity and Voice</div>
       </div>
-      <div class="seq-item active">
+      <div class="seq-item ">
         <div class="seq-num">03</div>
-        <div class="seq-label">Session · Current</div>
-        <div class="seq-title">Choose Your Lane</div>
+        <div class="seq-label">Session</div>
+        <div class="seq-title">Who You Serve</div>
       </div>
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">04</div>
         <div class="seq-label">Session</div>
-        <div class="seq-title">Strategy First</div>
+        <div class="seq-title">Choose Your Lane</div>
       </div>
-      <div class="seq-item">
+      <div class="seq-item active">
         <div class="seq-num">05</div>
-        <div class="seq-label">Session</div>
+        <div class="seq-label">Session &middot; Current</div>
         <div class="seq-title">The Container</div>
       </div>
-      <div class="seq-item">
+      <div class="seq-item ">
         <div class="seq-num">06</div>
         <div class="seq-label">Session</div>
         <div class="seq-title">Graduation</div>
       </div>
     </div>
   </div>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">Leading YourSelf Forward · Get Unstuck</div>
-    <div class="footer-note">Confidential · Cohort Use Only</div>
+    <div class="footer-brand">Leading YourSelf Forward &middot; Get Unstuck</div>
+    <div class="footer-note">Confidential &middot; Cohort Use Only</div>
   </footer>
-
 </div>
 </body>
 </html>
