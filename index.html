@@ -2,1346 +2,1232 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Clarke">
-<meta name="theme-color" content="#000000">
-<link rel="manifest" href="manifest.json">
-<title>Clarke Trading Intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Unstuck | Leading YourSelf Forward | Jimmy Clarke</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Josefin+Sans:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://static.memberstack.com/scripts/v2/memberstack.js" data-memberstack-app="app_cmmf547vo00s60stf6bz38hjb"></script>
 <style>
-:root{
-  --black:#000000;--bg:#070707;--bg2:#0c0c0c;--bg3:#111111;
-  --surface:#151515;--surface2:#1b1b1b;
-  --border:#222222;--border2:#2c2c2c;
-  --gold:#c9a84c;--gold-lt:#e2c97e;--gold-dk:#8a6f2e;
-  --gold-dim:rgba(201,168,76,0.10);--gold-mid:rgba(201,168,76,0.25);
-  --green:#4caf7d;--green-lt:#6fcf97;--green-dim:rgba(76,175,125,0.10);--green-mid:rgba(76,175,125,0.25);
-  --red:#c0392b;--red-lt:#e74c3c;--red-dim:rgba(192,57,43,0.10);
-  --amber:#d4922a;--amber-lt:#e8a94a;--amber-dim:rgba(212,146,42,0.10);
-  --text:#ede8d8;--text2:#857d6a;--text3:#484038;
-  --fd:'Cormorant Garamond',Georgia,serif;--fu:'Josefin Sans',sans-serif;--fm:'IBM Plex Mono',monospace;
-  --r:8px;--rl:12px;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:   #00B5AD; --teal-d: #008F88;
+  --gold:   #C9941A; --gold-l: #E0AA30;
+  --ink:    #080E14; --ink-2:  #0D1A24; --ink-3: #142230;
+  --mist:   #E8F0EF; --mist-d: #A8BFBD; --slate: #4A6670;
+  --white:  #FFFFFF;
+  --hero-font: clamp(3.4rem, 8.5vw, 7rem);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{background:var(--black);color:var(--text);font-family:var(--fu);font-size:13px;line-height:1.5;height:100%;overflow:hidden;-webkit-font-smoothing:antialiased}
-.app{display:flex;flex-direction:column;height:100vh;height:100dvh;padding-top:var(--st);padding-bottom:var(--sb);background:var(--black)}
-
-/* HEADER */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 18px 9px;background:var(--black);border-bottom:1px solid var(--border);flex-shrink:0;gap:10px;position:relative}
-.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--gold-dk) 20%,var(--gold-lt) 50%,var(--gold-dk) 80%,transparent 100%);opacity:.7}
-.brand{display:flex;flex-direction:column;gap:1px;min-width:78px}
-.brand-name{font-family:var(--fd);font-size:21px;font-weight:600;letter-spacing:.14em;color:var(--gold-lt);line-height:1;text-transform:uppercase}
-.brand-rule{width:100%;height:1px;background:linear-gradient(90deg,var(--gold-dk),transparent);margin:2px 0}
-.brand-sub{font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dk)}
-.hdr-ctr{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px}
-.eq-val{font-family:var(--fm);font-size:20px;font-weight:300;letter-spacing:-.02em;color:var(--text);line-height:1}
-.eq-pnl{font-family:var(--fm);font-size:11px;font-weight:300}
-.eq-pnl.pos{color:var(--green-lt)}.eq-pnl.neg{color:var(--red-lt)}
-.hdr-r{display:flex;flex-direction:column;align-items:flex-end;gap:5px;min-width:78px}
-.sys-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:breathe 3s ease-in-out infinite;align-self:flex-end}
-.sys-dot.off{background:var(--red);box-shadow:0 0 6px var(--red);animation:none}
-@keyframes breathe{0%,100%{opacity:1;box-shadow:0 0 4px var(--green)}50%{opacity:.45;box-shadow:0 0 10px var(--green)}}
-.mkt-badge{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
-.mkt-badge.open{background:var(--green-dim);color:var(--green-lt);border:1px solid var(--green-mid)}
-.mkt-badge.closed{background:transparent;color:var(--text3);border:1px solid var(--border2)}
-.mkt-badge.wait{background:var(--amber-dim);color:var(--amber-lt);border:1px solid rgba(212,146,42,.3)}
-
-/* LOSS RAIL */
-.loss-rail{height:2px;background:var(--bg3);flex-shrink:0}
-.loss-fill{height:100%;background:var(--gold);transition:width 1s ease,background .5s}
-.loss-fill.warn{background:var(--amber)}.loss-fill.danger{background:var(--red-lt);box-shadow:0 0 6px var(--red)}
-
-/* TABS — 6 tabs, smaller text */
-.tabs{display:flex;background:var(--black);border-bottom:1px solid var(--border);flex-shrink:0}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 6px;cursor:pointer;border:none;background:none;color:#9a9080;font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.08em;text-transform:uppercase;position:relative;transition:color .2s}
-.tab svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
-.tab.active{color:var(--gold-lt)}
-.tab.active::after{content:'';position:absolute;bottom:-1px;left:25%;right:25%;height:1px;background:var(--gold)}
-.tab-badge{position:absolute;top:3px;right:calc(50% - 16px);background:var(--red-lt);color:#fff;font-family:var(--fm);font-size:8px;font-weight:500;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 3px}
-
-/* CONTENT */
-.content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:15px;padding-bottom:28px;background:var(--bg)}
-.page{display:none}.page.active{display:block}
-
-/* SECTION HEAD */
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
-.sl{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px}
-.sl::after{content:'';display:block;width:20px;height:1px;background:var(--gold-dk)}
-.sm{font-family:var(--fm);font-size:9px;color:var(--text3)}
-
-/* REFRESH BTN */
-.rbtn{display:flex;align-items:center;gap:5px;font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);background:none;border:1px solid var(--border);border-radius:2px;padding:3px 9px;cursor:pointer;transition:all .2s}
-.rbtn:active{color:var(--gold);border-color:var(--gold-dk)}
-.rbtn svg{width:10px;height:10px}
-.rbtn.sp svg{animation:spin .9s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* CAPITAL BAR */
-.cap-bar-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;margin-bottom:11px}
-.cap-bar-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
-.cap-lbl{font-family:var(--fu);font-size:7px;font-weight:200;letter-spacing:.18em;text-transform:uppercase;color:var(--text3)}
-.cap-pct{font-family:var(--fm);font-size:10px}
-.cap-track{height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;margin-bottom:4px}
-.cap-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt));transition:width .8s ease}
-.cap-fill.warn{background:linear-gradient(90deg,var(--amber),var(--amber-lt))}
-.cap-fill.full{background:linear-gradient(90deg,var(--red),var(--red-lt))}
-.cap-stats{display:flex;justify-content:space-between;font-family:var(--fm);font-size:9px;color:var(--text3)}
-
-/* REGIME BANNER */
-.regime{border-radius:var(--r);padding:10px 13px;margin-bottom:13px;display:flex;align-items:flex-start;gap:9px;font-family:var(--fm);font-size:10px;line-height:1.5}
-.regime.bull{background:var(--green-dim);border:1px solid var(--green-mid);color:var(--green-lt)}
-.regime.caution{background:var(--amber-dim);border:1px solid rgba(212,146,42,.28);color:var(--amber-lt)}
-.regime.bear{background:var(--red-dim);border:1px solid rgba(192,57,43,.28);color:var(--red-lt)}
-.regime strong{font-weight:400;display:block;margin-bottom:2px;font-size:11px}
-
-/* SIGNAL CARDS */
-.sig-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:15px;margin-bottom:11px;position:relative;overflow:hidden;transition:border-color .3s}
-.sig-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--gold);opacity:0;transition:opacity .3s}
-.sig-card.t1::before{background:var(--gold-lt);opacity:1}
-.sig-card.t2::before{background:var(--gold);opacity:1}
-.sig-card.t3::before{background:var(--gold-dk);opacity:1}
-.sig-card.approved{border-color:var(--gold-mid);background:linear-gradient(135deg,var(--surface) 0%,#180f00 100%)}
-.sig-card.blocked{opacity:.55}
-.card-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;gap:10px}
-.card-l{display:flex;flex-direction:column;gap:4px}
-.c-sym{font-family:var(--fd);font-size:30px;font-weight:500;letter-spacing:.04em;color:var(--text);line-height:1}
-.c-sym.core{color:var(--gold-lt)}
-.c-chips{display:flex;gap:4px;flex-wrap:wrap}
-.chip{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
-.chip.core{background:var(--gold-dim);color:var(--gold-lt);border:1px solid var(--gold-mid)}
-.chip.gap{background:var(--amber-dim);color:var(--amber-lt);border:1px solid rgba(212,146,42,.28)}
-.chip.earn{background:var(--red-dim);color:var(--red-lt);border:1px solid rgba(192,57,43,.28)}
-.chip.rs{background:var(--green-dim);color:var(--green-lt);border:1px solid var(--green-mid)}
-.card-r{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.score-blk{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
-.score-n{font-family:var(--fd);font-size:40px;font-weight:300;line-height:1;letter-spacing:-.02em;color:var(--gold-lt)}
-.score-n.t2{color:var(--gold)}.score-n.t3{color:var(--gold-dk)}
-.score-d{font-family:var(--fm);font-size:9px;color:var(--text3);letter-spacing:.04em}
-.score-lbl{font-family:var(--fu);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dk)}
-.live-p{font-family:var(--fm);font-size:12px;font-weight:300;color:var(--text2);text-align:right}
-.cdivider{height:1px;background:var(--border);margin:11px 0}
-
-/* LEVELS */
-.levels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:11px}
-.lv{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px 9px}
-.lv-lbl{font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
-.lv-val{font-family:var(--fm);font-size:15px;font-weight:300;line-height:1}
-.lv.entry .lv-val{color:var(--text)}.lv.stop .lv-val{color:var(--red-lt)}.lv.target .lv-val{color:var(--green-lt)}
-.lv-sub{font-family:var(--fm);font-size:9px;color:var(--text3);margin-top:2px}
-
-/* RATIONALE */
-.rat{font-family:var(--fd);font-size:13px;font-style:italic;font-weight:300;letter-spacing:.01em;color:var(--text2);line-height:1.7;padding:10px 12px;background:var(--bg2);border-radius:var(--r);border-left:2px solid var(--gold-dk);margin-bottom:11px}
-
-/* TECH ROW */
-.tech-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}
-.tp{font-family:var(--fm);font-size:9px;font-weight:300;padding:3px 8px;border-radius:2px;background:var(--bg2);border:1px solid var(--border);color:var(--text2)}
-.tp.good{border-color:var(--green-mid);color:var(--green-lt);background:var(--green-dim)}
-.tp.warn{border-color:rgba(212,146,42,.28);color:var(--amber-lt);background:var(--amber-dim)}
-.tp.bad{border-color:rgba(192,57,43,.28);color:var(--red-lt);background:var(--red-dim)}
-
-/* APPROVE BUTTON STATES */
-.card-acts{display:flex;gap:8px}
-.btn-app{flex:1;padding:12px 14px;border-radius:var(--r);border:1px solid var(--gold);background:var(--gold-dim);color:var(--gold-lt);font-family:var(--fu);font-size:10px;font-weight:300;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px}
-.btn-app:active{background:var(--gold-mid);transform:scale(.98)}
-.btn-app.placing{border-color:var(--amber);background:var(--amber-dim);color:var(--amber-lt);cursor:default;animation:pulse 1s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-.btn-app.active{border-color:var(--green-mid);background:var(--green-dim);color:var(--green-lt);cursor:default}
-.btn-app.blocked{border-color:var(--border2);background:transparent;color:var(--text3);cursor:default;font-size:8px}
-.btn-app:disabled{border-color:var(--border2);background:transparent;color:var(--text3);cursor:default}
-.btn-pass{padding:12px 14px;border-radius:var(--r);border:1px solid var(--border2);background:transparent;color:var(--text3);font-family:var(--fu);font-size:10px;font-weight:200;letter-spacing:.1em;cursor:pointer;transition:all .2s}
-.btn-pass:active{background:var(--surface2)}
-.app-conf{display:none;align-items:center;gap:7px;padding:8px 11px;background:var(--green-dim);border:1px solid var(--green-mid);border-radius:var(--r);font-family:var(--fm);font-size:10px;color:var(--green-lt);margin-top:8px;line-height:1.5}
-.app-conf.show{display:flex}
-
-/* WATCH TIER */
-.watch-hdr{display:flex;align-items:center;gap:9px;padding:9px 2px 7px}
-.watch-lbl{font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-lt);white-space:nowrap}
-.watch-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(212,146,42,.3),transparent)}
-.watch-card{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--amber);border-radius:var(--r);padding:10px 13px;margin-bottom:6px;display:flex;align-items:center;gap:9px}
-.w-sym{font-family:var(--fd);font-size:17px;font-weight:500;color:var(--text);min-width:54px}
-.w-score{font-family:var(--fm);font-size:10px;color:var(--amber-lt);padding:2px 7px;border:1px solid rgba(212,146,42,.28);border-radius:2px}
-.w-detail{flex:1;font-family:var(--fm);font-size:9px;color:var(--text3)}
-.btn-prom{font-family:var(--fu);font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--border2);border-radius:2px;background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-prom:active{border-color:var(--gold);color:var(--gold)}
-
-/* PERF TILES */
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:13px}
-.pt{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px}
-.pt.full{grid-column:1/-1}
-.pt-lbl{font-family:var(--fu);font-size:7px;font-weight:200;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.pt-val{font-family:var(--fm);font-size:21px;font-weight:300;letter-spacing:-.02em;line-height:1}
-.pt-val.gold{color:var(--gold-lt)}.pt-val.pos{color:var(--green-lt)}.pt-val.neg{color:var(--red-lt)}.pt-val.neu{color:var(--text)}
-.pt-sub{font-family:var(--fm);font-size:9px;color:var(--text3);margin-top:3px}
-
-/* LOSS GAUGE CARD */
-.lg-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px;margin-bottom:13px}
-.lg-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
-.lg-track{height:5px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-bottom:5px}
-.lg-ind{height:100%;border-radius:3px;background:var(--gold);transition:width 1s ease,background .5s}
-.lg-ind.warn{background:var(--amber)}.lg-ind.danger{background:var(--red-lt);box-shadow:0 0 8px var(--red)}
-.lg-stats{display:flex;justify-content:space-between;font-family:var(--fm);font-size:9px;color:var(--text3)}
-
-/* POSITION CARDS */
-.pos-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:15px;margin-bottom:9px;position:relative;overflow:hidden}
-.pos-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--gold)}
-.pos-card.wstop{border-color:rgba(212,146,42,.4);animation:spulse 2.5s ease-in-out infinite}
-@keyframes spulse{0%,100%{border-color:rgba(212,146,42,.15)}50%{border-color:rgba(212,146,42,.55)}}
-.pos-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:13px}
-.pos-sym{font-family:var(--fd);font-size:24px;font-weight:500;letter-spacing:.04em;color:var(--text);line-height:1}
-.pos-sub{font-family:var(--fm);font-size:9px;color:var(--text3);margin-top:2px}
-.pos-pnl-blk{text-align:right}
-.pos-pnl{font-family:var(--fm);font-size:19px;font-weight:300;line-height:1;letter-spacing:-.02em}
-.pos-pnl.pos{color:var(--green-lt)}.pos-pnl.neg{color:var(--red-lt)}
-.pos-pct{font-family:var(--fm);font-size:10px;color:var(--text3);text-align:right}
-.prog-out{height:5px;background:var(--bg2);border-radius:3px;margin-bottom:4px;position:relative;overflow:visible}
-.prog-in{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt));transition:width 1s ease;position:relative}
-.prog-in::after{content:'';position:absolute;right:-4px;top:-4px;width:13px;height:13px;border-radius:50%;background:var(--gold-lt);border:2px solid var(--bg);box-shadow:0 0 6px var(--gold)}
-.prog-lbls{display:flex;justify-content:space-between;font-family:var(--fm);font-size:9px;color:var(--text3);margin-bottom:11px}
-
-/* POSITION STATS — 2x2 grid with entry price as own box */
-.pos-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.ps{display:flex;flex-direction:column;gap:2px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px 9px}
-.ps-lbl{font-family:var(--fu);font-size:7px;font-weight:200;letter-spacing:.15em;text-transform:uppercase;color:var(--text3)}
-.ps-val{font-family:var(--fm);font-size:14px;color:var(--text)}
-.ps-val.sv{color:var(--red-lt)}.ps-val.tv{color:var(--green-lt)}.ps-val.bev{color:var(--gold)}.ps-val.ev{color:var(--gold-lt)}
-.stop-badge{display:flex;align-items:center;gap:5px;margin-top:7px;padding:5px 9px;background:var(--gold-dim);border:1px solid var(--gold-mid);border-radius:4px;font-family:var(--fm);font-size:9px;color:var(--gold)}
-.stop-alert{display:none;margin-top:9px;padding:7px 10px;background:var(--amber-dim);border:1px solid rgba(212,146,42,.28);border-radius:var(--r);font-family:var(--fm);font-size:10px;color:var(--amber-lt);align-items:center;gap:6px}
-.stop-alert.show{display:flex}
-.oco-badge{display:flex;align-items:center;gap:6px;margin-top:9px;padding:7px 10px;background:var(--gold-dim);border:1px solid var(--gold-mid);border-radius:var(--r);font-family:var(--fm);font-size:9px;color:var(--gold)}
-
-/* CONSTITUTION PANEL (Positions tab — condensed) */
-.con-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-top:20px}
-.con-hd{padding:11px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
-.con-title{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.con-status{font-family:var(--fm);font-size:9px}
-.con-status.ok{color:var(--green-lt)}.con-status.warn{color:var(--amber-lt)}
-.rule-row{display:flex;align-items:center;gap:9px;padding:10px 15px;border-bottom:1px solid var(--border)}
-.rule-row:last-child{border-bottom:none}
-.rule-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.rule-dot.ok{background:var(--green);box-shadow:0 0 4px var(--green)}
-.rule-dot.warn{background:var(--amber);box-shadow:0 0 4px var(--amber)}
-.rule-dot.off{background:var(--border2)}
-.rule-body{flex:1}
-.rule-name{font-family:var(--fu);font-size:9px;font-weight:300;letter-spacing:.05em;color:var(--text2);line-height:1}
-.rule-detail{font-family:var(--fm);font-size:9px;color:var(--text3);margin-top:2px}
-.rule-val{font-family:var(--fm);font-size:10px;text-align:right}
-.rule-val.ok{color:var(--green-lt)}.rule-val.warn{color:var(--amber-lt)}.rule-val.off{color:var(--text3)}
-
-/* CONSTITUTION PAGE — Full 14 Rules */
-.con-page-hd{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px;margin-bottom:13px;text-align:center}
-.con-page-title{font-family:var(--fd);font-size:28px;font-weight:500;color:var(--gold-lt);letter-spacing:.08em;margin-bottom:4px}
-.con-page-sub{font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk)}
-.con-page-desc{font-family:var(--fd);font-size:13px;font-style:italic;color:var(--text3);margin-top:10px;line-height:1.6}
-.con-section{margin-bottom:13px}
-.con-section-lbl{font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);padding:7px 0 5px;display:flex;align-items:center;gap:8px}
-.con-section-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
-.con-rule-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;margin-bottom:5px;display:flex;gap:12px;align-items:flex-start}
-.con-rule-num{font-family:var(--fm);font-size:11px;color:var(--gold-dk);min-width:24px;padding-top:1px}
-.con-rule-body{flex:1}
-.con-rule-name{font-family:var(--fu);font-size:10px;font-weight:300;letter-spacing:.06em;color:var(--text);margin-bottom:3px}
-.con-rule-desc{font-family:var(--fm);font-size:9px;color:var(--text3);line-height:1.55}
-.con-rule-badge{display:inline-block;font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-top:5px}
-.con-rule-badge.sys{background:var(--green-dim);color:var(--green-lt);border:1px solid var(--green-mid)}
-.con-rule-badge.op{background:var(--gold-dim);color:var(--gold-lt);border:1px solid var(--gold-mid)}
-.con-rule-badge.both{background:var(--amber-dim);color:var(--amber-lt);border:1px solid rgba(212,146,42,.28)}
-.con-legend{display:flex;gap:9px;margin-bottom:13px;flex-wrap:wrap}
-.con-legend-item{display:flex;align-items:center;gap:5px;font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.1em;color:var(--text3)}
-.con-legend-dot{width:8px;height:8px;border-radius:2px}
-.con-legend-dot.sys{background:var(--green-dim);border:1px solid var(--green-mid)}
-.con-legend-dot.op{background:var(--gold-dim);border:1px solid var(--gold-mid)}
-.con-legend-dot.both{background:var(--amber-dim);border:1px solid rgba(212,146,42,.28)}
-
-/* NOTIFICATIONS */
-.notif-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 13px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start}
-.notif-card.unread{border-color:var(--gold-dk);background:linear-gradient(135deg,var(--surface) 0%,#100c00 100%)}
-.notif-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px}
-.notif-icon.TRADE_APPROVED{background:var(--green-dim);border:1px solid var(--green-mid)}
-.notif-icon.STOP_RAISED{background:var(--gold-dim);border:1px solid var(--gold-mid)}
-.notif-icon.TARGET_HIT{background:var(--green-dim);border:1px solid var(--green-mid)}
-.notif-icon.STOPPED_OUT{background:var(--red-dim);border:1px solid rgba(192,57,43,.28)}
-.notif-icon.CAPITAL_DEPLOYED{background:var(--amber-dim);border:1px solid rgba(212,146,42,.28)}
-.notif-body{flex:1}
-.notif-msg{font-family:var(--fm);font-size:10px;color:var(--text);line-height:1.5;margin-bottom:3px}
-.notif-time{font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.1em;color:var(--text3)}
-.notif-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
-.notif-mark-read{display:flex;align-items:center;gap:6px;font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);background:none;border:1px solid var(--border);border-radius:2px;padding:3px 9px;cursor:pointer;transition:all .2s}
-.notif-mark-read:active{color:var(--gold);border-color:var(--gold-dk)}
-
-/* MARKETS */
-.mkt-list{display:flex;flex-direction:column;gap:3px}
-.mkt-row{display:flex;align-items:center;gap:7px;padding:9px 11px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:border-color .15s}
-.mkt-row:active{border-color:var(--gold-dk)}
-.mkt-rank{font-family:var(--fm);font-size:9px;color:var(--text3);width:15px;text-align:right;flex-shrink:0}
-.mkt-tier{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.mkt-tier.full{background:var(--gold);box-shadow:0 0 4px var(--gold)}
-.mkt-tier.watch{background:var(--amber)}.mkt-tier.below{background:var(--border2)}
-.mkt-sym{font-family:var(--fd);font-size:14px;font-weight:500;min-width:48px;color:var(--text)}
-.mkt-bar{flex:1;height:3px;background:var(--bg2);border-radius:2px;overflow:hidden}
-.mkt-bf{height:100%;border-radius:2px;transition:width .8s ease}
-.mkt-bf.full{background:var(--gold)}.mkt-bf.watch{background:var(--amber)}.mkt-bf.below{background:var(--border2)}
-.mkt-score{font-family:var(--fm);font-size:10px;min-width:22px;text-align:right}
-.mkt-score.full{color:var(--gold-lt)}.mkt-score.watch{color:var(--amber-lt)}.mkt-score.below{color:var(--text3)}
-.mkt-price{font-family:var(--fm);font-size:10px;color:var(--text2);min-width:50px;text-align:right}
-.mkt-chg{font-family:var(--fm);font-size:9px;min-width:36px;text-align:right}
-.mkt-chg.pos{color:var(--green-lt)}.mkt-chg.neg{color:var(--red-lt)}
-.btn-mkt-buy{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--green-mid);border-radius:2px;background:var(--green-dim);color:var(--green-lt);cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
-.btn-mkt-buy:active{background:var(--green-mid)}
-.btn-buynow{width:100%;padding:10px 14px;border-radius:var(--r);border:1px solid var(--green-mid);background:var(--green-dim);color:var(--green-lt);font-family:var(--fu);font-size:9px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .2s}
-.btn-buynow:active{background:var(--green-mid);transform:scale(.98)}
-
-/* DETAIL SHEET */
-.dsheet{display:none;position:fixed;inset:0;background:var(--black);z-index:50;flex-direction:column}
-.dsheet.show{display:flex}
-.dhd{display:flex;align-items:center;gap:11px;padding:13px 17px;border-bottom:1px solid var(--border);padding-top:calc(13px + var(--st));flex-shrink:0;background:var(--black)}
-.btn-back{display:flex;align-items:center;gap:5px;font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px 0}
-.btn-back svg{width:13px;height:13px}
-.d-sym{flex:1;font-family:var(--fd);font-size:22px;font-weight:500;color:var(--text)}
-.d-score{font-family:var(--fm);font-size:22px;font-weight:300}
-.dbody{flex:1;overflow-y:auto;padding:15px;-webkit-overflow-scrolling:touch}
-.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:13px}
-.tt{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px}
-.tt-lbl{font-family:var(--fu);font-size:7px;font-weight:200;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
-.tt-val{font-family:var(--fm);font-size:17px;font-weight:300;line-height:1}
-.tt-sub{font-family:var(--fm);font-size:9px;color:var(--text3);margin-top:2px}
-.sbar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-.sbar-lbl{font-family:var(--fu);font-size:8px;letter-spacing:.06em;color:var(--text3);min-width:80px}
-.sbar-track{flex:1;height:3px;background:var(--bg2);border-radius:2px;overflow:hidden}
-.sbar-fill{height:100%;background:var(--gold);border-radius:2px}
-.sbar-num{font-family:var(--fm);font-size:9px;color:var(--text2);min-width:30px;text-align:right}
-.btn-prom-full{width:100%;padding:12px;border-radius:var(--r);border:1px solid var(--gold-mid);background:var(--gold-dim);color:var(--gold-lt);font-family:var(--fu);font-size:9px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:7px}
-.btn-prom-full:active{background:var(--gold-mid)}
-
-/* HISTORY */
-.hist-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;margin-bottom:6px;display:flex;align-items:center;gap:9px}
-.h-sym{font-family:var(--fd);font-size:15px;font-weight:500;min-width:50px;color:var(--text)}
-.h-info{flex:1}
-.h-date{font-family:var(--fm);font-size:9px;color:var(--text3)}
-.h-levels{font-family:var(--fm);font-size:9px;color:var(--text2)}
-.h-result{text-align:right}
-.h-pnl{font-family:var(--fm);font-size:13px;font-weight:300}
-.h-pnl.pos{color:var(--green-lt)}.h-pnl.neg{color:var(--red-lt)}
-.h-status{font-family:var(--fu);font-size:8px;letter-spacing:.09em;text-transform:uppercase;color:var(--text3)}
-
-/* EMPTY */
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:52px 24px;gap:9px;text-align:center}
-.eg{font-family:var(--fd);font-size:38px;color:var(--text3);line-height:1}
-.et{font-family:var(--fd);font-size:19px;font-weight:400;color:var(--text2);letter-spacing:.04em}
-.em{font-family:var(--fu);font-size:11px;font-weight:200;color:var(--text3);line-height:1.75;max-width:240px}
-
-/* LIVE INDICATOR */
-.live-ind{display:inline-flex;align-items:center;gap:4px;font-family:var(--fm);font-size:8px;color:var(--green-lt);opacity:0;transition:opacity .5s}
-.live-ind.show{opacity:1}
-.live-ind-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:breathe 2s ease-in-out infinite}
-
-/* SKELETON */
-.skel{background:linear-gradient(90deg,var(--surface) 0%,var(--surface2) 50%,var(--surface) 100%);background-size:200% 100%;animation:shimmer 1.8s infinite;border-radius:var(--rl);height:170px;margin-bottom:11px}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* TOAST */
-.toasts{position:fixed;top:calc(var(--st) + 125px);left:13px;right:13px;z-index:98;display:flex;flex-direction:column;gap:5px;pointer-events:none}
-.toast{padding:10px 13px;border-radius:var(--r);font-family:var(--fm);font-size:10px;font-weight:300;display:flex;align-items:center;gap:7px;transform:translateY(-10px);opacity:0;transition:all .25s ease;pointer-events:all;line-height:1.4}
-.toast.show{transform:translateY(0);opacity:1}
-.toast.success{background:var(--gold-dim);color:var(--gold-lt);border:1px solid var(--gold-mid)}
-.toast.error{background:var(--red-dim);color:var(--red-lt);border:1px solid rgba(192,57,43,.28)}
-.toast.warning{background:var(--amber-dim);color:var(--amber-lt);border:1px solid rgba(212,146,42,.28)}
-.toast.info{background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
-
-/* LOCKED */
-.locked{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);backdrop-filter:blur(14px);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:13px;text-align:center;padding:40px}
-.locked.show{display:flex}
-.lk-g{font-family:var(--fd);font-size:46px;color:var(--gold);line-height:1}
-.lk-t{font-family:var(--fd);font-size:26px;font-weight:400;color:var(--text);letter-spacing:.06em}
-.lk-r{font-family:var(--fu);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.lk-m{font-family:var(--fm);font-size:11px;font-weight:300;color:var(--text2);line-height:1.7;max-width:255px}
-
-/* CONFIRMATION MODAL */
-.confirm-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);z-index:150;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:calc(20px + var(--sb))}
-.confirm-modal.show{display:flex}
-.confirm-sheet{background:var(--surface);border:1px solid var(--border2);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:480px;padding:20px}
-.confirm-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.confirm-title{font-family:var(--fd);font-size:22px;font-weight:500;color:var(--text)}
-.confirm-badge{font-family:var(--fu);font-size:8px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--green-dim);color:var(--green-lt);border:1px solid var(--green-mid)}
-.confirm-price-hero{text-align:center;padding:16px 0;margin-bottom:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.confirm-price-lbl{font-family:var(--fu);font-size:8px;font-weight:200;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.confirm-price-val{font-family:var(--fm);font-size:36px;font-weight:300;color:var(--gold-lt);letter-spacing:-.02em;line-height:1}
-.confirm-price-chg{font-family:var(--fm);font-size:11px;margin-top:3px}
-.confirm-price-chg.pos{color:var(--green-lt)}.confirm-price-chg.neg{color:var(--red-lt)}
-.confirm-levels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
-.confirm-lv{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:9px 10px}
-.confirm-lv-lbl{font-family:var(--fu);font-size:7px;font-weight:300;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
-.confirm-lv-val{font-family:var(--fm);font-size:14px;font-weight:300;line-height:1}
-.confirm-lv.stop .confirm-lv-val{color:var(--red-lt)}
-.confirm-lv.target .confirm-lv-val{color:var(--green-lt)}
-.confirm-lv.entry .confirm-lv-val{color:var(--gold-lt)}
-.confirm-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:16px}
-.confirm-meta-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:9px 10px}
-.confirm-meta-lbl{font-family:var(--fu);font-size:7px;font-weight:200;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
-.confirm-meta-val{font-family:var(--fm);font-size:13px;color:var(--text)}
-.confirm-note{font-family:var(--fm);font-size:9px;color:var(--text3);text-align:center;margin-bottom:14px;line-height:1.5}
-.confirm-btns{display:flex;gap:9px}
-.btn-confirm{flex:1;padding:14px;border-radius:var(--r);border:1px solid var(--green-mid);background:var(--green-dim);color:var(--green-lt);font-family:var(--fu);font-size:11px;font-weight:300;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s}
-.btn-confirm:active{background:var(--green-mid);transform:scale(.98)}
-.btn-confirm.loading{opacity:.6;cursor:default;animation:pulse 1s ease-in-out infinite}
-.btn-cancel{padding:14px 20px;border-radius:var(--r);border:1px solid var(--border2);background:transparent;color:var(--text3);font-family:var(--fu);font-size:11px;font-weight:200;letter-spacing:.1em;cursor:pointer;transition:all .2s}
-.btn-cancel:active{background:var(--surface2)}
+html { scroll-behavior: smooth; }
+body { font-family: "DM Sans", sans-serif; background: var(--ink); color: var(--mist); line-height: 1.65; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+section { padding: 108px 0; }
+.label { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); }
+.divider { width: 44px; height: 2px; background: var(--gold); margin: 18px 0 30px; }
+.divider.teal { background: var(--teal); }
+.divider.center { margin-left: auto; margin-right: auto; }
+.btn { display: inline-flex; align-items: center; padding: 14px 32px; font-family: "DM Sans", sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; border-radius: 3px; cursor: pointer; border: none; transition: all 0.22s; }
+.btn-primary { background: var(--teal); color: var(--ink); }
+.btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,181,173,0.28); }
+.btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: var(--gold-l); transform: translateY(-2px); }
+.btn-lg { padding: 18px 48px; font-size: 1rem; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(8,14,20,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,181,173,0.1); }
+.nav-logo { display: flex; flex-direction: column; line-height: 1; gap: 1px; }
+.nav-logo-top { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--teal); }
+.nav-logo-main { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.02em; }
+.nav-logo-main em { font-style: italic; color: var(--teal); }
+.nav-logo-rule { width: 100%; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-top: 3px; }
+.nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--mist-d); transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; padding: 0; }
+.hero-bg-img { position: absolute; inset: 0; z-index: 0; background-image: url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80"); background-size: cover; background-position: center 35%; }
+.hero-bg-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(8,14,20,0.50) 0%, rgba(8,14,20,0.42) 35%, rgba(8,14,20,0.72) 78%, rgba(8,14,20,1.00) 100%), linear-gradient(135deg, rgba(0,181,173,0.07) 0%, transparent 55%, rgba(201,148,26,0.05) 100%); }
+.hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 40px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 34px; opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards; }
+.hero-eyebrow::before, .hero-eyebrow::after { content: ""; display: block; width: 28px; height: 1px; background: var(--teal); }
+.hero-h1 { font-family: "Cormorant Garamond", serif; font-size: var(--hero-font); font-weight: 700; line-height: 1.0; color: var(--white); text-shadow: 0 4px 48px rgba(0,0,0,0.6); opacity: 0; animation: fadeUp 0.9s 0.35s ease forwards; }
+.hero-h1 em { font-style: italic; color: var(--teal); }
+.hero-tagline { margin-top: 30px; font-family: "DM Mono", monospace; font-size: clamp(0.8rem, 1.8vw, 1rem); letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); opacity: 0; animation: fadeUp 0.8s 0.55s ease forwards; }
+.hero-sub { margin-top: 26px; font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: 300; color: rgba(232,240,239,0.82); max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.7s ease forwards; }
+.hero-ctas { margin-top: 46px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.85s ease forwards; }
+.hero-scroll { position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 0.8s 1.3s ease forwards; }
+.hero-scroll span { font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist-d); }
+.scroll-bar { width: 1px; height: 52px; background: linear-gradient(to bottom, var(--teal), transparent); animation: pulse 2.2s ease-in-out infinite; }
+.ls { width: 100%; height: 300px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.ls-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-attachment: fixed; background-position: center; }
+.ls-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(8,14,20,0.88) 0%, rgba(8,14,20,0.60) 50%, rgba(8,14,20,0.88) 100%); }
+.ls-body { position: relative; z-index: 2; text-align: center; padding: 0 40px; max-width: 820px; }
+.ls-body .ls-kicker { font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 16px; }
+.ls-body .ls-quote { font-family: "Cormorant Garamond", serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 600; font-style: italic; color: var(--white); line-height: 1.35; text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+.ls-body .ls-quote span { color: var(--teal); }
+#problem { background: var(--ink); position: relative; }
+#problem::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--teal), transparent); }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.problem-quote { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.2; color: var(--white); }
+.problem-quote em { font-style: italic; color: var(--teal); }
+.problem-list { list-style: none; display: flex; flex-direction: column; }
+.problem-list li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.05rem; color: var(--mist-d); line-height: 1.55; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.problem-list li:last-child { border-bottom: none; }
+.pd { color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.problem-close { grid-column: 1 / -1; padding: 30px 40px; background: rgba(0,181,173,0.05); border-left: 3px solid var(--teal); border-radius: 0 4px 4px 0; }
+.problem-close p { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 600; color: var(--white); line-height: 1.45; }
+.problem-close p span { color: var(--teal); }
+#who { background: var(--ink-2); }
+.who-grid { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+.who-sticky { position: sticky; top: 110px; }
+.who-sticky h2 { font-family: "Cormorant Garamond", serif; font-size: 2.1rem; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.who-sticky p { font-size: 0.9rem; color: var(--mist-d); line-height: 1.75; }
+.who-cards { display: flex; flex-direction: column; gap: 10px; }
+.who-card { display: flex; gap: 20px; align-items: flex-start; padding: 24px 28px; background: var(--ink-3); border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.2s, transform 0.2s; }
+.who-card:hover { border-color: rgba(0,181,173,0.28); transform: translateX(5px); }
+.who-num { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.1em; padding-top: 3px; flex-shrink: 0; }
+.who-card p { font-size: 0.9rem; color: var(--mist-d); line-height: 1.65; }
+.who-card p strong { color: var(--white); font-weight: 600; }
+#sessions { background: var(--ink); }
+.sessions-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 52px; }
+.sessions-header h2 { font-family: "Cormorant Garamond", serif; font-size: 2.1rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.sessions-header p { font-size: 0.9rem; color: var(--mist-d); line-height: 1.75; }
+.session-list { display: flex; flex-direction: column; gap: 3px; }
+.session-row { display: grid; grid-template-columns: 60px 1fr 130px; gap: 28px; align-items: center; padding: 26px 32px; background: var(--ink-3); border-radius: 4px; border-left: 3px solid transparent; transition: all 0.2s; }
+.session-row:hover { border-left-color: var(--teal); transform: translateX(4px); }
+.session-row:nth-child(even):hover { border-left-color: var(--gold); }
+.session-n { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: rgba(255,255,255,0.07); line-height: 1; }
+.session-row h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.session-row p { font-size: 0.85rem; color: var(--mist-d); line-height: 1.55; }
+.stag { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 13px; border-radius: 20px; white-space: nowrap; justify-self: end; }
+.stag.t { background: rgba(0,181,173,0.12); color: var(--teal); }
+.stag.g { background: rgba(201,148,26,0.12); color: var(--gold); }
+#rhythm { background: var(--ink-2); }
+.rhythm-intro { max-width: 560px; margin-bottom: 52px; }
+.rhythm-intro h2 { font-family: "Cormorant Garamond", serif; font-size: 2.1rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.rhythm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.rhythm-card { padding: 32px 24px; background: var(--ink-3); border-radius: 6px; border-top: 3px solid var(--teal); position: relative; overflow: hidden; }
+.rhythm-card:nth-child(even) { border-top-color: var(--gold); }
+.rhythm-card::after { content: attr(data-bg); position: absolute; bottom: -10px; right: 4px; font-family: "Cormorant Garamond", serif; font-size: 5.5rem; font-weight: 700; color: rgba(255,255,255,0.025); line-height: 1; pointer-events: none; }
+.rhythm-lbl { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.rhythm-card:nth-child(even) .rhythm-lbl { color: var(--gold); }
+.rhythm-card h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+.rhythm-card p { font-size: 0.85rem; color: var(--mist-d); line-height: 1.65; }
+#outputs { background: var(--ink); }
+.outputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 48px; }
+.output-row { display: flex; gap: 14px; align-items: flex-start; padding: 20px 24px; background: var(--ink-2); border-radius: 4px; }
+.output-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 6px; }
+.output-row:nth-child(even) .output-dot { background: var(--gold); }
+.output-row p { font-size: 0.875rem; color: var(--mist-d); line-height: 1.6; }
+.output-row p strong { color: var(--white); font-weight: 500; }
+.outputs-close { grid-column: 1 / -1; margin-top: 6px; padding: 28px 36px; background: rgba(0,181,173,0.05); border: 1px solid rgba(0,181,173,0.18); border-radius: 6px; text-align: center; }
+.outputs-close p { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 600; color: var(--white); line-height: 1.4; }
+.outputs-close p span { color: var(--teal); }
+#leadmagnet { background: var(--ink-2); padding: 80px 0; }
+.lm-wrap { display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; padding: 52px 56px; background: var(--ink-3); border: 1px solid rgba(201,148,26,0.2); border-radius: 8px; }
+.lm-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 14px; }
+.lm-wrap h2 span { color: var(--gold); }
+.lm-wrap p { font-size: 0.9rem; color: var(--mist-d); line-height: 1.7; }
+.lm-form { display: flex; gap: 10px; margin-top: 26px; }
+.lm-form input { flex: 1; padding: 13px 16px; background: var(--ink); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; font-family: "DM Sans", sans-serif; font-size: 0.875rem; color: var(--white); outline: none; transition: border-color 0.2s; }
+.lm-form input::placeholder { color: var(--slate); }
+.lm-form input:focus { border-color: var(--gold); }
+.lm-note { margin-top: 10px; font-size: 0.72rem; color: var(--slate); }
+.lm-visual { background: var(--ink); border-radius: 6px; padding: 36px; border: 1px solid rgba(201,148,26,0.15); display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.lm-cover { width: 110px; height: 150px; background: linear-gradient(145deg, var(--ink-3), var(--ink)); border: 2px solid var(--gold); border-radius: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px; gap: 8px; }
+.lm-cover-top { font-family: "DM Mono", monospace; font-size: 8px; letter-spacing: 0.18em; color: var(--teal); text-transform: uppercase; }
+.lm-cover-title { font-family: "Cormorant Garamond", serif; font-size: 0.82rem; font-weight: 700; color: var(--white); line-height: 1.3; text-align: center; }
+.lm-visual p { font-size: 0.8rem; color: var(--mist-d); text-align: center; line-height: 1.6; }
+#about { background: var(--ink); }
+.about-grid { display: grid; grid-template-columns: 360px 1fr; gap: 72px; align-items: start; }
+.about-photo-wrap { position: relative; }
+.about-photo-wrap::before { content: ""; position: absolute; top: 22px; left: 22px; right: -22px; bottom: -22px; border: 1px solid rgba(201,148,26,0.22); border-radius: 6px; z-index: 0; }
+.about-photo-wrap img { position: relative; z-index: 1; width: 100%; border-radius: 6px; object-fit: cover; aspect-ratio: 3/4; filter: grayscale(8%); }
+.about-text h2 { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 6px; }
+.about-text h2 span { color: var(--teal); }
+.about-role { font-size: 0.875rem; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 28px; }
+.about-text p { font-size: 0.95rem; color: var(--mist-d); line-height: 1.8; margin-bottom: 18px; }
+.about-text p strong { color: var(--white); font-weight: 500; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.about-tag { padding: 6px 16px; background: var(--ink-2); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; font-size: 0.75rem; color: var(--mist-d); letter-spacing: 0.06em; }
+#endorsement { background: var(--ink-2); padding: 100px 0; position: relative; overflow: hidden; }
+#endorsement::before { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,181,173,0.05) 0%, transparent 70%); pointer-events: none; }
+.endorsement-inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; }
+.endorsement-badge { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 8px 20px; background: rgba(0,181,173,0.08); border: 1px solid rgba(0,181,173,0.2); border-radius: 30px; }
+.endorsement-badge span { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+.endorsement-photo { width: 88px; height: 88px; border-radius: 50%; background: var(--ink-3); border: 2px solid var(--teal); margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.endorsement-marks { font-family: "Cormorant Garamond", serif; font-size: 5rem; color: var(--teal); opacity: 0.35; line-height: 0.7; display: block; margin-bottom: 12px; }
+.endorsement-quote { font-family: "Cormorant Garamond", serif; font-size: 1.85rem; font-weight: 600; font-style: italic; color: var(--white); line-height: 1.45; margin-bottom: 36px; }
+.endorsement-attr { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.attr-line { width: 40px; height: 1px; background: var(--gold); }
+.attr-text p { font-size: 0.875rem; color: var(--mist-d); }
+.attr-text p strong { color: var(--white); display: block; font-size: 1rem; margin-bottom: 2px; }
+#waitlist { background: var(--ink-3); padding: 108px 0; position: relative; overflow: hidden; }
+#waitlist::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,181,173,0.06) 0%, transparent 70%); pointer-events: none; }
+.waitlist-inner { max-width: 580px; margin: 0 auto; text-align: center; position: relative; }
+.waitlist-inner h2 { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+.waitlist-inner h2 em { font-style: italic; color: var(--teal); }
+.waitlist-inner > p { font-size: 1.05rem; color: var(--mist-d); line-height: 1.7; margin-bottom: 44px; }
+.cohort-stats { display: flex; justify-content: center; gap: 48px; margin-bottom: 48px; flex-wrap: wrap; }
+.cstat strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1; }
+.cstat span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist-d); }
+.waitlist-form { display: flex; flex-direction: column; gap: 12px; }
+.waitlist-form input { padding: 16px 20px; background: rgba(20,34,48,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; font-family: "DM Sans", sans-serif; font-size: 1rem; color: var(--white); outline: none; transition: border-color 0.2s; }
+.waitlist-form input::placeholder { color: var(--slate); }
+.waitlist-form input:focus { border-color: var(--teal); }
+.waitlist-form .btn { width: 100%; justify-content: center; padding: 18px; font-size: 1rem; }
+.waitlist-note { margin-top: 14px; font-size: 0.72rem; color: var(--slate); }
+footer { background: var(--ink); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { display: flex; flex-direction: column; gap: 1px; }
+.footer-logo-top { font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--teal); }
+.footer-logo-main { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--white); }
+.footer-logo-main em { font-style: italic; color: var(--teal); }
+footer p { font-size: 0.75rem; color: var(--slate); }
+@media (max-width: 900px) {
+  .problem-grid, .who-grid, .sessions-header, .about-grid, .lm-wrap { grid-template-columns: 1fr; }
+  .rhythm-grid { grid-template-columns: 1fr 1fr; }
+  .outputs-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .who-sticky { position: static; }
+  .ls { height: 220px; background-attachment: scroll !important; }
+  .ls-bg { background-attachment: scroll !important; }
+}
+@media (max-width: 600px) {
+  section { padding: 72px 0; }
+  .container { padding: 0 24px; }
+  .rhythm-grid { grid-template-columns: 1fr; }
+  .cohort-stats { gap: 28px; }
+}
+:root {
+  --portal-bg:    #0F1923;
+  --portal-card:  #16242F;
+  --portal-card2: #1C2F3D;
+  --portal-border: rgba(0,181,173,0.12);
+  --portal-text:  #C8D8D6;
+  --portal-muted: #5A7A80;
+}
+#portal-root { display: none; }
+#portal-root.active { display: block; }
+body.portal-active > *:not(#portal-root):not(script) { display: none !important; }
+body.portal-active #portal-root { display: block !important; }
+.portal-shell { min-height: 100vh; background: var(--portal-bg); font-family: "DM Sans", sans-serif; color: var(--portal-text); }
+.portal-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 64px; background: rgba(15,25,35,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--portal-border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.portal-nav-logo { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
+.portal-nav-logo-top { font-family: "DM Mono", monospace; font-size: 0.55rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--teal); }
+.portal-nav-logo-main { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+.portal-nav-logo-main em { font-style: italic; color: var(--teal); }
+.portal-nav-right { display: flex; align-items: center; gap: 20px; }
+.portal-member-name { font-size: 0.8rem; color: var(--portal-muted); font-family: "DM Mono", monospace; letter-spacing: 0.06em; }
+.portal-logout-btn { font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 16px; border-radius: 3px; cursor: pointer; background: transparent; color: var(--portal-muted); border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s; }
+.portal-logout-btn:hover { border-color: var(--teal); color: var(--teal); }
+.portal-layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; padding-top: 64px; }
+.portal-sidebar { background: rgba(12,20,28,0.6); border-right: 1px solid var(--portal-border); padding: 32px 0; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+.portal-sidebar-section { padding: 0 20px 24px; }
+.portal-sidebar-label { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--portal-muted); margin-bottom: 10px; padding: 0 8px; }
+.portal-nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; color: var(--portal-text); transition: all 0.18s; border: 1px solid transparent; margin-bottom: 2px; }
+.portal-nav-item:hover { background: rgba(0,181,173,0.06); color: var(--white); }
+.portal-nav-item.active { background: rgba(0,181,173,0.1); color: var(--teal); border-color: rgba(0,181,173,0.2); }
+.portal-nav-item .nav-icon { width: 16px; height: 16px; opacity: 0.6; flex-shrink: 0; }
+.portal-nav-item.active .nav-icon { opacity: 1; }
+.portal-session-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; color: var(--portal-text); transition: all 0.18s; margin-bottom: 2px; }
+.portal-session-item:hover { background: rgba(0,181,173,0.06); }
+.portal-session-item.active { color: var(--teal); background: rgba(0,181,173,0.08); }
+.session-num { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--teal); flex-shrink: 0; width: 20px; }
+.portal-content { padding: 40px 48px; }
+.portal-view { display: none; }
+.portal-view.active { display: block; }
+.welcome-header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--portal-border); }
+.welcome-eyebrow { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; display: block; }
+.welcome-header h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+.welcome-header h1 em { font-style: italic; color: var(--teal); }
+.welcome-header p { font-size: 1rem; color: var(--portal-text); line-height: 1.7; max-width: 600px; }
+.portal-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.portal-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+.portal-card { background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 6px; padding: 24px; }
+.portal-card-label { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; display: block; }
+.portal-card-label.gold { color: var(--gold); }
+.portal-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.portal-card p { font-size: 0.85rem; color: var(--portal-text); line-height: 1.65; }
+.portal-card .divider-sm { width: 28px; height: 2px; background: var(--teal); margin: 10px 0; }
+.portal-card .divider-sm.gold { background: var(--gold); }
+.schedule-item { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.schedule-item:last-child { border-bottom: none; padding-bottom: 0; }
+.schedule-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 5px; }
+.schedule-item p { font-size: 0.82rem; color: var(--portal-text); line-height: 1.5; }
+.schedule-item p strong { color: var(--white); font-size: 0.85rem; }
+.welcome-msg-card { background: var(--portal-card); border: 1px solid var(--portal-border); border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; padding: 28px 32px; margin-bottom: 24px; }
+.welcome-msg-card p { font-size: 0.95rem; color: var(--portal-text); line-height: 1.8; margin-bottom: 14px; }
+.welcome-msg-card p:last-child { margin-bottom: 0; }
+.welcome-msg-card p em { color: var(--white); font-style: italic; }
+.welcome-msg-sig { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-top: 20px; display: block; }
+.download-card { display: flex; align-items: center; gap: 20px; background: var(--portal-card); border: 1px solid rgba(201,148,26,0.2); border-radius: 6px; padding: 20px 24px; margin-bottom: 24px; }
+.download-icon { width: 44px; height: 54px; flex-shrink: 0; background: linear-gradient(145deg, var(--portal-card2), var(--portal-card)); border: 1px solid rgba(201,148,26,0.3); border-radius: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.download-icon-top { font-family: "DM Mono", monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--teal); text-transform: uppercase; }
+.download-icon-type { font-family: "DM Mono", monospace; font-size: 9px; font-weight: 500; color: var(--gold); }
+.download-info { flex: 1; }
+.download-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.download-info p { font-size: 0.8rem; color: var(--portal-text); }
+.btn-download { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--gold); color: var(--ink); border-radius: 3px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; white-space: nowrap; font-family: "DM Sans", sans-serif; }
+.btn-download:hover { background: var(--gold-l); transform: translateY(-1px); }
+.prework-card { background: rgba(0,181,173,0.04); border: 1px solid rgba(0,181,173,0.18); border-radius: 6px; padding: 24px 28px; margin-bottom: 24px; }
+.prework-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.prework-card p { font-size: 0.85rem; color: var(--portal-text); line-height: 1.7; }
+.prework-steps { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+.prework-step { display: flex; gap: 14px; align-items: flex-start; }
+.prework-step-num { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--teal); flex-shrink: 0; padding-top: 2px; }
+.prework-step p { font-size: 0.85rem; color: var(--portal-text); line-height: 1.6; }
+.prework-step p strong { color: var(--white); }
+.link-card { display: flex; align-items: center; gap: 16px; background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 6px; padding: 16px 20px; }
+.link-card-icon { width: 36px; height: 36px; border-radius: 8px; background: #4A154B; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+.link-card-text { flex: 1; }
+.link-card-text h4 { font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.link-card-text p { font-size: 0.75rem; color: var(--portal-muted); }
+.btn-link-sm { padding: 8px 16px; background: transparent; border: 1px solid var(--portal-border); border-radius: 3px; font-size: 0.75rem; color: var(--portal-text); cursor: pointer; font-family: "DM Sans", sans-serif; transition: all 0.2s; text-decoration: none; white-space: nowrap; }
+.btn-link-sm:hover { border-color: var(--teal); color: var(--teal); }
+.session-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--portal-border); display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.session-eyebrow { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; display: block; }
+.session-header h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 10px; }
+.session-header p { font-size: 0.9rem; color: var(--portal-text); line-height: 1.7; max-width: 520px; }
+.session-status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+.badge-active { background: rgba(0,181,173,0.1); color: var(--teal); border: 1px solid rgba(0,181,173,0.25); }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+.form-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.form-row { display: flex; align-items: center; gap: 16px; background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 6px; padding: 18px 22px; text-decoration: none; color: inherit; transition: border-color 0.2s, background 0.2s; }
+.form-row:hover { border-color: rgba(0,181,173,0.4); background: rgba(0,181,173,0.04); }
+.form-row-icon { width: 38px; height: 38px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.icon-teal { background: rgba(0,181,173,0.12); }
+.icon-gold { background: rgba(201,148,26,0.12); }
+.icon-navy { background: rgba(255,255,255,0.06); }
+.form-row-body { flex: 1; min-width: 0; }
+.form-row-title { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+.form-row-meta { font-size: 0.75rem; color: var(--portal-muted); line-height: 1.4; }
+.form-row-timing { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+.timing-before { background: rgba(0,181,173,0.1); color: var(--teal); }
+.timing-during { background: rgba(201,148,26,0.1); color: var(--gold); }
+.timing-after  { background: rgba(0,181,173,0.08); color: rgba(0,181,173,0.7); }
+.timing-bridge { background: rgba(255,255,255,0.05); color: var(--portal-muted); }
+.form-row-arrow { color: var(--portal-muted); font-size: 0.85rem; flex-shrink: 0; margin-left: 4px; transition: color 0.2s, transform 0.2s; }
+.form-row:hover .form-row-arrow { color: var(--teal); transform: translateX(3px); }
+.slack-card { background: rgba(74,21,75,0.15); border: 1px solid rgba(74,21,75,0.35); border-radius: 6px; padding: 20px 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+.slack-icon { width: 42px; height: 42px; border-radius: 8px; background: rgba(74,21,75,0.4); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.slack-body { flex: 1; }
+.slack-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.slack-body p { font-size: 0.78rem; color: var(--portal-text); line-height: 1.5; margin: 0; }
+.slack-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(74,21,75,0.5); border: 1px solid rgba(74,21,75,0.6); color: #e8b4e8; font-size: 0.75rem; font-weight: 600; padding: 8px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+.slack-btn:hover { background: rgba(74,21,75,0.7); }
+.guide-banner { background: rgba(201,148,26,0.08); border: 1px solid rgba(201,148,26,0.2); border-radius: 6px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.guide-banner-icon { font-size: 1.2rem; flex-shrink: 0; }
+.guide-banner-body { flex: 1; }
+.guide-banner-body h4 { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 3px; }
+.guide-banner-body p { font-size: 0.75rem; color: var(--portal-text); margin: 0; }
+.guide-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,148,26,0.15); border: 1px solid rgba(201,148,26,0.3); color: var(--gold); font-size: 0.72rem; font-weight: 600; padding: 7px 13px; border-radius: 4px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s; }
+.guide-btn:hover { background: rgba(201,148,26,0.25); }
+.output-tracker { background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 6px; padding: 24px; margin-bottom: 24px; }
+.output-tracker h3 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+.output-row-portal { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.output-row-portal:last-child { border-bottom: none; }
+.output-check { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.output-check.done { background: var(--teal); border-color: var(--teal); }
+.output-check.done::after { content: "✓"; font-size: 10px; color: var(--ink); font-weight: 700; }
+.output-row-portal p { font-size: 0.82rem; color: var(--portal-text); }
+.output-row-portal p strong { color: var(--white); }
+.output-session-tag { margin-left: auto; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--portal-muted); white-space: nowrap; }
+.sessions-coming-grid { display: flex; flex-direction: column; gap: 8px; }
+.session-coming-row { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 4px; opacity: 0.5; }
+.session-coming-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: rgba(255,255,255,0.06); line-height: 1; flex-shrink: 0; width: 40px; }
+.session-coming-info h4 { font-size: 0.88rem; color: var(--portal-muted); font-weight: 500; margin-bottom: 2px; }
+.session-coming-info p { font-size: 0.78rem; color: var(--portal-muted); }
+.lock-badge { margin-left: auto; font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; background: rgba(255,255,255,0.04); color: var(--portal-muted); }
+#portal-login-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(8,14,20,0.97); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+#portal-login-overlay.active { display: flex; }
+.login-box { background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 8px; padding: 48px; width: 100%; max-width: 420px; text-align: center; }
+.login-logo { margin-bottom: 32px; }
+.login-logo-top { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 4px; }
+.login-logo-main { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+.login-logo-main em { font-style: italic; color: var(--teal); }
+.login-divider { width: 40px; height: 1px; background: var(--gold); margin: 12px auto 0; }
+.login-box h2 { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.login-box > p { font-size: 0.85rem; color: var(--portal-muted); margin-bottom: 32px; }
+.login-field { width: 100%; padding: 13px 16px; margin-bottom: 12px; background: var(--ink); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; font-family: "DM Sans", sans-serif; font-size: 0.9rem; color: var(--white); outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+.login-field::placeholder { color: var(--slate); }
+.login-field:focus { border-color: var(--teal); }
+.btn-login { width: 100%; padding: 14px; background: var(--teal); color: var(--ink); border: none; border-radius: 3px; font-family: "DM Sans", sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
+.btn-login:hover { background: var(--teal-d); }
+.login-note { margin-top: 16px; font-size: 0.72rem; color: var(--portal-muted); }
+.login-error { background: rgba(220,50,50,0.1); border: 1px solid rgba(220,50,50,0.25); border-radius: 3px; padding: 10px 14px; margin-bottom: 12px; font-size: 0.8rem; color: #FF7070; display: none; }
+.login-error.visible { display: block; }
+@media (max-width: 900px) {
+  .portal-layout { grid-template-columns: 1fr; }
+  .portal-sidebar { display: none; }
+  .portal-content { padding: 24px 20px; }
+  .portal-grid-2, .session-docs-grid { grid-template-columns: 1fr; }
+  .portal-grid-3 { grid-template-columns: 1fr 1fr; }
+  .session-header { flex-direction: column; }
+}
 </style>
 </head>
 <body>
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-top">Group Coaching Program</span>
+    <span class="nav-logo-main">Leading <em>YourSelf</em> Forward</span>
+    <span class="nav-logo-rule"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#who">Who It&#39;s For</a></li>
+    <li><a href="#sessions">The Program</a></li>
+    <li><a href="#about">About Jimmy</a></li>
+    <li><a href="#waitlist" class="btn btn-primary" style="padding:10px 24px;">Join the Waitlist</a></li>
+    <li><a href="#" id="nav-portal-link" class="btn btn-outline" style="padding:10px 24px;" onclick="openPortal(event)">Member Login</a></li>
+  </ul>
+</nav>
 
-<div class="toasts" id="toasts"></div>
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="label">A Group Coaching Program</span></div>
+    <h1 class="hero-h1">Stop Managing.<br>Start <em>Leading.</em></h1>
+    <p class="hero-tagline">Own Your Direction</p>
+    <p class="hero-sub">Get Unstuck is a six-session program for wellness and coaching practitioners who are capable, committed, and ready to build a foundation that is entirely theirs.</p>
+    <div class="hero-ctas">
+      <a href="#waitlist" class="btn btn-primary btn-lg">Join the Waitlist</a>
+      <a href="#sessions" class="btn btn-outline btn-lg">See the Program</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-bar"></div><span>Scroll</span></div>
+</section>
 
-<!-- CONFIRMATION MODAL -->
-<div class="confirm-modal" id="confirmModal">
-  <div class="confirm-sheet">
-    <div class="confirm-hd">
-      <div class="confirm-title" id="confirmSymbol">—</div>
-      <div class="confirm-badge">Buy at Market</div>
+<section id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <span class="label">The Reality</span>
+        <div class="divider"></div>
+        <p class="problem-quote">You are not stuck because you lack<br><em>talent, drive, or commitment.</em></p>
+      </div>
+      <div>
+        <ul class="problem-list">
+          <li><span class="pd">&#8212;</span>Your work is good. Your positioning does not reflect it yet.</li>
+          <li><span class="pd">&#8212;</span>You know what you do. You struggle to say it in a way that lands.</li>
+          <li><span class="pd">&#8212;</span>You have been solving a clarity problem with more doing. It has not worked.</li>
+          <li><span class="pd">&#8212;</span>You want to lead yourself forward, not be told what to do.</li>
+          <li><span class="pd">&#8212;</span>You are ready to make a real decision and build from it.</li>
+        </ul>
+      </div>
+      <div class="problem-close reveal">
+        <p>The gap between who you are and how you are currently positioned. <span>That is what this program closes.</span></p>
+      </div>
     </div>
-    <div class="confirm-price-hero">
-      <div class="confirm-price-lbl">Current Market Price</div>
-      <div class="confirm-price-val" id="confirmPrice">—</div>
-      <div class="confirm-price-chg" id="confirmPriceChg">—</div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="container">
+    <div class="who-grid">
+      <div class="who-sticky">
+        <span class="label">Who This Is For</span>
+        <div class="divider teal"></div>
+        <h2>Built for wellness and coaching practitioners who are ready.</h2>
+        <p>This is not a course for beginners or a mastermind for the already positioned. It is a working program for practitioners who have done the work and are ready to build the foundation that makes it visible.</p>
+      </div>
+      <div class="who-cards">
+        <div class="who-card reveal"><span class="who-num">01</span><p><strong>Your work is good.</strong> Your positioning does not reflect it yet. You know you are capable. The gap is in how you are showing up externally.</p></div>
+        <div class="who-card reveal"><span class="who-num">02</span><p><strong>You want to lead yourself.</strong> Not be handed a blueprint. You are looking for a process that produces decisions, not just more information.</p></div>
+        <div class="who-card reveal"><span class="who-num">03</span><p><strong>You are ready to decide.</strong> You have been thinking long enough. You want a container that moves you from clarity to committed action.</p></div>
+        <div class="who-card reveal"><span class="who-num">04</span><p><strong>You want what you build to be yours.</strong> Built from identity outward. Not borrowed from someone else&#39;s framework.</p></div>
+        <div class="who-card reveal"><span class="who-num">05</span><p><strong>You are a wellness or coaching practitioner</strong> who is capable, committed, and stuck. You know the difference between being busy and actually moving forward.</p></div>
+      </div>
     </div>
-    <div class="confirm-levels">
-      <div class="confirm-lv entry"><div class="confirm-lv-lbl">Buy At</div><div class="confirm-lv-val" id="confirmEntry">—</div></div>
-      <div class="confirm-lv stop"><div class="confirm-lv-lbl">Stop Loss</div><div class="confirm-lv-val" id="confirmStop">—</div></div>
-      <div class="confirm-lv target"><div class="confirm-lv-lbl">Target</div><div class="confirm-lv-val" id="confirmTarget">—</div></div>
-    </div>
-    <div class="confirm-meta">
-      <div class="confirm-meta-item"><div class="confirm-meta-lbl">Shares</div><div class="confirm-meta-val" id="confirmShares">—</div></div>
-      <div class="confirm-meta-item"><div class="confirm-meta-lbl">Amount</div><div class="confirm-meta-val" id="confirmAmount">—</div></div>
-      <div class="confirm-meta-item"><div class="confirm-meta-lbl">Risk</div><div class="confirm-meta-val" id="confirmRisk">—</div></div>
-      <div class="confirm-meta-item"><div class="confirm-meta-lbl">R/R Ratio</div><div class="confirm-meta-val" id="confirmRR">—</div></div>
-    </div>
-    <div class="confirm-note">Ladder: 25% sold at Target 1 · 25% at Target 2 · 50% trails with stop raises</div>
-    <div class="confirm-btns">
-      <button class="btn-cancel" onclick="closeConfirm()">Cancel</button>
-      <button class="btn-confirm" id="confirmBtn" onclick="executeConfirmedTrade()">Confirm Buy</button>
-    </div>
+  </div>
+</section>
+
+<div class="ls reveal">
+  <div class="ls-bg" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80');"></div>
+  <div class="ls-overlay"></div>
+  <div class="ls-body">
+    <span class="ls-kicker">Own Your Direction</span>
+    <p class="ls-quote">The work starts before you feel ready.<br><span>That is exactly the right time to begin.</span></p>
   </div>
 </div>
 
-<div class="locked" id="lockedOverlay">
-  <div class="lk-g">◈</div>
-  <div class="lk-t">Trading Locked</div>
-  <div class="lk-r">Rule 14 — Daily Loss Limit</div>
-  <div class="lk-m">Your capital is protected. The daily loss limit has been reached. Trading resumes tomorrow at market open.</div>
+<section id="sessions">
+  <div class="container">
+    <div class="sessions-header">
+      <div>
+        <span class="label">The Program</span>
+        <div class="divider"></div>
+        <h2>Six sessions. Each one produces something you own.</h2>
+      </div>
+      <p>Not notes. Not ideas. Concrete written outputs that connect to each other and accumulate into a complete positioning foundation. Yours to operate from the moment the program ends.</p>
+    </div>
+    <div class="session-list">
+      <div class="session-row reveal"><div class="session-n">01</div><div><h3>Self-Leadership</h3><p>A leadership decision and a clear diagnosis of what has been keeping you stuck. The first act of leading yourself forward.</p></div><span class="stag t">Foundation</span></div>
+      <div class="session-row reveal"><div class="session-n">02</div><div><h3>Identity</h3><p>Nine words that describe who you are as a practitioner and a positioning statement built from them. The identity everything else is built on.</p></div><span class="stag g">Identity</span></div>
+      <div class="session-row reveal"><div class="session-n">03</div><div><h3>Who You Serve</h3><p>Your ideal client statement. Not a demographic but a specific person with a specific worldview who is already looking for what you offer.</p></div><span class="stag t">Clarity</span></div>
+      <div class="session-row reveal"><div class="session-n">04</div><div><h3>Choose Your Lane</h3><p>A strategic commitment to where you go deep first. Your lane, your first offer structure, and a 90 day action plan.</p></div><span class="stag g">Strategy</span></div>
+      <div class="session-row reveal"><div class="session-n">05</div><div><h3>The Container</h3><p>Design the experience your ideal client has from discovery through to yes. Archetype, journey map, and access point decided.</p></div><span class="stag t">Message</span></div>
+      <div class="session-row reveal"><div class="session-n">06</div><div><h3>Momentum and Reflection</h3><p>The reckoning, the declaration, the graduation. Your 90-Day Compass and Letter to Your Future Self — the foundation made permanent.</p></div><span class="stag g">Momentum</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="rhythm">
+  <div class="container">
+    <div class="rhythm-intro">
+      <span class="label">How It Works</span>
+      <div class="divider teal"></div>
+      <h2>A structured rhythm. Not a course. Not a mastermind.</h2>
+    </div>
+    <div class="rhythm-grid">
+      <div class="rhythm-card reveal" data-bg="1"><div class="rhythm-lbl">Principle 01</div><h3>Identity Before Strategy</h3><p>Every session builds on the one before it. Sessions 1 and 2 establish who you are. Sessions 3 and 4 use that foundation to make market and lane decisions. Sessions 5 and 6 convert those decisions into a container and a proof. Nothing is built on assumption.</p></div>
+      <div class="rhythm-card reveal" data-bg="2"><div class="rhythm-lbl">Principle 02</div><h3>The Hot Seat Is the Method</h3><p>Two participants per session go to the hot seat. The group watches the process before doing it themselves. Watching someone else work through a decision accelerates your own — you see the patterns, the resistance, and the breakthrough before you face them.</p></div>
+      <div class="rhythm-card reveal" data-bg="3"><div class="rhythm-lbl">Principle 03</div><h3>Decisions Over Comfort</h3><p>Every form, every bridge, every commitment asks you to make a specific decision — not explore an idea. Leaders who choose specifically outperform those who keep their options open. The 72-hour bridge after each session makes that decision real before the next one begins.</p></div>
+      <div class="rhythm-card reveal" data-bg="4"><div class="rhythm-lbl">Principle 04</div><h3>Between Sessions Is Where It Happens</h3><p>The session is the container. The bridge is where the work becomes real. Pre-work, worksheets, post-session commitments, and 72-hour bridges are not administrative — they are the program. Participants who complete all four forms per session get measurably different results.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="ls reveal">
+  <div class="ls-bg" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=80');"></div>
+  <div class="ls-overlay"></div>
+  <div class="ls-body">
+    <span class="ls-kicker">Six Sessions. Eight Outputs.</span>
+    <p class="ls-quote">A complete business foundation built from identity outward.<br><span>Yours to own the moment the program ends.</span></p>
+  </div>
 </div>
 
-<div class="dsheet" id="dsheet">
-  <div class="dhd">
-    <button class="btn-back" onclick="closeDetail()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15,18 9,12 15,6"/></svg>
-      Markets
-    </button>
-    <div class="d-sym" id="dSym"></div>
-    <div class="d-score" id="dScore"></div>
+<section id="outputs">
+  <div class="container">
+    <span class="label">What You Leave With</span>
+    <div class="divider"></div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;color:var(--white);line-height:1.2;max-width:520px;margin-bottom:8px;">Eight concrete outputs. All of them yours.</h2>
+    <div class="outputs-grid">
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>An understanding of who you are as a leader</strong> and the foundation every future decision is built on.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>A full positioning statement</strong> built from your identity, not borrowed from a template.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>An ideal client statement</strong> built around belief, hunger, and fit. A real person, not a demographic.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>A lane declaration and first offer</strong> that defines where you go deep first and how you get paid for it.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>A presence statement and core message</strong> that makes your ideal client feel immediately found.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>A Customer Journey Model</strong> that maps your offer to the world your client already lives in.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>A completed positioning framework</strong> that becomes your operating document for every future decision.</p></div>
+      <div class="output-row reveal"><div class="output-dot"></div><p><strong>Confidence in making decisions</strong> and a cohort who witnessed every step and holds you to your commitment.</p></div>
+      <div class="outputs-close reveal"><p>You do not need more information. <span>You need a foundation that is yours.</span></p></div>
+    </div>
   </div>
-  <div class="dbody" id="dBody"></div>
+</section>
+
+<section id="leadmagnet">
+  <div class="container">
+    <div class="lm-wrap reveal">
+      <div>
+        <span class="label">Free Resource</span>
+        <div class="divider"></div>
+        <h2>What Leadership Actually<br><span>Looks Like</span> for Practitioners</h2>
+        <p>A free guide for wellness and coaching practitioners on what it means to lead yourself before you can lead anyone else. The clarity framework behind the Get Unstuck program, distilled into one practical read.</p>
+        <p style="margin-top:10px;">Enter your email and it arrives immediately.</p>
+        <form class="lm-form" name="lead-magnet" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+          <input type="hidden" name="form-name" value="lead-magnet">
+          <input type="hidden" name="bot-field" style="display:none;">
+          <input type="email" name="email" placeholder="Your email address" required>
+          <button type="submit" class="btn btn-gold">Send It</button>
+        </form>
+        <p class="lm-note">No spam. Unsubscribe any time.</p>
+      </div>
+      <div class="lm-visual">
+        <div class="lm-cover">
+          <span class="lm-cover-top">Free Guide</span>
+          <span class="lm-cover-title">What Leadership Actually Looks Like for Practitioners</span>
+        </div>
+        <p>The clarity framework behind Get Unstuck. Free. Practical. Built for wellness and coaching practitioners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <img src="https://leadingyourselfforward.com/jimmy-clarke.jpg" alt="Jimmy Clarke" onerror="this.style.display='none'">
+      </div>
+      <div class="about-text">
+        <span class="label">Your Coach</span>
+        <div class="divider teal"></div>
+        <h2>Jimmy <span>Clarke</span></h2>
+        <p class="about-role">Brand Strategist &nbsp;&#183;&nbsp; Leadership Coach &nbsp;&#183;&nbsp; Founder</p>
+        <p>I did not come to this work from a certification. I came from <strong>30 years of building things</strong> at the highest levels: teams, strategies, companies, and the clarity that only comes from making consequential decisions under real pressure.</p>
+        <p>From Fortune 500 boardrooms to small business owners, I have spent 20 years helping brands find their voice and reach the right people online. As founder and CEO of <strong>XPND Interactive</strong> for 13 years, I lived every positioning, identity, and direction decision this program addresses. Not in theory. In practice, with real stakes.</p>
+        <p>I spent nearly a decade as a senior sales leader at CBS Radio and Entercom, directing $40 million in revenue across six stations and building teams from the ground up. Before that, I competed professionally as a soccer player for the Portland Pride.</p>
+        <p>I built Get Unstuck because I kept seeing the same pattern in the wellness and coaching world: <strong>practitioners with real gifts, stuck on the same clarity problem.</strong> Not because they lacked skill, but because no one had given them a rigorous process for building their foundation from identity outward. This program is that process.</p>
+        <div class="about-tags">
+          <span class="about-tag">CBS Radio</span>
+          <span class="about-tag">Entercom</span>
+          <span class="about-tag">XPND Interactive, Founder and CEO</span>
+          <span class="about-tag">Portland Pride, Professional Soccer</span>
+          <span class="about-tag">Brand Strategy</span>
+          <span class="about-tag">Leadership Coaching</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="endorsement">
+  <div class="container">
+    <div class="endorsement-inner">
+      <div class="endorsement-badge"><span>Program Endorsement</span></div>
+      <div class="endorsement-photo" style="background:var(--ink-3);border:2px solid var(--teal);width:120px;height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;margin:0 auto 32px;">
+        <img src="https://assets.cdn.filesafe.space/5f6PMlHzdyzvjYDEhHYg/media/33d1c69a-ff9c-44b2-9ee0-5b99ffccf4d2.png" alt="Breathwork Detox" style="width:100%;height:100%;object-fit:contain;filter:brightness(1.1);">
+      </div>
+      <span class="endorsement-marks">&#8220;</span>
+      <p class="endorsement-quote">Jimmy built this program specifically for practitioners who are serious about their direction. If you are part of the Breathwork Detox community and you are ready to get clear on who you are and where you are going, this is the container I would put you in. The structure is rigorous, the process is real, and the outputs are yours to keep.</p>
+      <div class="endorsement-attr">
+        <div class="attr-line"></div>
+        <div class="attr-text"><p><strong>Kurtis Thomas</strong>Founder, Breathwork Detox</p></div>
+        <div class="attr-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="container">
+    <div class="waitlist-inner">
+      <span class="label">Join the Waitlist</span>
+      <div class="divider teal center"></div>
+      <h2>The next cohort is<br><em>forming now.</em></h2>
+      <p>Enrollment opens to the waitlist first. Ten spots. When they are filled, they are filled. Add your name below and you will be the first to know when applications open.</p>
+      <div class="cohort-stats">
+        <div class="cstat"><strong>6</strong><span>Sessions</span></div>
+        <div class="cstat"><strong>10</strong><span>Spots Total</span></div>
+        <div class="cstat"><strong>12</strong><span>Weeks</span></div>
+      </div>
+      <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+        <input type="hidden" name="form-name" value="waitlist">
+        <input type="hidden" name="bot-field" style="display:none;">
+        <input type="text" name="first-name" placeholder="Your first name" required>
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit" class="btn btn-primary">Reserve My Spot on the Waitlist</button>
+      </form>
+      <p class="waitlist-note">Waitlist members get first access to applications and enrollment details. No spam, ever.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-top">Group Coaching Program</span>
+        <span class="footer-logo-main">Leading <em>YourSelf</em> Forward</span>
+      </div>
+      <p>Get Unstuck &#8212; Leading YourSelf Forward &copy; 2026</p>
+    </div>
+  </div>
+</footer>
+
+<div id="portal-login-overlay">
+  <div class="login-box">
+    <div class="login-logo">
+      <span class="login-logo-top">Member Portal</span>
+      <span class="login-logo-main">Leading <em>YourSelf</em> Forward</span>
+      <div class="login-divider"></div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Sign in to access your cohort portal.</p>
+    <div class="login-error" id="login-error">Incorrect email or password. Please try again.</div>
+    <input type="email" class="login-field" id="login-email" placeholder="Email address">
+    <input type="password" class="login-field" id="login-password" placeholder="Password">
+    <button class="btn-login" onclick="handleLogin()">Sign In</button>
+    <p class="login-note">Not yet a member? <a href="#waitlist" onclick="closePortalLogin()" style="color:var(--teal);">Join the waitlist.</a></p>
+  </div>
 </div>
 
-<div class="app">
-  <div class="hdr">
-    <div class="brand">
-      <div class="brand-name">Clarke</div>
-      <div class="brand-rule"></div>
-      <div class="brand-sub">Trading Intelligence</div>
+<div id="portal-root" data-ms-content="lyf-member-portal">
+  <div class="portal-shell">
+    <nav class="portal-nav">
+      <div class="portal-nav-logo">
+        <span class="portal-nav-logo-top">Member Portal</span>
+        <span class="portal-nav-logo-main">Leading <em>YourSelf</em> Forward</span>
+      </div>
+      <div class="portal-nav-right">
+        <span class="portal-member-name" id="portal-member-display"></span>
+        <button class="portal-logout-btn" onclick="handleLogout()">Sign Out</button>
+      </div>
+    </nav>
+    <div class="portal-layout">
+      <aside class="portal-sidebar">
+        <div class="portal-sidebar-section">
+          <div class="portal-sidebar-label">Navigation</div>
+          <div class="portal-nav-item active" data-view="welcome" onclick="switchView('welcome', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l6-4 6 4v8H2V6z"/></svg>
+            Welcome
+          </div>
+          <div class="portal-nav-item" data-view="session1" onclick="switchView('session1', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M5 8h6M5 5h6M5 11h4"/></svg>
+            Session Hub
+          </div>
+          <div class="portal-nav-item" data-view="outputs" onclick="switchView('outputs', this)">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h10M3 12h6"/><circle cx="13" cy="12" r="2"/></svg>
+            My Outputs
+          </div>
+        </div>
+        <div class="portal-sidebar-section">
+          <div class="portal-sidebar-label">Sessions</div>
+          <div class="portal-session-item active" onclick="switchView('session1', document.querySelector('[data-view=session1]'))"><span class="session-num">01</span> Self-Leadership</div>
+          <div class="portal-session-item" onclick="switchView('session2', document.querySelector('[data-view=session2]'))"><span class="session-num">02</span> Identity</div>
+          <div class="portal-session-item" onclick="switchView('session3', document.querySelector('[data-view=session3]'))"><span class="session-num">03</span> Who You Serve</div>
+          <div class="portal-session-item" onclick="switchView('session4', document.querySelector('[data-view=session4]'))"><span class="session-num">04</span> Choose Your Lane</div>
+          <div class="portal-session-item" onclick="switchView('session5', document.querySelector('[data-view=session5]'))"><span class="session-num">05</span> The Container</div>
+          <div class="portal-session-item" onclick="switchView('session6', document.querySelector('[data-view=session6]'))"><span class="session-num">06</span> Momentum &amp; Reflection</div>
+        </div>
+      </aside>
+      <main class="portal-content">
+
+        <div class="portal-view active" id="view-welcome">
+          <div class="welcome-header">
+            <span class="welcome-eyebrow">Cohort 1 · 2026</span>
+            <h1>Welcome to <em>Leading YourSelf Forward.</em></h1>
+            <p>You made a decision. That is already the first act of self-leadership. Everything in this portal is here to support your six sessions and the eight outputs you will build from them.</p>
+          </div>
+          <div class="welcome-msg-card">
+            <p>You are here because you are ready. Not because everything is figured out — but because you have decided it is time to stop managing and start leading. That decision is the foundation everything else is built on.</p>
+            <p>Over the next twelve weeks, we are going to build your positioning foundation from the inside out. Not from a template. Not borrowed from someone else's framework. <em>From who you actually are.</em></p>
+            <p>You will leave this program with eight concrete outputs that belong to you. A practitioner identity statement. A vision. A brand voice. A value proposition. An ideal client portrait. A primary offer. A core message. And a 90-day plan to move on all of it.</p>
+            <p>Show up fully. Do the pre-work honestly. The sessions will move fast if you do.</p>
+            <span class="welcome-msg-sig">— Jimmy Clarke</span>
+          </div>
+          <div class="download-card">
+            <div class="download-icon"><span class="download-icon-top">LYF</span><span class="download-icon-type">PDF</span></div>
+            <div class="download-info"><h4>Welcome Packet — Cohort 1</h4><p>Program overview, schedule, community guidelines, and what to expect across all six sessions.</p></div>
+            <a href="/GetUnstuck_Welcome_Packet.pdf" class="btn-download" download>↓ Download</a>
+          </div>
+          <div class="portal-grid-2">
+            <div class="portal-card">
+              <span class="portal-card-label">Cohort Schedule</span>
+              <div class="divider-sm"></div>
+              <div class="schedule-item"><div class="schedule-dot"></div><div><p><strong>Session 1 — Self-Leadership</strong><br>Date TBD · 90 min via Zoom</p></div></div>
+              <div class="schedule-item"><div class="schedule-dot" style="background:var(--gold)"></div><div><p><strong>Session 2 — Identity</strong><br>Date TBD · 90 min via Zoom</p></div></div>
+              <div class="schedule-item"><div class="schedule-dot"></div><div><p><strong>Sessions 3 through 6</strong><br>Dates TBD · Bi-weekly rhythm</p></div></div>
+              <p style="font-size:0.75rem;color:var(--portal-muted);margin-top:14px;">Exact dates will be confirmed and updated here before the first session.</p>
+            </div>
+            <div class="portal-card">
+              <span class="portal-card-label gold">Community</span>
+              <div class="divider-sm gold"></div>
+              <p style="margin-bottom:16px;">Your cohort Slack workspace is where accountability happens between sessions. Post your wins, ask questions, and hold each other to commitments.</p>
+              <div class="link-card">
+                <div class="link-card-icon">💬</div>
+                <div class="link-card-text"><h4>Cohort Slack</h4><p>LYF Cohort 1 workspace</p></div>
+                <a href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener" class="btn-link-sm">Join →</a>
+              </div>
+            </div>
+          </div>
+          <div class="prework-card">
+            <h3>📋 &nbsp;Pre-Work: Session 1 — Self-Leadership</h3>
+            <p>Complete this before your first session. It takes 20 minutes. The more honestly you answer, the faster Session 1 moves.</p>
+            <div class="prework-steps">
+              <div class="prework-step"><span class="prework-step-num">01</span><p><strong>Block the time.</strong> Find 20 uninterrupted minutes before Session 1. No multitasking. This is thinking work.</p></div>
+              <div class="prework-step"><span class="prework-step-num">02</span><p><strong>Complete the pre-work form.</strong> The form will be linked here 48 to 72 hours before Session 1. Watch for an email notification.</p></div>
+              <div class="prework-step"><span class="prework-step-num">03</span><p><strong>Submit before the session.</strong> Your responses help me build the coaching brief and identify where the group needs the most attention.</p></div>
+            </div>
+          </div>
+          <div class="portal-grid-3">
+            <div class="portal-card"><span class="portal-card-label">Before Each Session</span><p>Pre-work form arrives 48 to 72 hrs prior. 20 minutes. Surfaces your raw material so the session hits the ground running.</p></div>
+            <div class="portal-card"><span class="portal-card-label gold">During Each Session</span><p>90 minutes on Zoom. Teaching, silent worksheet work, and two live hot seats working directly with the coach.</p></div>
+            <div class="portal-card"><span class="portal-card-label">After Each Session</span><p>Commitment form locks your key output, one decision, and one action with a deadline. What gets written gets done.</p></div>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session1">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 01 · Foundation</span>
+              <h2>Self-Leadership</h2>
+              <p>A leadership decision and a clear diagnosis of what has been keeping you stuck. The first act of leading yourself forward — made in writing, held by the cohort.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 1 Guide — Reference During the Live Call</h4><p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are.</p></div>
+            <a class="guide-btn" href="/session-1-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;"><span class="portal-card-label">Session 1 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/1AKd21?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre-Work — Self-Leadership</div><div class="form-row-meta">Complete 48 hrs before the session · 15 to 20 min · Surfaces your raw material so the session moves fast</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="/session-1-worksheet.html" target="_blank" rel="noopener" download>
+              <div class="form-row-icon icon-gold">📄</div>
+              <div class="form-row-body"><div class="form-row-title">Live Worksheet — Self-Leadership</div><div class="form-row-meta">Open during the 90-min session · Work through it live with the group · Your thinking tool for the call</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">↓</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/MeONdk?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body"><div class="form-row-title">Post-Session Commitment</div><div class="form-row-meta">Complete same day · Locks your output, one decision, and one action with a deadline</div></div>
+              <span class="form-row-timing timing-after">After Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/J9RpVK?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge</div><div class="form-row-meta">Due before Session 2 opens · One specific action taken in the world · Not homework — execution · Report back here</div></div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 1 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Leadership Decision + Stuck Diagnosis</h3>
+            <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has been keeping you stuck. This becomes the foundation every future session builds on.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post your 72-Hour Bridge result here. Share wins, ask brief questions, stay in motion between sessions.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+          <div style="margin-top:32px;">
+            <span class="portal-card-label" style="display:block;margin-bottom:16px;padding:0;">Sessions 2 through 6 unlock sequentially</span>
+            <div class="sessions-coming-grid">
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session2', document.querySelector('[data-view=session2]'))"><span class="session-coming-num" style="color:rgba(0,181,173,0.4);">02</span><div class="session-coming-info"><h4 style="color:var(--teal);">Identity</h4><p>Nine words. A positioning statement built from them.</p></div><span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span></div>
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session3', document.querySelector('[data-view=session3]'))"><span class="session-coming-num" style="color:rgba(0,181,173,0.4);">03</span><div class="session-coming-info"><h4 style="color:var(--teal);">Who You Serve</h4><p>Your ideal client statement. A real person, not a demographic.</p></div><span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span></div>
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session4', document.querySelector('[data-view=session4]'))"><span class="session-coming-num" style="color:rgba(0,181,173,0.4);">04</span><div class="session-coming-info"><h4 style="color:var(--teal);">Choose Your Lane</h4><p>Strategic commitment. Your lane and your first offer.</p></div><span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span></div>
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session5', document.querySelector('[data-view=session5]'))"><span class="session-coming-num" style="color:rgba(0,181,173,0.4);">05</span><div class="session-coming-info"><h4 style="color:var(--teal);">The Container</h4><p>Customer Journey Model. Design the experience from discovery to yes.</p></div><span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span></div>
+              <div class="session-coming-row" style="opacity:1;cursor:pointer;" onclick="switchView('session6', document.querySelector('[data-view=session6]'))"><span class="session-coming-num" style="color:rgba(0,181,173,0.4);">06</span><div class="session-coming-info"><h4 style="color:var(--teal);">Momentum &amp; Reflection</h4><p>The reckoning. The declaration. The graduation.</p></div><span class="lock-badge" style="background:rgba(0,181,173,0.1);color:var(--teal);">Active →</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session2">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 02 · Identity</span>
+              <h2>Vision · Value · Voice</h2>
+              <p>Nine words that define who you are, how you show up, and what you give to the people you serve. Everything built in this program traces back to these words.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 2 Guide — Reference During the Live Call</h4><p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are.</p></div>
+            <a class="guide-btn" href="/session-2-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;"><span class="portal-card-label">Session 2 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/PdE1Ld?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=2&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre-Work: Who You Are at Your Best</div><div class="form-row-meta">Complete 48 hrs before the session · 20 min · Warms up your thinking before the Vision, Value, and Voice exercise</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="/session-2-worksheet.html" target="_blank" rel="noopener" download>
+              <div class="form-row-icon icon-gold">📄</div>
+              <div class="form-row-body"><div class="form-row-title">Live Worksheet: Vision, Value, and Voice</div><div class="form-row-meta">Open during the 90-min session · Work through it live with the group · Your thinking tool for the call</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">↓</span>
+            </a>
+          </div>
+          <div style="margin-bottom:10px;margin-top:20px;"><span class="portal-card-label">Word Lists: Download Each as You Work Through the Exercise</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:14px;background:var(--portal-card);border:1px solid var(--portal-border);border-radius:6px;padding:14px 18px;">
+              <span style="font-size:1rem;">🎯</span>
+              <div style="flex:1;"><div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:2px;">Step 1: Vision Words</div><div style="font-size:0.75rem;color:var(--portal-muted);">Where you are going. Your direction and destination. Choose three.</div></div>
+              <a class="guide-btn" href="/session-2-vision-words.html" target="_blank" rel="noopener">↓ Download</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;background:var(--portal-card);border:1px solid var(--portal-border);border-radius:6px;padding:14px 18px;">
+              <span style="font-size:1rem;">💎</span>
+              <div style="flex:1;"><div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:2px;">Step 2: Value Words</div><div style="font-size:0.75rem;color:var(--portal-muted);">What you bring to the world. Your foundational belief and promise. Choose three.</div></div>
+              <a class="guide-btn" href="/session-2-value-words.html" target="_blank" rel="noopener">↓ Download</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;background:var(--portal-card);border:1px solid var(--portal-border);border-radius:6px;padding:14px 18px;">
+              <span style="font-size:1rem;">🎙️</span>
+              <div style="flex:1;"><div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:2px;">Step 3: Voice Words</div><div style="font-size:0.75rem;color:var(--portal-muted);">Who you are in the work. Your tone, presence, and quality. Choose three.</div></div>
+              <a class="guide-btn" href="/session-2-voice-words.html" target="_blank" rel="noopener">↓ Download</a>
+            </div>
+          </div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/44kJRB?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=2&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body"><div class="form-row-title">Post-Session Commitment and Positioning Workbook</div><div class="form-row-meta">Complete today · Locks your nine words and first positioning statement · Includes between-session workbook drafts</div></div>
+              <span class="form-row-timing timing-after">After Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/jaM6X6?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=2&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge</div><div class="form-row-meta">Your nine words need to touch the world once · One moment, one person or audience · Report back before Session 3</div></div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 2 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Nine Words + Positioning Statement</h3>
+            <p>By the end of Session 2, you will have nine words — three each across Vision, Value, and Voice — and a first committed positioning statement built from them.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post your 72-Hour Bridge result here. Share your nine words with the group.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session3">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 03 · Clarity</span>
+              <h2>Who You Serve</h2>
+              <p>Identity meets the market. Build your ideal client avatar from your nine words. Lock the person, test the positioning match, and send one signal before Session 4.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 3 Guide — Reference During the Live Call</h4><p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are.</p></div>
+            <a class="guide-btn" href="/session-3-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;"><span class="portal-card-label">Session 3 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/7RDKaa?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=3&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre-Work — Who You Serve</div><div class="form-row-meta">Complete before Session 3 · 20 to 25 min · Audit who you have been building for, find the pattern, imagine forward</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="/session-3-worksheet.html" target="_blank" rel="noopener" download>
+              <div class="form-row-icon icon-gold">📄</div>
+              <div class="form-row-body"><div class="form-row-title">Live Worksheet — Who You Serve</div><div class="form-row-meta">Open during the 90-min session · Work through it live with the group · Your thinking tool for the call</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">↓</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/A7Jp4y?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=3&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body"><div class="form-row-title">Post-Session Commitment — Your Leadership Decision</div><div class="form-row-meta">Complete within 24 hrs · Locks your avatar, positioning match, strongest audience type, and one specific action with a deadline</div></div>
+              <span class="form-row-timing timing-after">After Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/Bz1pje?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=3&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge — Your Avatar Is Decided.</div><div class="form-row-meta">Due before Session 4 · Put your avatar and positioning into the world once · Report back here</div></div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 3 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Ideal Client Avatar — Locked</h3>
+            <p>By the end of Session 3, you will have one specific person described — name, situation, problem, belief, and hope. Your positioning statement tested against that avatar.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post your 72-Hour Bridge signal here. Share who your avatar is.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session4">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 04 · Strategy</span>
+              <h2>Choose Your Lane</h2>
+              <p>Your nine words, your ideal client, and your bridge reflection are three signals. Session 4 is about confirming the conclusion the data has already reached and committing to it.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 4 Guide — Reference During the Live Call</h4><p>Print it or keep it open in a second tab. Shows the session arc so you always know where you are.</p></div>
+            <a class="guide-btn" href="/session-4-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;"><span class="portal-card-label">Session 4 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/QKrRy7?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre Work — Choose Your Lane</div><div class="form-row-meta">Complete before Session 4 · 20 min · Review your three signals from Session 3, identify where they point, and name the resistance if any</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="/session-4-worksheet.html" target="_blank" rel="noopener" download>
+              <div class="form-row-icon icon-gold">📄</div>
+              <div class="form-row-body"><div class="form-row-title">Live Worksheet — Choose Your Lane</div><div class="form-row-meta">Open during the 90-min session · Work through it live with the group · Your thinking tool for the call</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">↓</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/eqArPe?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body"><div class="form-row-title">Post Session Commitment — Your Lane Is Locked</div><div class="form-row-meta">Complete within 24 hrs · Locks your lane, first offer structure, three 90 day commitments with deadlines, and your 12 month vision</div></div>
+              <span class="form-row-timing timing-after">After Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/WOoRdN?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=4&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body"><div class="form-row-title">72 Hour Bridge — You Chose Your Lane.</div><div class="form-row-meta">Due before Session 5 · One move inside your lane · Bring the reflection back</div></div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 4 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Lane Declaration + First Offer + 90 Day Plan</h3>
+            <p>By the end of Session 4 you will have named your lane, designed your first offer structure, and committed to three specific actions in the next 90 days.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post your 72 hour bridge move here. Name your lane and what you did inside it.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session5">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 05 · Container</span>
+              <h2>The Container · Customer Journey Model</h2>
+              <p>Session 5 is about designing the experience your ideal client has from the moment they discover you through to the moment they say yes.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 5 Guide — Reference During the Live Call</h4><p>Print it or keep it open in a second tab. Shows the session arc and the container decision sequence.</p></div>
+            <a class="guide-btn" href="/session-5-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;"><span class="portal-card-label">Session 5 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/1AK4YW?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=5&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre-Work · Design the Experience</div><div class="form-row-meta">Complete before Session 5 · 20 min · Bring your positioning statement, ideal client avatar, and lane declaration</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <div class="download-card">
+              <div class="download-icon"><span class="download-icon-top">LYF</span><span class="download-icon-type">HTML</span></div>
+              <div class="download-info"><h4>Session 5 Worksheet — Design the Experience</h4><p>Download, open in your browser, and work through it during the live session.</p></div>
+              <a href="/session-5-worksheet.html" class="btn-download" download>↓ Download Worksheet</a>
+            </div>
+            <a class="form-row" href="https://tally.so/r/J9Rlrd?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=5&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">✅</div>
+              <div class="form-row-body"><div class="form-row-title">Post-Session Commitment · Your Container Is Decided</div><div class="form-row-meta">Complete same day · Lock your archetype, your journey sequence, your access point, and confirm all four alignment tests pass</div></div>
+              <span class="form-row-timing timing-after">After Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/gDAqVd?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=5&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-navy">⚡</div>
+              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge · Your Container Is Decided.</div><div class="form-row-meta">Due before Session 6 · One real move toward your container</div></div>
+              <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 5 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Customer Journey Model — Decided</h3>
+            <p>By the end of Session 5 you will have chosen your journey archetype, mapped your journey, named your access point, and confirmed your container passes all four alignment tests.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post your container decision in the channel — your archetype and your access point named.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-session6">
+          <div class="session-header">
+            <div class="session-header-left">
+              <span class="session-eyebrow">Session 06 · Graduation</span>
+              <h2>Momentum and Reflection · Who Am I Now</h2>
+              <p>This session integrates everything you have built. You arrived knowing you were stuck. You leave knowing exactly who you are, who you serve, how you reach them, and how you lead. Today you say that out loud.</p>
+            </div>
+            <div class="session-status-badge badge-active"><span class="badge-dot"></span> Now Active</div>
+          </div>
+          <div class="guide-banner">
+            <div class="guide-banner-icon">📄</div>
+            <div class="guide-banner-body"><h4>Session 6 Guide — Reference During the Live Call</h4><p>Session arc and the declaration sequence.</p></div>
+            <a class="guide-btn" href="/session-6-guide.pdf" target="_blank" rel="noopener">↓ Download</a>
+          </div>
+          <div class="guide-banner" style="margin-top:10px;">
+            <div class="guide-banner-icon">📜</div>
+            <div class="guide-banner-body"><h4>A Letter to Your Future Self — Keepsake</h4><p>Print it. Fill it in during the session. Set a reminder to open it in 90 days.</p></div>
+            <a class="guide-btn" href="/letter-to-future-self.html" download>↓ Download</a>
+          </div>
+          <div class="guide-banner" style="margin-top:10px;">
+            <div class="guide-banner-icon">🧭</div>
+            <div class="guide-banner-body"><h4>90-Day Leadership Compass — Keepsake</h4><p>Your operating document. Keep it visible. Return to it at Day 30, 60, and 90.</p></div>
+            <a class="guide-btn" href="/90-day-leadership-compass.html" download>↓ Download</a>
+          </div>
+          <div style="margin-bottom:14px;margin-top:20px;"><span class="portal-card-label">Session 6 Forms</span></div>
+          <div class="form-list">
+            <a class="form-row" href="https://tally.so/r/gDAG5D?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=6&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">📋</div>
+              <div class="form-row-body"><div class="form-row-title">Pre-Work · Momentum and Reflection</div><div class="form-row-meta">Complete before Session 6 · 20 min · Reflect on who you were when you arrived and prepare your four declaration answers</div></div>
+              <span class="form-row-timing timing-before">Before Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <div class="download-card">
+              <div class="download-icon"><span class="download-icon-top">LYF</span><span class="download-icon-type">HTML</span></div>
+              <div class="download-info"><h4>Session 6 Worksheet — Momentum and Reflection</h4><p>Download, open in your browser, and work through it during the live session.</p></div>
+              <a href="/session-6-worksheet.html" class="btn-download" download>↓ Download Worksheet</a>
+            </div>
+            <a class="form-row" href="https://tally.so/r/XxG0eL?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=6&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-gold">📜</div>
+              <div class="form-row-body"><div class="form-row-title">A Letter to Your Future Self</div><div class="form-row-meta">Complete during Session 6 · Written in your own voice in the final minutes</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">→</span>
+            </a>
+            <a class="form-row" href="https://tally.so/r/81kxdz?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=6&cohort_id=cohort1" target="_blank" rel="noopener">
+              <div class="form-row-icon icon-teal">🧭</div>
+              <div class="form-row-body"><div class="form-row-title">90-Day Leadership Compass</div><div class="form-row-meta">Complete during Session 6 · Your identity foundation, the pattern you are watching, three 90-day priorities, your monthly question</div></div>
+              <span class="form-row-timing timing-during">During Session</span><span class="form-row-arrow">→</span>
+            </a>
+          </div>
+          <div class="portal-card" style="margin-bottom:20px;">
+            <span class="portal-card-label">Session 6 Output</span><div class="divider-sm"></div>
+            <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Your Graduation Package</h3>
+            <p>By the end of Session 6 you will have made your declaration out loud, named your pattern in front of the group, completed your 90-Day Leadership Compass, and written your Letter to Your Future Self.</p>
+          </div>
+          <div class="slack-card">
+            <div class="slack-icon">💬</div>
+            <div class="slack-body"><h4>Accountability Channel — #leading-yourself-forward</h4><p>Post one sentence from your Letter to Your Future Self. The cohort witnessed your declaration. They hold you to it.</p></div>
+            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          </div>
+        </div>
+
+        <div class="portal-view" id="view-outputs">
+          <div class="welcome-header">
+            <span class="welcome-eyebrow">Your Portfolio</span>
+            <h1>My <em>Outputs</em></h1>
+            <p>Eight concrete deliverables built across the six sessions. Each one yours.</p>
+          </div>
+          <div class="output-tracker">
+            <h3>Output Portfolio — Cohort 1</h3>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Practitioner Identity Statement</strong> — Who you are as a leader and practitioner</p><span class="output-session-tag">Session 1</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Vision Statement</strong> — Where you are going and why</p><span class="output-session-tag">Session 2</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Brand Voice Profile</strong> — Nine words. Vision, Value, Voice</p><span class="output-session-tag">Session 2</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Value Proposition</strong> — What you do, for whom, and why it matters</p><span class="output-session-tag">Session 2</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Ideal Client Portrait</strong> — A real person with a specific worldview</p><span class="output-session-tag">Session 3</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Primary Offer Definition</strong> — Your lane and first offer structure</p><span class="output-session-tag">Session 4</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>Presence Statement and Core Message</strong> — The sentence that makes your ideal client feel found</p><span class="output-session-tag">Session 5</span></div>
+            <div class="output-row-portal"><div class="output-check"></div><p><strong>90-Day Momentum Plan</strong> — Your complete operating document</p><span class="output-session-tag">Session 6</span></div>
+          </div>
+          <div class="portal-card">
+            <span class="portal-card-label">How This Works</span><div class="divider-sm"></div>
+            <p>As you complete each session's Post-Session Commitment form, your outputs are saved here. After Session 6, this page becomes your complete positioning portfolio.</p>
+          </div>
+        </div>
+
+      </main>
     </div>
-    <div class="hdr-ctr">
-      <div class="eq-val" id="hEq">—</div>
-      <div class="eq-pnl" id="hPnl">Loading...</div>
-    </div>
-    <div class="hdr-r">
-      <div class="sys-dot" id="sysDot"></div>
-      <div class="mkt-badge closed" id="mktBadge">—</div>
-      <div class="live-ind" id="liveInd"><div class="live-ind-dot"></div>Live</div>
-    </div>
-  </div>
-
-  <div class="loss-rail"><div class="loss-fill" id="lossRail" style="width:0%"></div></div>
-
-  <div class="tabs">
-    <button class="tab active" onclick="nav('signals')" id="tab-signals">
-      <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
-      Signals
-      <div class="tab-badge" id="sigBadge" style="display:none">0</div>
-    </button>
-    <button class="tab" onclick="nav('positions')" id="tab-positions">
-      <svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-      Positions
-    </button>
-    <button class="tab" onclick="nav('alerts')" id="tab-alerts">
-      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-      Alerts
-      <div class="tab-badge" id="alertBadge" style="display:none">0</div>
-    </button>
-    <button class="tab" onclick="nav('markets')" id="tab-markets">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      Markets
-    </button>
-    <button class="tab" onclick="nav('history')" id="tab-history">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-      History
-    </button>
-    <button class="tab" onclick="nav('constitution')" id="tab-constitution">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Rules
-    </button>
-  </div>
-
-  <div class="content">
-
-    <!-- SIGNALS -->
-    <div class="page active" id="page-signals">
-      <div class="sh">
-        <div class="sl">Morning Signals</div>
-        <button class="rbtn" id="sigRbtn" onclick="loadSignals()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23,4 23,11 16,11"/><polyline points="1,20 1,13 8,13"/><path d="M3.51,9a9,9,0,0,1,14.85-3.36L23,11M1,13l4.64,4.36A9,9,0,0,0,20.49,15"/></svg>
-          Refresh
-        </button>
-      </div>
-      <div id="regimeBanner"></div>
-      <div id="capBanner"></div>
-      <div id="sigWrap"><div class="skel"></div><div class="skel" style="height:120px;opacity:.4"></div></div>
-    </div>
-
-    <!-- POSITIONS -->
-    <div class="page" id="page-positions">
-      <div class="sh">
-        <div class="sl">Live Positions</div>
-        <button class="rbtn" id="posRbtn" onclick="loadPositions()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23,4 23,11 16,11"/><polyline points="1,20 1,13 8,13"/><path d="M3.51,9a9,9,0,0,1,14.85-3.36L23,11M1,13l4.64,4.36A9,9,0,0,0,20.49,15"/></svg>
-          Refresh
-        </button>
-      </div>
-      <div id="perfSum"></div>
-      <div id="posWrap"><div class="skel"></div></div>
-      <div id="conPanel"></div>
-    </div>
-
-    <!-- ALERTS -->
-    <div class="page" id="page-alerts">
-      <div class="sh">
-        <div class="sl">System Alerts</div>
-        <button class="notif-mark-read" onclick="markAllRead()">Mark All Read</button>
-      </div>
-      <div id="alertWrap"><div class="skel" style="height:80px"></div></div>
-    </div>
-
-    <!-- MARKETS -->
-    <div class="page" id="page-markets">
-      <div class="sh">
-        <div class="sl">All 40 Stocks</div>
-        <div class="sm" id="mktTime">—</div>
-      </div>
-      <div id="mktWrap"><div class="skel"></div></div>
-    </div>
-
-    <!-- HISTORY -->
-    <div class="page" id="page-history">
-      <div class="sh"><div class="sl">Trade History</div></div>
-      <div id="histWrap"><div class="skel" style="height:100px"></div></div>
-    </div>
-
-    <!-- CONSTITUTION — All 14 Rules -->
-    <div class="page" id="page-constitution">
-      <div class="con-page-hd">
-        <div class="con-page-title">The Constitution</div>
-        <div class="con-page-sub">Clarke Trading Intelligence — 14 Rules</div>
-        <div class="con-page-desc">"Discipline is the bridge between goals and accomplishment. These rules exist to protect capital, enforce consistency, and remove emotion from every decision."</div>
-      </div>
-
-      <div class="con-legend">
-        <div class="con-legend-item"><div class="con-legend-dot sys"></div>System Enforced — Clarke executes automatically</div>
-        <div class="con-legend-item"><div class="con-legend-dot op"></div>Operator Enforced — Your judgment required</div>
-        <div class="con-legend-item"><div class="con-legend-dot both"></div>Both — System + Operator</div>
-      </div>
-
-      <div class="con-section">
-        <div class="con-section-lbl">Entry & Signal Rules</div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">01</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Trade Only Constitution-Approved Signals</div>
-            <div class="con-rule-desc">Only enter positions that score 80+ (BULL), 82+ (CAUTION), or 85+ (BEAR) on the overnight scanner. No exceptions, no gut-feel trades outside the system.</div>
-            <span class="con-rule-badge both">Both</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">02</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Entry Window — 10:00 AM to 11:30 AM ET</div>
-            <div class="con-rule-desc">Optimal entries only in the first 90-minute window after the open volatility settles. Avoids gap fills and false breakouts from the open.</div>
-            <span class="con-rule-badge op">Operator Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">03</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Minimum R/R Ratio of 1.5:1</div>
-            <div class="con-rule-desc">Every signal must offer at least 1.5x reward for every 1x of risk. Signals failing this check are automatically rejected by the scanner before they reach the dashboard.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">04</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Market Regime Awareness</div>
-            <div class="con-rule-desc">Signal thresholds rise with market risk — BULL 80/70, CAUTION 82/72, BEAR 85/75. SPY vs 20-day MA determines regime each night. Cash is always a valid position in BEAR.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="con-section">
-        <div class="con-section-lbl">Risk & Stop Loss Rules</div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">05</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Stop Loss Armed on Every Trade</div>
-            <div class="con-rule-desc">Every position carries an OCO bracket order with a stop-limit at the scanner's calculated stop level. No position ever runs without a stop. Stops are set below key support with a 2% buffer.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">06</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Maximum Stop Distance — 8% from Entry</div>
-            <div class="con-rule-desc">Stop loss may not be placed more than 8% below entry price. Prevents oversized risk on wide-ranging setups. Clarke rejects any trade where stop distance exceeds this limit.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">07</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">2% Account Risk Cap Per Trade</div>
-            <div class="con-rule-desc">Maximum dollar risk on any single trade is 2% of total account equity. Position sizing is calculated from this — shares = max risk ÷ risk per share. Hard cap, no override.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">08</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Daily Loss Limit — 3% of Account</div>
-            <div class="con-rule-desc">If realized losses on any trading day reach 3% of account equity, Clarke locks all new trading for the rest of that session. The overlay activates automatically. Resume the next day.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="con-section">
-        <div class="con-section-lbl">Profit Management Rules</div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">09</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Profit Ladder — 25/25/50</div>
-            <div class="con-rule-desc">At Target 1 (1.5x risk): sell 25%, stop moves to breakeven — trade is now risk-free. At Target 2 (3x risk): sell another 25%, stop moves to Target 1 — locking real profit. Remaining 50% trails with stop raises every 5% gain.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">10</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Trailing Stop — Raise Every 5% Gain</div>
-            <div class="con-rule-desc">After both ladder targets are hit, the remaining 50% position has its stop raised automatically every 5% of additional gain. Stops only move up — never down. Lets winners run while locking in profit.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">11</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Maximum Hold Period — 20 Days</div>
-            <div class="con-rule-desc">No position held longer than 20 calendar days. Prevents capital being tied up in stalled trades. If a position hasn't reached Target 1 within 20 days, exit and redeploy into fresh setups.</div>
-            <span class="con-rule-badge op">Operator Enforced</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="con-section">
-        <div class="con-section-lbl">Capital Deployment Rules</div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">12</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">80% Deployment Cap — 20% Reserve</div>
-            <div class="con-rule-desc">Maximum 80% of account equity may be deployed at any time. 20% is always held in reserve — dry powder for high-conviction opportunities and protection against black swan events.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">13</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">Fundamental Floor — Rule 12 Disqualification</div>
-            <div class="con-rule-desc">Stocks with declining revenue (3+ quarters), D/E ratio above 2.0, institutional ownership below 20%, or negative analyst consensus are automatically disqualified — regardless of technical score. Financials are truth.</div>
-            <span class="con-rule-badge sys">System Enforced</span>
-          </div>
-        </div>
-
-        <div class="con-rule-card">
-          <div class="con-rule-num">14</div>
-          <div class="con-rule-body">
-            <div class="con-rule-name">8 Consecutive Compliant Weeks Before Live Capital</div>
-            <div class="con-rule-desc">Paper trading must demonstrate 8 consecutive weeks of Constitution-compliant operation before any real capital is deployed. No rule violations, no accidental shorts, no manual overrides. The system must earn trust.</div>
-            <span class="con-rule-badge op">Operator Enforced</span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end constitution page -->
-
   </div>
 </div>
 
 <script>
-const WK  = 'https://clarke-trading-api.jimmy-11f.workers.dev';
-const KEY = 'CTI_DASH_2026_xK9mP3qR';
-const H   = {'Content-Type':'application/json','Authorization':`Bearer ${KEY}`};
-const C4  = ['NVDA','AMD','TSLA','IBM'];
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add("visible"), i * 55);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+document.querySelectorAll("a[href^='#']").forEach(a => {
+  a.addEventListener("click", e => {
+    const t = document.querySelector(a.getAttribute("href"));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth" }); }
+  });
+});
 
-const S = {
-  acct:null, sigs:[], pos:[], uni:[], mkt:null, loss:null, cap:null, notifs:[],
-  approved: new Set(JSON.parse(localStorage.getItem('clk_appr')||'[]')),
-  prevSig: 0,
-};
+let portalActive = false;
 
-let actx=null;
-function initAudio(){if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)()}
-function tone(f,d,t='sine',v=.22){try{if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.frequency.value=f;o.type=t;g.gain.setValueAtTime(v,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.start();o.stop(actx.currentTime+d)}catch(e){}}
-const SFX={
-  approve:()=>{tone(523,.1);setTimeout(()=>tone(659,.1),100);setTimeout(()=>tone(784,.25),200)},
-  signal:()=>tone(660,.08,'sine',.12),
-  stop:()=>tone(220,.3,'sawtooth',.16),
-  notif:()=>tone(440,.15,'sine',.18),
-};
-
-async function api(path,opts={}){
-  const r=await fetch(`${WK}${path}`,{headers:H,...opts});
-  const d=await r.json();
-  if(!d.success)throw new Error(d.error||'API error');
-  return d.data;
+function openPortal(e) {
+  if (e) e.preventDefault();
+  if (window.$memberstackDom) {
+    window.$memberstackDom.getCurrentMember().then((result) => {
+      const member = result && (result.data || result.member || result);
+      if (member && member.id) { activatePortal(member); } else { showLoginOverlay(); }
+    }).catch(() => showLoginOverlay());
+  } else { showLoginOverlay(); }
 }
 
-async function init(){
-  ['touchstart','click'].forEach(e=>document.addEventListener(e,initAudio,{once:true}));
-  await Promise.allSettled([loadAccount(),loadMktStatus(),loadLoss(),loadSignals(),loadNotifications()]);
+function showLoginOverlay() { document.getElementById('portal-login-overlay').classList.add('active'); }
+function closePortalLogin() { document.getElementById('portal-login-overlay').classList.remove('active'); }
 
-  // 60-second refresh — account, market status, loss limit, notifications
-  setInterval(()=>Promise.allSettled([loadAccount(),loadMktStatus(),loadLoss(),loadNotifications()]),60000);
-
-  // 30-second price refresh during market hours — keeps position and market prices current
-  setInterval(()=>{
-    const now = new Date();
-    const ny  = new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'}));
-    const t   = ny.getHours() + ny.getMinutes()/60;
-    const day = ny.getDay();
-    const marketOpen = day>=1 && day<=5 && t>=9.5 && t<16;
-    document.getElementById('liveInd').classList.add('show');
-    if(!marketOpen){document.getElementById('liveInd').classList.remove('show');return;}
-    // Refresh whichever tab is currently active
-    const activePage = document.querySelector('.page.active')?.id;
-    if(activePage==='page-positions') loadPositions();
-    if(activePage==='page-markets')   loadMarkets();
-    // Always refresh account equity and header
-    loadAccount();
-  }, 30000);
-}
-
-async function loadAccount(){
-  try{
-    const d=await api('/account');S.acct=d;S.cap=d.capital;
-    const eq=parseFloat(d.equity),pnl=parseFloat(d.dayPnl),pct=parseFloat(d.dayPnlPct);
-    document.getElementById('hEq').textContent=`$${eq.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-    const pe=document.getElementById('hPnl');
-    pe.textContent=`${pnl>=0?'+':''}$${Math.abs(pnl).toFixed(2)} (${pnl>=0?'+':''}${pct}%)`;
-    pe.className=`eq-pnl ${pnl>=0?'pos':'neg'}`;
-    document.getElementById('sysDot').className='sys-dot';
-    if(d.constitution?.tradingLocked){document.getElementById('lockedOverlay').classList.add('show');SFX.stop();}
-  }catch(e){document.getElementById('sysDot').className='sys-dot off';document.getElementById('hEq').textContent='Offline'}
-}
-
-async function loadMktStatus(){
-  try{
-    const d=await api('/market-status');S.mkt=d;
-    const b=document.getElementById('mktBadge');
-    if(d.entryWindowOpen){b.textContent='Entry Open';b.className='mkt-badge open';}
-    else if(d.session==='OPEN_VOLATILE'){b.textContent='Wait 10AM';b.className='mkt-badge wait';}
-    else if(d.isOpen){b.textContent='Open';b.className='mkt-badge open';}
-    else if(d.session==='PRE_MARKET'){b.textContent='Pre-Market';b.className='mkt-badge wait';}
-    else{b.textContent='Closed';b.className='mkt-badge closed';}
-  }catch(e){}
-}
-
-async function loadLoss(){
-  try{
-    const d=await api('/daily-loss');S.loss=d;
-    const pct=d.pctUsed||0,r=document.getElementById('lossRail');
-    r.style.width=`${Math.min(100,pct)}%`;
-    r.className=`loss-fill ${pct>=80?'danger':pct>=50?'warn':''}`;
-  }catch(e){}
-}
-
-async function loadNotifications(){
-  try{
-    const d=await api('/notifications');S.notifs=d.notifications||[];
-    const unread=d.unread||0;
-    const b=document.getElementById('alertBadge');
-    if(unread>0){b.textContent=unread>9?'9+':unread;b.style.display='flex';SFX.notif();}
-    else b.style.display='none';
-  }catch(e){}
-}
-
-async function markAllRead(){
-  try{
-    await api('/notifications/read',{method:'POST'});
-    S.notifs=S.notifs.map(n=>({...n,read:true}));
-    document.getElementById('alertBadge').style.display='none';
-    renderAlerts();
-    showToast('All alerts marked as read','info');
-  }catch(e){}
-}
-
-async function loadSignals(){
-  const btn=document.getElementById('sigRbtn');btn.classList.add('sp');
-  try{
-    const d=await api('/signals');S.sigs=d.signals||[];S.cap=d.capital;
-    const fc=S.sigs.filter(s=>s.score>=80).length;
-    if(fc>S.prevSig&&S.prevSig>0)SFX.signal();
-    S.prevSig=fc;
-    renderSigs(d);
-    const b=document.getElementById('sigBadge');
-    if(fc>0){b.textContent=fc;b.style.display='flex';}else b.style.display='none';
-  }catch(e){document.getElementById('sigWrap').innerHTML=errMsg(e.message);}
-  finally{btn.classList.remove('sp');}
-}
-
-function renderCapBanner(cap){
-  const wrap=document.getElementById('capBanner');
-  if(!cap)return;
-  const pct=parseFloat(cap.deployedPctDisplay||0);
-  const cls=pct>=80?'full':pct>=60?'warn':'';
-  wrap.innerHTML=`<div class="cap-bar-wrap">
-    <div class="cap-bar-hd">
-      <div class="cap-lbl">Capital Deployed</div>
-      <div class="cap-pct" style="color:${pct>=80?'var(--red-lt)':pct>=60?'var(--amber-lt)':'var(--gold)'}">${pct}%</div>
-    </div>
-    <div class="cap-track"><div class="cap-fill ${cls}" style="width:${Math.min(100,pct)}%"></div></div>
-    <div class="cap-stats"><span>${pct}% of 80% limit</span><span>$${Math.floor(cap.remainingCapacity||0).toLocaleString()} available</span><span>20% reserve protected</span></div>
-  </div>`;
-}
-
-function renderSigs(d){
-  const wrap=document.getElementById('sigWrap');
-  const bel=document.getElementById('regimeBanner');
-  const sigs=d.signals||[];
-  const full=sigs.filter(s=>s.score>=80);
-  const watch=sigs.filter(s=>s.score>=70&&s.score<80);
-  const cap=d.capital||S.cap;
-
-  renderCapBanner(cap);
-
-  if(sigs.length&&sigs[0].regime){
-    const map={
-      BULL:{cls:'bull',ic:'↑',lbl:'Bull Market',msg:'Standard thresholds active. Market conditions favorable.'},
-      CAUTION:{cls:'caution',ic:'~',lbl:'Caution',msg:'SPY showing weakness. Threshold raised to 82. Be selective.'},
-      BEAR:{cls:'bear',ic:'↓',lbl:'Bear Market',msg:'SPY in downtrend. Threshold raised to 85. Consider cash.'},
-    };
-    const c=map[sigs[0].regime]||map.BULL;
-    bel.innerHTML=`<div class="regime ${c.cls}"><div>${c.ic}</div><div><strong>Regime: ${c.lbl}</strong>${c.msg}</div></div>`;
-  }else bel.innerHTML='';
-
-  if(!full.length&&!watch.length){
-    wrap.innerHTML=`<div class="empty"><div class="eg">◌</div><div class="et">No Signals</div><div class="em">The scanner found no setups meeting the Constitution's standards. Cash is a valid position.<br><br><span style="color:var(--text3)">Last scan: ${d.lastScanTime?new Date(d.lastScanTime).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Not yet run'}</span></div></div>`;
-    return;
+function handleLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errorEl = document.getElementById('login-error');
+  const btn = document.querySelector('.btn-login');
+  errorEl.classList.remove('visible');
+  if (!email || !password) { errorEl.textContent = 'Please enter your email and password.'; errorEl.classList.add('visible'); return; }
+  btn.textContent = 'Signing in…'; btn.disabled = true;
+  function attemptLogin() {
+    window.$memberstackDom.loginMemberEmailPassword({ email, password })
+      .then((result) => {
+        btn.textContent = 'Sign In'; btn.disabled = false;
+        const member = result.data || result.member || result;
+        closePortalLogin(); activatePortal(member);
+      })
+      .catch((err) => {
+        btn.textContent = 'Sign In'; btn.disabled = false;
+        errorEl.textContent = 'Incorrect email or password. Please try again.'; errorEl.classList.add('visible');
+      });
   }
-
-  let html=full.map(s=>sigCard(s,cap)).join('');
-  if(watch.length){
-    html+=`<div class="watch-hdr"><div class="watch-lbl">Watch — Score 70–79</div><div class="watch-line"></div></div>`;
-    html+=watch.map(s=>watchCard(s)).join('');
-  }
-  wrap.innerHTML=html;
-}
-
-function slbl(sc){return sc>=95?'Max Conviction':sc>=88?'High Conviction':'Standard';}
-function tcls(sc){return sc>=95?'t1':sc>=88?'t2':'t3';}
-
-function sigCard(s,cap){
-  const appr=S.approved.has(s.symbol)||s.isApproved;
-  const isC4=C4.includes(s.symbol);
-  const hasGap=s.gap?.gap_warning;
-  const hasEarn=s.earnings?.earnings_soon;
-  const rsi=s.technicals?.rsi||0;
-  const trend=s.technicals?.trend?.trend||'';
-  const vol=s.technicals?.volume?.volume_signal||'';
-  const rs=s.relativeStrength?.rs_signal||'';
-  const risk=s.entry&&s.stop?((s.entry-s.stop)/s.entry*100).toFixed(1):'—';
-  const capFull=cap&&cap.atLimit;
-
-  const rc=rsi>=40&&rsi<=65?'good':rsi>65?'warn':'';
-  const tc=trend.includes('UP')?'good':trend==='DOWN'?'bad':'';
-  const vc=vol.includes('BULLISH')?'good':vol.includes('BEARISH')?'bad':'';
-  const rsc=rs==='STRONG_OUTPERFORM'||rs==='OUTPERFORM'?'good':rs==='UNDERPERFORM'?'bad':'';
-
-  let actionBtn='';
-  if(appr){
-    actionBtn=`<button class="btn-app active" disabled>
-      <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-      Trade Active — Stop Armed</button>`;
-  }else if(capFull){
-    actionBtn=`<button class="btn-app blocked" disabled>Capital Fully Deployed — Reserve Protected</button>`;
-  }else{
-    actionBtn=`<div style="display:flex;flex-direction:column;gap:7px;width:100%">
-      <div style="display:flex;gap:8px">
-        <button class="btn-app" id="btn-${s.symbol}" onclick="approve('${s.symbol}',${s.entry},${s.stop},${s.target},${s.score},${s.target1||0},${s.target2||0})">Approve Trade</button>
-        <button class="btn-pass" onclick="pass('${s.symbol}')">Pass</button>
-      </div>
-      <button class="btn-buynow" onclick="buyNow('${s.symbol}',${s.entry},${s.stop},${s.target},${s.score},${s.target1||0},${s.target2||0})">⚡ Buy at Market Price</button>
-    </div>`;
-  }
-
-  return `<div class="sig-card ${tcls(s.score)}${appr?' approved':''}${capFull&&!appr?' blocked':''}" id="card-${s.symbol}">
-    <div class="card-hd">
-      <div class="card-l">
-        <div class="c-sym ${isC4?'core':''}">${s.symbol}</div>
-        <div class="c-chips">
-          ${isC4?'<span class="chip core">Core Four</span>':''}
-          ${hasGap?`<span class="chip gap">Gap ${s.gap.gap_pct>0?'+':''}${s.gap.gap_pct}%</span>`:''}
-          ${hasEarn?`<span class="chip earn">Earnings ${s.earnings.earnings_date}</span>`:''}
-          ${rs==='STRONG_OUTPERFORM'?'<span class="chip rs">Outperform</span>':''}
-        </div>
-      </div>
-      <div class="card-r">
-        <div class="score-blk">
-          <div class="score-n ${s.score>=95?'':s.score>=88?'t2':'t3'}">${s.score}</div>
-          <div class="score-d">/ 100</div>
-          <div class="score-lbl">${slbl(s.score)}</div>
-        </div>
-        <div class="live-p">$${s.currentPrice||'—'}</div>
-      </div>
-    </div>
-    <div class="cdivider"></div>
-    <div class="levels">
-      <div class="lv entry"><div class="lv-lbl">Entry</div><div class="lv-val">$${s.entry}</div><div class="lv-sub">Limit order</div></div>
-      <div class="lv stop"><div class="lv-lbl">Stop</div><div class="lv-val">$${s.stop}</div><div class="lv-sub">−${risk}% risk</div></div>
-      <div class="lv target"><div class="lv-lbl">Target</div><div class="lv-val">$${s.target}</div><div class="lv-sub">${s.rrRatio||'—'}:1 R/R</div></div>
-    </div>
-    <div class="rat">${s.rationale||'No rationale available.'}</div>
-    <div class="tech-row">
-      <span class="tp ${rc}">RSI ${rsi}</span>
-      <span class="tp ${tc}">${trend||'Trend —'}</span>
-      <span class="tp ${vc}">${vol||'Volume —'}</span>
-      ${rs?`<span class="tp ${rsc}">${rs.replace(/_/g,' ')}</span>`:''}
-    </div>
-    <div class="card-acts">${actionBtn}</div>
-    ${appr?`<div class="app-conf show"><svg viewBox="0 0 24 24" width="11" height="11" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>OCO bracket armed. Trailing stop active. Nothing more to do.</div>`:''}
-  </div>`;
-}
-
-function watchCard(s){
-  return `<div class="watch-card"><div class="w-sym">${s.symbol}</div><div class="w-score">${s.score}</div><div class="w-detail">RSI ${s.technicals?.rsi||'—'} · $${s.currentPrice||'—'}</div><button class="btn-prom" onclick="promoteW('${s.symbol}')">→ Signal</button></div>`;
-}
-
-let pendingTrade = null;
-
-async function approve(sym,entry,stop,target,score,t1,t2){
-  if(S.mkt?.session==='OPEN_VOLATILE'){showToast('Wait until 10AM ET for clean entries','warning');return;}
-  if(!S.mkt?.isOpen){showToast('Market closed — signal saved for morning review','info');return;}
-  const btn=document.getElementById(`btn-${sym}`);
-  if(btn){btn.disabled=true;btn.className='btn-app placing';btn.textContent='Placing Order...';}
-  try{
-    await api('/trade',{method:'POST',body:JSON.stringify({symbol:sym,entry,stop,target,target1:t1||null,target2:t2||null,score,marketOrder:false})});
-    S.approved.add(sym);
-    localStorage.setItem('clk_appr',JSON.stringify([...S.approved]));
-    SFX.approve();
-    showToast(`${sym} — Limit order placed at $${entry}. Stop at $${stop} armed.`,'success',5000);
-    if(btn){btn.className='btn-app active';btn.innerHTML='<svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Trade Active — Stop Armed';}
-    await loadSignals();
-  }catch(e){
-    if(btn){btn.disabled=false;btn.className='btn-app';btn.textContent='Approve Trade';}
-    showToast(e.message,'error',6000);
+  if (window.$memberstackDom) { attemptLogin(); } else {
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts++;
+      if (window.$memberstackDom) { clearInterval(interval); attemptLogin(); }
+      else if (attempts > 20) { clearInterval(interval); btn.textContent = 'Sign In'; btn.disabled = false; errorEl.textContent = 'Connection error. Please refresh and try again.'; errorEl.classList.add('visible'); }
+    }, 250);
   }
 }
 
-async function buyNow(sym,entry,stop,target,score,t1,t2){
-  if(S.mkt?.session==='OPEN_VOLATILE'){showToast('Wait until 10AM ET for clean entries','warning');return;}
-  if(!S.mkt?.isOpen){showToast('Market is closed','info');return;}
-  await showConfirm(sym,entry,stop,target,score,'buynow',t1,t2);
+document.addEventListener('DOMContentLoaded', () => {
+  ['login-email','login-password'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+  });
+  if (window.$memberstackDom) {
+    window.$memberstackDom.getCurrentMember().then((result) => {
+      const member = result && (result.data || result.member || result);
+      if (member && member.id && window.location.hash === '#portal') activatePortal(member);
+    }).catch(() => {});
+  }
+});
+
+function activatePortal(member) {
+  portalActive = true;
+  document.body.classList.add('portal-active');
+  document.getElementById('portal-root').classList.add('active');
+  const name = member?.customFields?.['first-name'] || member?.auth?.email?.split('@')[0] || member?.email?.split('@')[0] || 'Member';
+  const email = member?.auth?.email || member?.email || '';
+  document.getElementById('portal-member-display').textContent = name;
+  document.querySelectorAll('a.form-row[href*="tally.so"]').forEach(link => {
+    try {
+      const url = new URL(link.href);
+      url.searchParams.set('participant_name', name);
+      url.searchParams.set('participant_email', email);
+      link.href = url.toString();
+    } catch(e) {}
+  });
+  switchView('welcome', document.querySelector('[data-view="welcome"]'));
+  window.history.pushState({}, '', '#portal');
 }
 
-async function showConfirm(sym,entry,stop,target,score,source,t1,t2){
-  const modal=document.getElementById('confirmModal');
-  const btn=document.getElementById('confirmBtn');
-  document.getElementById('confirmSymbol').textContent=sym;
-  document.getElementById('confirmPrice').textContent='Loading...';
-  document.getElementById('confirmPriceChg').textContent='';
-  document.getElementById('confirmEntry').textContent='...';
-  document.getElementById('confirmStop').textContent='...';
-  document.getElementById('confirmTarget').textContent='...';
-  document.getElementById('confirmShares').textContent='...';
-  document.getElementById('confirmAmount').textContent='...';
-  document.getElementById('confirmRisk').textContent='...';
-  document.getElementById('confirmRR').textContent='...';
-  btn.textContent='Confirm Buy';btn.disabled=false;btn.className='btn-confirm';
-  modal.classList.add('show');
-  try{
-    const quote=await api(`/quote/${sym}`);
-    const currentPrice=quote.price;
-    const changePct=quote.changePct;
-    const originalRiskPct=entry>0?(entry-stop)/entry:0.05;
-    const originalRR=(entry>0&&stop>0)?(target-entry)/(entry-stop):2.0;
-    const freshStop=parseFloat((currentPrice*(1-originalRiskPct)).toFixed(2));
-    const freshTarget=parseFloat((currentPrice+(currentPrice-freshStop)*originalRR).toFixed(2));
-    const freshRisk=currentPrice-freshStop;
-    const equity=S.acct?parseFloat(S.acct.equity):99000;
-    const capital=S.cap||{};
-    const remainingCapacity=capital.remainingCapacity||equity*0.8;
-    let pct=score>=95?0.25:score>=88?0.15:0.10;
-    const dollarAmount=Math.min(equity*pct,remainingCapacity);
-    const maxByRisk=freshRisk>0?Math.floor((equity*0.02)/freshRisk):999;
-    const shares=Math.min(Math.floor(dollarAmount/currentPrice),maxByRisk);
-    const actualAmount=shares*currentPrice;
-    const riskDollars=shares*freshRisk;
-    const riskPct=(riskDollars/equity*100).toFixed(1);
-    const rr=freshRisk>0?((freshTarget-currentPrice)/freshRisk).toFixed(1):'—';
-    pendingTrade={sym,entry:currentPrice,stop:freshStop,target:freshTarget,score,source,originalEntry:entry,target1:t1||null,target2:t2||null};
-    document.getElementById('confirmPrice').textContent=`$${currentPrice.toFixed(2)}`;
-    const chgEl=document.getElementById('confirmPriceChg');
-    chgEl.textContent=`${changePct>=0?'+':''}${changePct}% today`;
-    chgEl.className=`confirm-price-chg ${changePct>=0?'pos':'neg'}`;
-    document.getElementById('confirmEntry').textContent=`$${currentPrice.toFixed(2)}`;
-    document.getElementById('confirmStop').textContent=`$${freshStop.toFixed(2)}`;
-    document.getElementById('confirmTarget').textContent=`$${freshTarget.toFixed(2)}`;
-    document.getElementById('confirmShares').textContent=shares;
-    document.getElementById('confirmAmount').textContent=`$${actualAmount.toFixed(0)}`;
-    document.getElementById('confirmRisk').textContent=`$${riskDollars.toFixed(0)} (${riskPct}%)`;
-    document.getElementById('confirmRR').textContent=`${rr}:1`;
-  }catch(e){closeConfirm();showToast(`Could not fetch current price for ${sym}`,'error');}
+function handleLogout() {
+  if (window.$memberstackDom) { window.$memberstackDom.logout().then(() => deactivatePortal()); } else { deactivatePortal(); }
 }
 
-function closeConfirm(){document.getElementById('confirmModal').classList.remove('show');pendingTrade=null;}
+function deactivatePortal() {
+  portalActive = false;
+  document.body.classList.remove('portal-active');
+  document.getElementById('portal-root').classList.remove('active');
+  window.history.pushState({}, '', window.location.pathname);
+}
 
-async function executeConfirmedTrade(){
-  if(!pendingTrade){showToast('No pending trade — please try again','error',5000);return;}
-  const btn=document.getElementById('confirmBtn');
-  btn.disabled=true;btn.className='btn-confirm loading';btn.textContent='Placing Order...';
-  try{
-    const sym    = pendingTrade.sym;
-    const entry  = parseFloat(pendingTrade.entry)  || 0;
-    const stop   = parseFloat(pendingTrade.stop)   || 0;
-    const target = parseFloat(pendingTrade.target) || 0;
-    const score  = parseFloat(pendingTrade.score)  || 80;
-    const t1     = pendingTrade.target1 ? parseFloat(pendingTrade.target1) : null;
-    const t2     = pendingTrade.target2 ? parseFloat(pendingTrade.target2) : null;
-    if(!sym)    throw new Error('Symbol missing — please try again');
-    if(!entry)  throw new Error('Entry price missing — please try again');
-    if(!stop)   throw new Error('Stop price missing — please try again');
-    if(!target) throw new Error('Target price missing — please try again');
-    console.log('Clarke Trade:', {sym, entry, stop, target, score, t1, t2});
-    const result = await api('/trade',{method:'POST',body:JSON.stringify({
-      symbol:sym, entry, stop, target, target1:t1, target2:t2, score, marketOrder:true
-    })});
-    console.log('Trade result:', result);
-    S.approved.add(sym);
-    localStorage.setItem('clk_appr',JSON.stringify([...S.approved]));
-    SFX.approve();
-    closeConfirm();
-    showToast(`${sym} — Trade Active. Stop at $${stop.toFixed(2)} armed automatically.`,'success',6000);
-    const sigBtn=document.getElementById(`btn-${sym}`);
-    if(sigBtn){sigBtn.className='btn-app active';sigBtn.innerHTML='<svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Trade Active — Stop Armed';}
-    await Promise.allSettled([loadSignals(),loadPositions()]);
-  }catch(e){
-    console.error('Trade error:', e);
-    btn.disabled=false;btn.className='btn-confirm';btn.textContent='Confirm Buy';
-    showToast('Trade failed: '+e.message,'error',8000);
+function switchView(viewId, navEl) {
+  document.querySelectorAll('.portal-view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.portal-nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.portal-session-item').forEach(n => n.classList.remove('active'));
+  const target = document.getElementById('view-' + viewId);
+  if (target) target.classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  const sessionMap = { session1: 0, session2: 1, session3: 2, session4: 3, session5: 4, session6: 5 };
+  if (sessionMap[viewId] !== undefined) {
+    const items = document.querySelectorAll('.portal-session-item');
+    if (items[sessionMap[viewId]]) items[sessionMap[viewId]].classList.add('active');
   }
 }
 
-function pass(sym){
-  const c=document.getElementById(`card-${sym}`);
-  if(c){c.style.opacity='.3';c.style.pointerEvents='none';}
-  showToast(`${sym} passed`,'info');
-}
-
-async function buyFromMarkets(sym,entry,stop,target,score){
-  if(!S.mkt?.isOpen){showToast('Market is closed','info');return;}
-  await showConfirm(sym,entry,stop,target,score,'markets');
-}
-
-function promoteW(sym){
-  const sig=S.sigs.find(s=>s.symbol===sym);
-  if(!sig)return;
-  const w=document.getElementById('sigWrap');
-  const d=document.createElement('div');d.innerHTML=sigCard(sig,S.cap);
-  w.insertBefore(d.firstElementChild,w.firstChild);
-  showToast(`${sym} promoted to signals`,'info');
-}
-
-async function loadPositions(){
-  document.getElementById('posRbtn').classList.add('sp');
-  try{
-    const[pos,acct,loss]=await Promise.all([api('/positions'),api('/account'),api('/daily-loss')]);
-    S.pos=pos.positions||[];S.acct=acct;S.loss=loss;S.cap=pos.capital;
-    renderPositions(pos,acct,loss);
-  }catch(e){document.getElementById('posWrap').innerHTML=errMsg(e.message);}
-  finally{document.getElementById('posRbtn').classList.remove('sp');}
-}
-
-function renderPositions(pos,acct,loss){
-  const positions=pos.positions||[];
-  const eq=parseFloat(acct.equity);
-  const dayPnl=parseFloat(acct.dayPnl);
-  const unreal=parseFloat(pos.totalUnrealizedPnl||0);
-  const lu=loss.pctUsed||0;
-  const cap=pos.capital||{};
-  const depPct=parseFloat(cap.deployedPctDisplay||0);
-
-  document.getElementById('perfSum').innerHTML=`
-    <div class="pg">
-      <div class="pt full"><div class="pt-lbl">Account Value</div><div class="pt-val gold">$${eq.toLocaleString('en-US',{minimumFractionDigits:2})}</div><div class="pt-sub">${positions.length} positions · ${depPct}% capital deployed</div></div>
-      <div class="pt"><div class="pt-lbl">Today</div><div class="pt-val ${dayPnl>=0?'pos':'neg'}">${dayPnl>=0?'+':''}$${Math.abs(dayPnl).toFixed(2)}</div><div class="pt-sub">${acct.dayPnlPct}%</div></div>
-      <div class="pt"><div class="pt-lbl">Unrealized</div><div class="pt-val ${unreal>=0?'pos':'neg'}">${unreal>=0?'+':''}$${Math.abs(unreal).toFixed(2)}</div><div class="pt-sub">Open P&amp;L</div></div>
-    </div>
-    <div class="cap-bar-wrap">
-      <div class="cap-bar-hd"><div class="cap-lbl">Capital Deployed — 80% Limit</div><div class="cap-pct" style="color:${depPct>=80?'var(--red-lt)':depPct>=60?'var(--amber-lt)':'var(--gold)'}">${depPct}%</div></div>
-      <div class="cap-track"><div class="cap-fill ${depPct>=80?'full':depPct>=60?'warn':''}" style="width:${Math.min(100,depPct)}%"></div></div>
-      <div class="cap-stats"><span>$${Math.floor(cap.totalDeployed||0).toLocaleString()} deployed</span><span>$${Math.floor(cap.remainingCapacity||0).toLocaleString()} available</span><span>$${Math.floor(cap.reserveAmount||0).toLocaleString()} reserve</span></div>
-    </div>
-    <div class="lg-card">
-      <div class="lg-hd"><div class="pt-lbl">Daily Loss Limit — Rule 14</div><div class="pt-lbl" style="color:${lu>=80?'var(--red-lt)':lu>=50?'var(--amber-lt)':'var(--text3)'}">${lu.toFixed(0)}% used</div></div>
-      <div class="lg-track"><div class="lg-ind ${lu>=80?'danger':lu>=50?'warn':''}" style="width:${Math.min(100,lu)}%"></div></div>
-      <div class="lg-stats"><span>$0</span><span>$${Math.abs(loss.remaining||0).toFixed(0)} remaining</span><span>Limit: $${Math.abs(loss.maxLoss||0).toFixed(0)}</span></div>
-    </div>`;
-
-  const pw=document.getElementById('posWrap');
-  if(!positions.length){
-    pw.innerHTML=`<div class="empty"><div class="eg">◌</div><div class="et">No Open Positions</div><div class="em">Approve a signal to open a position. The scanner runs every weeknight at 11PM ET.</div></div>`;
-  }else{
-    pw.innerHTML=`<div class="sh" style="margin-top:4px;"><div class="sl">Open Positions</div></div>`+
-    positions.map(p=>{
-      const pnl=parseFloat(p.unrealizedPnl);
-      const pct=parseFloat(p.unrealizedPct);
-      const prog=parseFloat(p.progressToTarget||0);
-      const sp=parseFloat(p.stopProximity||100);
-      const isW=p.stopWarning;
-      const isBreakeven=p.ladder1Hit;
-      if(isW)SFX.stop();
-      const stopLabel=isBreakeven?'Breakeven':'Stop Loss';
-      const stopClass=isBreakeven?'bev':'sv';
-      return `<div class="pos-card ${isW?'wstop':''}">
-        <div class="pos-hd">
-          <div><div class="pos-sym">${p.symbol}</div><div class="pos-sub">${p.qty} shares</div></div>
-          <div class="pos-pnl-blk"><div class="pos-pnl ${pnl>=0?'pos':'neg'}">${pnl>=0?'+':''}$${Math.abs(pnl).toFixed(2)}</div><div class="pos-pct">${pct>=0?'+':''}${pct.toFixed(2)}%</div></div>
-        </div>
-        ${p.stopPrice&&p.targetPrice?`
-        <div class="prog-out"><div class="prog-in" style="width:${Math.max(0,Math.min(100,prog))}%"></div></div>
-        <div class="prog-lbls"><span>Stop $${p.stopPrice}</span><span>${prog.toFixed(0)}% to target</span><span>$${p.targetPrice}</span></div>`:''}
-        <div class="pos-stats">
-          <div class="ps"><div class="ps-lbl">Entry Price</div><div class="ps-val ev">$${p.entryPrice}</div></div>
-          <div class="ps"><div class="ps-lbl">Current Price</div><div class="ps-val">$${p.currentPrice}</div></div>
-          <div class="ps"><div class="ps-lbl">${stopLabel}</div><div class="ps-val ${stopClass}">${p.stopPrice?'$'+p.stopPrice:'Armed'}</div></div>
-          <div class="ps"><div class="ps-lbl">Target</div><div class="ps-val tv">${p.targetPrice?'$'+p.targetPrice:'—'}</div></div>
-        </div>
-        ${isBreakeven?`<div class="stop-badge">🔒 Stop raised to breakeven — profit locked</div>`:''}
-        ${isW?`<div class="stop-alert show">⚠ ${sp.toFixed(1)}% above stop — approaching floor</div>`:''}
-        <div class="oco-badge"><svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>OCO bracket active — trailing stop armed. All exits automatic.</div>
-      </div>`;
-    }).join('');
-  }
-
-  renderConstitution(positions,acct,loss,cap);
-}
-
-function renderConstitution(positions,acct,loss,cap){
-  const lu=loss.pctUsed||0;
-  const depPct=parseFloat(cap?.deployedPctDisplay||0);
-  const rules=[
-    {name:'Capital Deployment',detail:'Max 80% deployed, 20% reserve always protected',ok:depPct<80,warn:depPct>=60,value:`${depPct}% deployed`},
-    {name:'Daily Loss Limit',detail:'Max 3% account loss — Rule 8',ok:lu<80,warn:lu>=50,value:`${lu.toFixed(0)}% used`},
-    {name:'Stop Losses Armed',detail:'OCO brackets on all open trades — Rule 5',ok:positions.every(p=>p.stopPrice),value:positions.length?`${positions.filter(p=>p.stopPrice).length}/${positions.length} active`:'No positions'},
-    {name:'Trailing Stop Active',detail:'Stop raises every 5% gain — Rule 10',ok:true,value:'Active'},
-    {name:'Long-Only Guard',detail:'System verifies position exists before any sell',ok:true,value:'Active'},
-    {name:'2% Risk Cap',detail:'Max 2% account risk per trade — Rule 7',ok:true,value:'Enforced'},
-    {name:'Profit Ladder 25/25/50',detail:'T1 → breakeven, T2 → lock profit, 50% trails',ok:true,value:'Armed'},
-  ];
-  const allOk=rules.every(r=>r.ok);
-  document.getElementById('conPanel').innerHTML=`
-    <div class="con-panel">
-      <div class="con-hd">
-        <div class="con-title">The Constitution — System Status</div>
-        <div class="con-status ${allOk?'ok':'warn'}">${allOk?'◉ All Rules Active':'◎ Review Required'}</div>
-      </div>
-      ${rules.map(r=>`
-      <div class="rule-row">
-        <div class="rule-dot ${r.ok?(r.warn?'warn':'ok'):'off'}"></div>
-        <div class="rule-body">
-          <div class="rule-name">${r.name}</div>
-          <div class="rule-detail">${r.detail}</div>
-        </div>
-        <div class="rule-val ${r.ok?(r.warn?'warn':'ok'):'off'}">${r.value}</div>
-      </div>`).join('')}
-    </div>`;
-}
-
-function renderAlerts(){
-  const wrap=document.getElementById('alertWrap');
-  if(!S.notifs.length){
-    wrap.innerHTML=`<div class="empty"><div class="eg">◌</div><div class="et">No Alerts</div><div class="em">System events will appear here — stop raises, target hits, position closings.</div></div>`;
-    return;
-  }
-  const icons={TRADE_APPROVED:'✓',STOP_RAISED:'🔒',TARGET_HIT:'◎',STOPPED_OUT:'✕',CAPITAL_DEPLOYED:'◈'};
-  wrap.innerHTML=S.notifs.map(n=>`
-    <div class="notif-card ${n.read?'':'unread'}">
-      <div class="notif-icon ${n.type}">${icons[n.type]||'·'}</div>
-      <div class="notif-body">
-        <div class="notif-msg">${n.message}</div>
-        <div class="notif-time">${new Date(n.timestamp).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</div>
-      </div>
-      ${!n.read?'<div class="notif-dot"></div>':''}
-    </div>`).join('');
-}
-
-async function loadMarkets(){
-  try{
-    const d=await api('/universe');S.uni=d.universe||[];
-    const t=d.lastScanTime?new Date(d.lastScanTime).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Not yet run';
-    document.getElementById('mktTime').textContent=t;
-    renderMarkets(S.uni);
-  }catch(e){document.getElementById('mktWrap').innerHTML=errMsg('Scanner runs at 11PM ET weeknights.');}
-}
-
-function tier(sc){return sc>=80?'full':sc>=70?'watch':'below';}
-
-function renderMarkets(uni){
-  if(!uni.length){document.getElementById('mktWrap').innerHTML=`<div class="empty"><div class="eg">◌</div><div class="et">No Universe Data</div><div class="em">The scanner populates this list every weeknight at 11PM ET.</div></div>`;return;}
-  document.getElementById('mktWrap').innerHTML=`<div class="mkt-list">`+
-    uni.map((s,i)=>{
-      const t=tier(s.score);
-      const chg=s.technicals?.price_change||0;
-      const price=s.currentPrice||s.technicals?.current_price;
-      const canBuy=s.score>=70&&S.mkt?.isOpen;
-      return `<div class="mkt-row" onclick="showDetail('${s.symbol}',${i})">
-        <div class="mkt-rank">${i+1}</div>
-        <div class="mkt-tier ${t}"></div>
-        <div class="mkt-sym">${s.symbol}</div>
-        <div class="mkt-bar"><div class="mkt-bf ${t}" style="width:${s.score}%"></div></div>
-        <div class="mkt-score ${t}">${s.score}</div>
-        ${price?`<div class="mkt-price">$${parseFloat(price).toFixed(2)}</div>`:'<div class="mkt-price">—</div>'}
-        <div class="mkt-chg ${chg>=0?'pos':'neg'}">${chg>=0?'+':''}${chg}%</div>
-        ${canBuy?`<button class="btn-mkt-buy" onclick="event.stopPropagation();buyFromMarkets('${s.symbol}',${s.entry||0},${s.stop||0},${s.target||0},${s.score})">Buy</button>`:''}
-      </div>`;
-    }).join('')+`</div>`;
-}
-
-function showDetail(sym,idx){
-  const s=S.uni[idx];if(!s)return;
-  const sc=s.score>=80?'var(--gold-lt)':s.score>=70?'var(--amber-lt)':'var(--text3)';
-  document.getElementById('dSym').textContent=sym;
-  document.getElementById('dScore').textContent=s.score;
-  document.getElementById('dScore').style.color=sc;
-  const tech=s.technicals||{},fund=s.fundamentals||{},rs=s.relativeStrength||{};
-  const gap=s.gap||{},earnings=s.earnings||{},bd=s.scoreBreakdown||{};
-  const price=s.currentPrice||tech.current_price;
-  const bdi=[{l:'Momentum',k:'momentum',m:45},{l:'Fundamentals',k:'fundamentals',m:40},{l:'Sentiment',k:'sentiment',m:15}];
-  document.getElementById('dBody').innerHTML=`
-    ${price?`<div style="font-family:var(--fm);font-size:21px;font-weight:300;color:var(--text);margin-bottom:13px;">$${parseFloat(price).toFixed(2)}</div>`:''}
-    <div class="sh"><div class="sl">Technicals</div></div>
-    <div class="tech-grid">
-      <div class="tt"><div class="tt-lbl">RSI (14)</div><div class="tt-val" style="color:${tech.rsi>=40&&tech.rsi<=65?'var(--green-lt)':tech.rsi>65?'var(--amber-lt)':'var(--text)'}">${tech.rsi||'—'}</div><div class="tt-sub">Optimal: 40–65</div></div>
-      <div class="tt"><div class="tt-lbl">20-Day MA</div><div class="tt-val" style="color:${tech.trend?.above_20ma?'var(--green-lt)':'var(--red-lt)'}">${tech.sma20?'$'+tech.sma20:'—'}</div><div class="tt-sub">${tech.trend?.above_20ma?'Above MA':'Below MA'}</div></div>
-      <div class="tt"><div class="tt-lbl">Support</div><div class="tt-val" style="color:var(--green-lt)">$${tech.support||'—'}</div><div class="tt-sub">Key floor</div></div>
-      <div class="tt"><div class="tt-lbl">Resistance</div><div class="tt-val" style="color:var(--red-lt)">$${tech.resistance||'—'}</div><div class="tt-sub">Key ceiling</div></div>
-      <div class="tt"><div class="tt-lbl">vs SPY (5d)</div><div class="tt-val" style="color:${(rs.rs_5d||0)>0?'var(--green-lt)':'var(--red-lt)'}">${rs.rs_5d!==undefined?(rs.rs_5d>0?'+':'')+rs.rs_5d+'%':'—'}</div><div class="tt-sub">${rs.rs_signal?.replace(/_/g,' ')||'—'}</div></div>
-      <div class="tt"><div class="tt-lbl">Volume</div><div class="tt-val" style="color:${tech.volume?.surge?'var(--green-lt)':'var(--text)'}">${tech.volume?.volume_ratio?tech.volume.volume_ratio+'x avg':'—'}</div><div class="tt-sub">${tech.volume?.volume_signal?.replace(/_/g,' ')||'—'}</div></div>
-    </div>
-    ${gap.gap_warning?`<div class="regime caution" style="margin-bottom:11px;"><div>~</div><div><strong>Gap Warning</strong>${gap.note||''}</div></div>`:''}
-    ${earnings.earnings_soon?`<div class="regime bear" style="margin-bottom:11px;"><div>↓</div><div><strong>Earnings in ${earnings.days_to_earnings} days</strong>${earnings.earnings_date} — size conservatively</div></div>`:''}
-    <div class="sh" style="margin-top:14px;"><div class="sl">Score Breakdown</div></div>
-    <div style="margin-bottom:13px;">${bdi.map(item=>`
-      <div class="sbar-row">
-        <div class="sbar-lbl">${item.l}</div>
-        <div class="sbar-track"><div class="sbar-fill" style="width:${Math.max(0,(bd[item.k]||0)/item.m*100)}%"></div></div>
-        <div class="sbar-num">${bd[item.k]||0}/${item.m}</div>
-      </div>`).join('')}</div>
-    <div class="sh"><div class="sl">Fundamentals</div></div>
-    <div style="margin-bottom:14px;">
-      <div class="tp ${fund.passes?'good':'bad'}" style="border-radius:var(--r);padding:8px 10px;font-size:10px;margin-bottom:5px;">${fund.passes?'✓ Passes Rule 13 — Fundamental Floor':'✗ Fails Rule 13: '+(fund.failures?.[0]||'')}</div>
-      ${fund.analystConsensus?`<div class="tp ${fund.analystConsensus==='BUY'?'good':fund.analystConsensus==='SELL'?'bad':''}" style="border-radius:var(--r);padding:8px 10px;font-size:10px;">Analyst: ${fund.analystConsensus}</div>`:''}
-      ${fund.revenueTrend?`<div class="tp ${fund.revenueTrend==='GROWING'?'good':fund.revenueTrend==='DECLINING'?'bad':''}" style="border-radius:var(--r);padding:8px 10px;font-size:10px;">Revenue: ${fund.revenueTrend}</div>`:''}
-      ${fund.profitMargin!==null&&fund.profitMargin!==undefined?`<div class="tp ${fund.profitMargin>10?'good':fund.profitMargin>0?'':'bad'}" style="border-radius:var(--r);padding:8px 10px;font-size:10px;">Margin: ${fund.profitMargin}%</div>`:''}
-    </div>
-    ${s.score>=70?`<button class="btn-prom-full" onclick="closeDetail();promoteSignal('${sym}',${idx})">Send to Signals</button>`:`<div class="tp" style="border-radius:var(--r);padding:8px 10px;font-size:10px;text-align:center;">Score ${s.score} — below watch threshold</div>`}
-  `;
-  document.getElementById('dsheet').classList.add('show');
-}
-
-function closeDetail(){document.getElementById('dsheet').classList.remove('show');}
-
-function promoteSignal(sym,idx){
-  const sig=S.uni[idx];if(!sig)return;
-  S.sigs.unshift(sig);nav('signals');
-  const w=document.getElementById('sigWrap');
-  const d=document.createElement('div');d.innerHTML=sigCard(sig,S.cap);
-  w.insertBefore(d.firstElementChild,w.firstChild);
-  showToast(`${sym} added to signals`,'info');
-}
-
-async function loadHistory(){
-  try{
-    const d=await api('/history');
-    const log=d.tradeLog||[];
-    if(!log.length){document.getElementById('histWrap').innerHTML=`<div class="empty"><div class="eg">◌</div><div class="et">No History Yet</div><div class="em">Closed trades will appear here with full detail — entry, exit, P&L, and reason.</div></div>`;return;}
-    document.getElementById('histWrap').innerHTML=log.map(t=>`
-      <div class="hist-card">
-        <div class="h-sym">${t.symbol}</div>
-        <div class="h-info">
-          <div class="h-date">${new Date(t.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</div>
-          <div class="h-levels">$${t.entry} → Stop $${t.stop} · Target $${t.target}</div>
-          <div class="h-levels" style="color:var(--text3)">${t.pctOfAccount||'—'}% of account · ${t.qty} shares</div>
-        </div>
-        <div class="h-result">
-          <div class="h-pnl ${(t.pnl||0)>=0?'pos':'neg'}">${t.pnl?((t.pnl>=0?'+':'')+'$'+Math.abs(t.pnl).toFixed(2)):'—'}</div>
-          <div class="h-status">${t.status||'PENDING'}</div>
-        </div>
-      </div>`).join('');
-  }catch(e){document.getElementById('histWrap').innerHTML=errMsg(e.message);}
-}
-
-function nav(name){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById(`page-${name}`).classList.add('active');
-  document.getElementById(`tab-${name}`).classList.add('active');
-  if(name==='positions')loadPositions();
-  if(name==='markets')loadMarkets();
-  if(name==='history')loadHistory();
-  if(name==='alerts'){renderAlerts();markAllRead();}
-}
-
-function showToast(msg,type='info',dur=4200){
-  const c=document.getElementById('toasts');
-  const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;
-  c.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));
-  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),300);},dur);
-}
-
-function errMsg(msg){return `<div class="empty"><div class="eg">◌</div><div class="et">Unable to Load</div><div class="em">${msg}</div></div>`;}
-
-init();
+window.addEventListener('popstate', () => {
+  if (portalActive && window.location.hash !== '#portal') { deactivatePortal(); }
+});
 </script>
 </body>
 </html>
