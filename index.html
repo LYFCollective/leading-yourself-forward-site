@@ -330,7 +330,9 @@ body.portal-active #portal-root { display: block !important; }
 .guide-btn:hover { background: rgba(201,148,26,0.25); }
 .output-tracker { background: var(--portal-card); border: 1px solid var(--portal-border); border-radius: 6px; padding: 24px; margin-bottom: 24px; }
 .output-tracker h3 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
-.output-row-portal { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.output-row-portal { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: opacity .15s; }
+.output-row-portal:hover { opacity: .78; }
+.output-row-portal.done p strong { color: var(--teal); }
 .output-row-portal:last-child { border-bottom: none; }
 .output-check { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .output-check.done { background: var(--teal); border-color: var(--teal); }
@@ -1101,18 +1103,24 @@ body.portal-active #portal-root { display: block !important; }
           </div>
           <div class="output-tracker">
             <h3>Output Portfolio · Cohort 1</h3>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Practitioner Identity Statement</strong> · Who you are as a leader and practitioner</p><span class="output-session-tag">Session 1</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Vision Statement</strong> · Where you are going and why</p><span class="output-session-tag">Session 2</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Brand Voice Profile</strong> · Nine words. Vision, Value, Voice</p><span class="output-session-tag">Session 2</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Value Proposition</strong> · What you do, for whom, and why it matters</p><span class="output-session-tag">Session 2</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Ideal Client Portrait</strong> · A real person with a specific worldview</p><span class="output-session-tag">Session 3</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Primary Offer Definition</strong> · Your lane and first offer structure</p><span class="output-session-tag">Session 4</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>Presence Statement and Core Message</strong> · The sentence that makes your ideal client feel found</p><span class="output-session-tag">Session 5</span></div>
-            <div class="output-row-portal"><div class="output-check"></div><p><strong>90-Day Momentum Plan</strong> · Your complete operating document</p><span class="output-session-tag">Session 6</span></div>
+            <p style="font-size:0.78rem;color:var(--portal-muted);margin:-8px 0 14px;">Tap each one as you finish it.</p>
+            <div class="output-row-portal" data-out="o1" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>A leadership decision and a clear diagnosis</strong> · What was keeping you stuck, named and owned</p><span class="output-session-tag">Session 1</span></div>
+            <div class="output-row-portal" data-out="o2" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>Nine words that define your identity</strong> · Vision, Value, Voice. Three each.</p><span class="output-session-tag">Session 2</span></div>
+            <div class="output-row-portal" data-out="o3" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>A positioning statement</strong> · Built from your nine words, in your language</p><span class="output-session-tag">Session 2</span></div>
+            <div class="output-row-portal" data-out="o4" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>An ideal client</strong> · A specific person with a specific problem</p><span class="output-session-tag">Session 3</span></div>
+            <div class="output-row-portal" data-out="o5" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>A clearly defined business lane</strong> · Named, and what you set down to commit to it</p><span class="output-session-tag">Session 4</span></div>
+            <div class="output-row-portal" data-out="o6" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>Your container and customer journey map</strong> · The path from discovery to yes, on one page</p><span class="output-session-tag">Session 5</span></div>
+            <div class="output-row-portal" data-out="o7" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>Your positioning framework</strong> · Every decision from the six sessions in one place</p><span class="output-session-tag">Session 6</span></div>
+            <div class="output-row-portal" data-out="o8" onclick="toggleOutput(this)" title="Click to mark complete"><div class="output-check"></div><p><strong>Your 90 Day Compass and letter</strong> · Written in your own words on the last day</p><span class="output-session-tag">Session 6</span></div>
+            
+            <div style="display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
+              <div style="flex:1;height:4px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;"><div id="output-bar" style="height:100%;width:0%;background:var(--teal);transition:width .3s;"></div></div>
+              <span id="output-count" style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--portal-muted);white-space:nowrap;">0 of 8</span>
+            </div>
           </div>
           <div class="portal-card">
             <span class="portal-card-label">How This Works</span><div class="divider-sm"></div>
-            <p>As you complete each session's Post-Session Commitment form, your outputs are saved here. After Session 6, this page becomes your complete positioning portfolio.</p>
+            <p>This is your own checklist. Tap an output when you have it, and it stays ticked when you come back. It saves to this browser, so if you switch devices you will need to tick them again. Nothing here is submitted or seen by anyone else.</p>
           </div>
         </div>
 
@@ -1211,6 +1219,7 @@ function activatePortal(member) {
       link.href = url.toString();
     } catch(e) {}
   });
+  loadOutputs();
   switchView('welcome', document.querySelector('[data-view="welcome"]'));
   window.history.pushState({}, '', '#portal');
 }
@@ -1238,6 +1247,36 @@ function switchView(viewId, navEl) {
     const items = document.querySelectorAll('.portal-session-item');
     if (items[sessionMap[viewId]]) items[sessionMap[viewId]].classList.add('active');
   }
+}
+
+function outputKey(){ return 'lyf_outputs_v1'; }
+function loadOutputs(){
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(outputKey()) || '{}'); } catch(e) { done = {}; }
+  document.querySelectorAll('[data-out]').forEach(function(row){
+    var on = !!done[row.getAttribute('data-out')];
+    row.classList.toggle('done', on);
+    row.querySelector('.output-check').classList.toggle('done', on);
+  });
+  updateOutputBar();
+}
+function toggleOutput(row){
+  var id = row.getAttribute('data-out');
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(outputKey()) || '{}'); } catch(e) { done = {}; }
+  done[id] = !done[id];
+  try { localStorage.setItem(outputKey(), JSON.stringify(done)); } catch(e) {}
+  row.classList.toggle('done', done[id]);
+  row.querySelector('.output-check').classList.toggle('done', done[id]);
+  updateOutputBar();
+}
+function updateOutputBar(){
+  var rows = document.querySelectorAll('[data-out]');
+  var n = document.querySelectorAll('[data-out].done').length;
+  var bar = document.getElementById('output-bar');
+  var lbl = document.getElementById('output-count');
+  if (bar) bar.style.width = (rows.length ? (n / rows.length * 100) : 0) + '%';
+  if (lbl) lbl.textContent = n + ' of ' + rows.length;
 }
 
 window.addEventListener('popstate', () => {
