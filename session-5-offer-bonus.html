@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonus  ·  Sharpen Your Offer</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Helvetica, Arial, sans-serif; font-size: 13px; background: #fff; color: #1a1a1a; line-height: 1.5; }
+
+.doc-header { background: #080E14; padding: 20px 36px 16px; border-bottom: 3px solid #C9941A; }
+.doc-header .eyebrow { font-size: 9px; color: #899AAF; letter-spacing: 0.08em; margin-bottom: 6px; }
+.doc-header h1 { font-size: 22px; font-weight: 700; color: #F4F6F7; margin-bottom: 4px; }
+.doc-header .tagline { font-size: 10px; color: #C9941A; letter-spacing: 0.04em; }
+
+.submission-bar { background: #F4F6F7; border-left: 4px solid #C9941A; padding: 10px 36px; font-size: 11px; color: #444; }
+.submission-bar strong { color: #C9941A; }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px 36px; border-bottom: 1px solid #E8EDF2; }
+.meta-field label { display: block; font-size: 9px; font-weight: 700; color: #899AAF; letter-spacing: 0.08em; margin-bottom: 4px; }
+.meta-field input { width: 100%; border: none; border-bottom: 1.5px solid #E8EDF2; padding: 4px 0; font-size: 12px; outline: none; background: transparent; }
+.meta-field input:focus { border-bottom-color: #00B5AD; }
+
+.content { padding: 20px 36px 40px; }
+.section { margin-bottom: 26px; }
+.section-label { font-size: 9px; font-weight: 700; color: #00B5AD; letter-spacing: 0.1em; margin-bottom: 6px; }
+.section-label.gold { color: #C9941A; }
+.section h2 { font-size: 15px; font-weight: 700; color: #080E14; margin-bottom: 5px; }
+.section h3 { font-size: 12px; font-weight: 700; color: #080E14; margin-bottom: 4px; }
+.section p { font-size: 12px; color: #444; margin-bottom: 8px; line-height: 1.6; }
+.intro { font-size: 11px; color: #555; font-style: italic; margin-bottom: 14px; line-height: 1.6; }
+
+.gold-divider { border: none; border-top: 1.5px solid #C9941A; margin: 26px 0; }
+
+.callout { background: #080E14; border-radius: 4px; padding: 18px 22px; margin: 12px 0 16px; }
+.callout .big { font-size: 15px; font-weight: 700; color: #F4F6F7; line-height: 1.45; margin-bottom: 6px; }
+.callout .small { font-size: 11px; color: #899AAF; line-height: 1.6; }
+.callout .small em { color: #00B5AD; font-style: normal; font-weight: 700; }
+
+.lens { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0 6px; }
+.lens-card { border: 1px solid #E8EDF2; border-left: 3px solid #00B5AD; border-radius: 0 3px 3px 0; padding: 12px 14px; }
+.lens-card:nth-child(even) { border-left-color: #C9941A; }
+.lens-q { font-size: 13px; font-weight: 700; color: #080E14; margin-bottom: 4px; }
+.lens-d { font-size: 11px; color: #666; line-height: 1.55; }
+
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 6px; }
+.ba-col { border: 1px solid #E8EDF2; border-radius: 3px; overflow: hidden; }
+.ba-head { padding: 8px 14px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; }
+.ba-head.before { background: #F4F6F7; color: #999; }
+.ba-head.after { background: #080E14; color: #00B5AD; }
+.ba-body { padding: 12px 14px; }
+.ba-quote { font-size: 12px; font-style: italic; color: #333; line-height: 1.6; margin-bottom: 10px; }
+.ba-line { font-size: 11px; color: #666; line-height: 1.5; padding: 4px 0; border-top: 1px solid #F0F3F6; }
+.ba-line strong { color: #080E14; }
+.ba-line .x { color: #C9941A; font-weight: 700; margin-right: 5px; }
+.ba-line .c { color: #00B5AD; font-weight: 700; margin-right: 5px; }
+
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 10px; font-weight: 700; color: #899AAF; letter-spacing: 0.06em; margin-bottom: 5px; text-transform: uppercase; }
+.field .sub { font-size: 11px; color: #777; font-style: italic; margin-bottom: 6px; }
+.field textarea { width: 100%; border: 1.5px solid #E8EDF2; border-radius: 3px; padding: 10px; font-size: 12px; font-family: Helvetica, Arial, sans-serif; resize: vertical; outline: none; min-height: 62px; line-height: 1.6; }
+.field textarea:focus { border-color: #00B5AD; }
+.field textarea.big { min-height: 110px; }
+
+.build { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.build .field { margin-bottom: 0; }
+
+.steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0 6px; }
+.step { border: 1px solid #E8EDF2; border-radius: 3px; padding: 12px 14px; }
+.step .n { font-size: 9px; font-weight: 700; color: #00B5AD; letter-spacing: 0.1em; margin-bottom: 4px; }
+.step .t { font-size: 12px; font-weight: 700; color: #080E14; margin-bottom: 4px; }
+.step .d { font-size: 11px; color: #666; line-height: 1.55; }
+
+.accent-box { background: #F4F6F7; border-left: 4px solid #C9941A; padding: 10px 14px; margin: 10px 0 14px; font-size: 11px; color: #444; font-style: italic; line-height: 1.6; }
+
+.doc-footer { background: #080E14; border-top: 2px solid #C9941A; padding: 12px 36px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #899AAF; margin-top: 30px; }
+.doc-footer .dot { display: inline-block; width: 7px; height: 7px; background: #C9941A; border-radius: 50%; margin-right: 6px; }
+
+.save-bar { background: #080E14; border-top: 2px solid #C9941A; border-bottom: 2px solid #C9941A; padding: 12px 36px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.save-bar .save-note { font-size: 11px; color: #899AAF; flex: 1; min-width: 220px; line-height: 1.5; }
+.save-bar button { font-family: Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 9px 16px; border-radius: 3px; border: none; cursor: pointer; }
+.save-bar button.primary { background: #C9941A; color: #080E14; }
+.save-bar button.primary:hover { background: #e0a921; }
+.save-bar button.ghost { background: transparent; color: #00B5AD; border: 1.5px solid #00B5AD; }
+.save-bar button.ghost:hover { background: #00B5AD; color: #080E14; }
+#lyf-flash { position: fixed; bottom: 18px; right: 18px; background: #00B5AD; color: #080E14; font-size: 11px; font-weight: 700; padding: 9px 14px; border-radius: 3px; opacity: 0; transition: opacity 0.25s; pointer-events: none; z-index: 999; }
+#lyf-flash.on { opacity: 1; }
+
+@media print {
+  .save-bar, #lyf-flash { display: none !important; }
+  body { font-size: 11px; }
+  textarea, input[type=text] { border: 1px solid #999 !important; background: #fff !important; overflow: visible !important; resize: none !important; }
+  .lens, .ba, .steps, .build { page-break-inside: avoid; }
+}
+@media (max-width: 760px) {
+  .lens, .ba, .build, .meta-row { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="eyebrow">LEADING YOURSELF FORWARD  ·  SESSION 5  ·  BONUS</div>
+  <h1>Sharpen Your Offer</h1>
+  <div class="tagline">Marketing does not create demand. It amplifies clarity.</div>
+</div>
+
+<div class="submission-bar">
+  <strong>THIS IS A BONUS, NOT AN ASSIGNMENT.</strong> Nothing in the program requires it. Use it if you want to sharpen the offer that sits at The Yes on your Customer Journey Map.
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>NAME</label><input type="text" placeholder="Your full name"></div>
+  <div class="meta-field"><label>DATE</label><input type="text" placeholder="Today's date"></div>
+</div>
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to sharpen it again.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="intro">The last box on your journey map asks what they are agreeing to. That is your offer. If it is vague, every stage before it leaks, because there is nothing specific for anyone to move toward. This page is for making it specific.</div>
+  <div class="callout">
+    <div class="big">Put a megaphone in front of a clear offer and the right people lean in. Put the same megaphone in front of a vague one and you do not get more clients.</div>
+    <div class="small">You just make the vagueness louder. The question was never how do I market more. It was always <em>what am I actually amplifying.</em></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">THE LENS</div>
+  <h2>A sharp offer answers four questions before you say a word</h2>
+  <p>Read these first. You will answer them for your own offer further down.</p>
+  <div class="lens">
+    <div class="lens-card"><div class="lens-q">For whom?</div><div class="lens-d">One specific person in one specific moment. Not anyone who is ready.</div></div>
+    <div class="lens-card"><div class="lens-q">What changes?</div><div class="lens-d">The before and the after. Where they are stuck, where they end up.</div></div>
+    <div class="lens-card"><div class="lens-q">What is the container?</div><div class="lens-d">The shape of it. Sessions, weeks, a clear beginning and a clear end.</div></div>
+    <div class="lens-card"><div class="lens-q">Why now?</div><div class="lens-d">The reason this moment and not someday. What makes it urgent for them.</div></div>
+  </div>
+  <div class="accent-box">Vague is not a wording problem. It is an unmade decision. You do not write your way to clarity. You decide your way there, and then the words get easy.</div>
+</div>
+
+<hr class="gold-divider">
+
+<div class="section">
+  <div class="section-label">WORKED EXAMPLE</div>
+  <h2>Same practitioner. Four decisions made.</h2>
+  <div class="ba">
+    <div class="ba-col">
+      <div class="ba-head before">BEFORE</div>
+      <div class="ba-body">
+        <div class="ba-quote">I offer one to one breathwork sessions. $90 a session.</div>
+        <div class="ba-line"><span class="x">&times;</span><strong>For whom</strong> &nbsp;Anyone, which means no one in particular feels spoken to.</div>
+        <div class="ba-line"><span class="x">&times;</span><strong>What changes</strong> &nbsp;Unnamed. A session is a thing you do, not a result they get.</div>
+        <div class="ba-line"><span class="x">&times;</span><strong>Why now</strong> &nbsp;No reason, so it waits until later, and later never arrives.</div>
+      </div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-head after">AFTER</div>
+      <div class="ba-body">
+        <div class="ba-quote">A six week one to one breathwork journey for women in the first year after divorce who feel frozen and disconnected from their bodies. We release the grief they have been holding so they can feel safe, awake, and like themselves again.</div>
+        <div class="ba-line"><span class="c">&check;</span><strong>For whom</strong> &nbsp;Women, first year post divorce, frozen.</div>
+        <div class="ba-line"><span class="c">&check;</span><strong>What changes</strong> &nbsp;Held grief released. Safe and awake again.</div>
+        <div class="ba-line"><span class="c">&check;</span><strong>The container</strong> &nbsp;A six week one to one journey.</div>
+        <div class="ba-line"><span class="c">&check;</span><strong>Why now</strong> &nbsp;This year, while they are ready.</div>
+      </div>
+    </div>
+  </div>
+  <div class="accent-box">Nothing in the before is wrong. There is just nothing for a specific person to grab onto. Same practitioner, same skill, same price range. Four decisions is the whole difference.</div>
+</div>
+
+<hr class="gold-divider">
+
+<div class="section">
+  <div class="section-label gold">YOUR TURN</div>
+  <h2>Answer the four for your own offer</h2>
+  <p>One person you have actually worked with or genuinely want to. Not a market.</p>
+  <div class="build">
+    <div class="field"><label>For whom</label><div class="sub">Name the person and the moment they are in.</div><textarea></textarea></div>
+    <div class="field"><label>What changes</label><div class="sub">Where they start. Where you take them.</div><textarea></textarea></div>
+    <div class="field"><label>The container</label><div class="sub">How long, what shape, where it begins and ends.</div><textarea></textarea></div>
+    <div class="field"><label>Why now</label><div class="sub">Why this moment and not someday.</div><textarea></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="field">
+    <label>Now write it as one offer</label>
+    <div class="sub">Put the four answers into a single statement. Do not edit while you write. Get it down, then cut.</div>
+    <textarea class="big"></textarea>
+  </div>
+</div>
+
+<hr class="gold-divider">
+
+<div class="section">
+  <div class="section-label">THE TEST</div>
+  <h2>Can a stranger repeat it back?</h2>
+  <p>If they cannot repeat it, they cannot refer you. Word of mouth runs on repeatable offers.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Say it out loud</div><div class="d">As if you were telling a stranger at a party who asked what you do.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Read it to one person</div><div class="d">A friend outside your field. Someone who does not already know your work.</div></div>
+    <div class="step"><div class="n">03</div><div class="t">Ask them to say it back</div><div class="d">If they can, you are done. If not, cut a clause and go again.</div></div>
+  </div>
+  <div class="field" style="margin-top:12px;">
+    <label>What they said back, and what I cut</label>
+    <div class="sub">The gap between what you wrote and what they repeated is the part that is not landing.</div>
+    <textarea></textarea>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">THE OBJECTION</div>
+  <h2>But will I lose everyone else?</h2>
+  <p>Narrow does not shrink you. It makes you findable. A specific door is easier to walk through than a blank wall. Other people can still come in. The door just needs one clear name on it.</p>
+  <div class="field">
+    <label>Who I am worried about losing, and whether that is true</label>
+    <textarea></textarea>
+  </div>
+</div>
+
+<hr class="gold-divider">
+
+<div class="section">
+  <div class="section-label gold">ONE MORE THING</div>
+  <h2>The same four questions sharpen a lead magnet</h2>
+  <p>A lead magnet is not a smaller version of your offer. It sits earlier on your journey map, at Interest or Trust, and it has its own job: to be useful on its own so that trust is earned before anything is asked for. But it fails the same way an offer fails. For whom, what changes, and why now still have to be answerable.</p>
+  <div class="field">
+    <label>If I build one, what it is and which stage it sits at</label>
+    <div class="sub">Optional. Only if a free thing genuinely belongs on your map.</div>
+    <textarea></textarea>
+  </div>
+</div>
+
+<div class="section">
+  <div class="callout">
+    <div class="big">You do not need a bigger megaphone. You need something worth amplifying.</div>
+    <div class="small">Own your direction.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to sharpen it again.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
+</div>
+
+<div class="doc-footer">
+  <div><span class="dot"></span>#leading-yourself-forward · Slack</div>
+  <div>leadingyourselfforward.com</div>
+</div>
+
+<div id="lyf-flash"></div>
+<script>
+(function(){
+  var KEY = 'lyf_' + (document.title || 'worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+  var SEL = 'textarea, input[type=text], input[type=checkbox], select';
+  function nodes(root){ return (root || document).querySelectorAll(SEL); }
+  function flash(msg){
+    var f = document.getElementById('lyf-flash');
+    if(!f) return;
+    f.textContent = msg; f.className = 'on';
+    clearTimeout(f._t); f._t = setTimeout(function(){ f.className = ''; }, 1600);
+  }
+  function collect(){
+    var out = [], list = nodes();
+    for(var i=0;i<list.length;i++){ out.push(list[i].type === 'checkbox' ? list[i].checked : list[i].value); }
+    return out;
+  }
+  function apply(data){
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      if(data[i] === undefined || data[i] === null) continue;
+      if(list[i].type === 'checkbox'){ list[i].checked = data[i]; } else { list[i].value = data[i]; }
+    }
+  }
+  var isSavedCopy = document.documentElement.getAttribute('data-lyf-saved') === '1';
+  if(!isSavedCopy){
+    try { var stored = localStorage.getItem(KEY); if(stored){ apply(JSON.parse(stored)); } } catch(e){}
+  }
+  var timer;
+  function autosave(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){ try { localStorage.setItem(KEY, JSON.stringify(collect())); } catch(e){} }, 700);
+  }
+  document.addEventListener('input', autosave, true);
+  document.addEventListener('change', autosave, true);
+
+  window.lyfSave = function(){
+    var clone = document.documentElement.cloneNode(true);
+    clone.setAttribute('data-lyf-saved','1');
+    var src = nodes(document), dst = nodes(clone);
+    for(var i=0;i<src.length;i++){
+      var s = src[i], c = dst[i];
+      if(!c) continue;
+      if(s.tagName === 'TEXTAREA'){ c.textContent = s.value; }
+      else if(s.type === 'checkbox'){ if(s.checked){ c.setAttribute('checked','checked'); } else { c.removeAttribute('checked'); } }
+      else { c.setAttribute('value', s.value); }
+    }
+    var ext = clone.querySelectorAll('script[src]');
+    for(var k=0;k<ext.length;k++){ ext[k].parentNode.removeChild(ext[k]); }
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var name = (document.title || 'LYF Offer').replace(/[^A-Za-z0-9]+/g,'_');
+    var d = new Date();
+    var stamp = d.getFullYear() + '_' + ('0'+(d.getMonth()+1)).slice(-2) + '_' + ('0'+d.getDate()).slice(-2);
+    var blob = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '_' + stamp + '.html';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    flash('Downloaded. Check your Downloads folder.');
+  };
+
+  function expand(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){
+      ta[i].setAttribute('data-h', ta[i].style.height || '');
+      ta[i].style.height = 'auto';
+      ta[i].style.height = (ta[i].scrollHeight + 6) + 'px';
+    }
+  }
+  function restore(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){ ta[i].style.height = ta[i].getAttribute('data-h') || ''; }
+  }
+  window.addEventListener('beforeprint', expand);
+  window.addEventListener('afterprint', restore);
+})();
+</script>
+</body>
+</html>
