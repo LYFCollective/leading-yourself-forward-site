@@ -475,6 +475,71 @@ body {
   background: #fff;
 }
 .q-box textarea:focus { background: #f9fbfc; }
+
+/* SAVE BAR */
+.save-bar {
+  background: #080E14;
+  border-top: 2px solid #C9941A;
+  border-bottom: 2px solid #C9941A;
+  padding: 12px 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.save-bar .save-note {
+  font-size: 11px;
+  color: #899AAF;
+  flex: 1;
+  min-width: 220px;
+  line-height: 1.5;
+}
+.save-bar button {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 9px 16px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.save-bar button.primary { background: #C9941A; color: #080E14; }
+.save-bar button.primary:hover { background: #e0a921; }
+.save-bar button.ghost {
+  background: transparent;
+  color: #00B5AD;
+  border: 1.5px solid #00B5AD;
+}
+.save-bar button.ghost:hover { background: #00B5AD; color: #080E14; }
+#lyf-flash {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #00B5AD;
+  color: #080E14;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+  z-index: 999;
+}
+#lyf-flash.on { opacity: 1; }
+
+@media print {
+  .save-bar, #lyf-flash { display: none !important; }
+  textarea, input[type=text] {
+    border: 1px solid #999 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    resize: none !important;
+  }
+  .q-box, .field { page-break-inside: avoid; }
+}
+
 </style>
 </head>
 <body>
@@ -482,11 +547,11 @@ body {
 <div class="doc-header">
   <div class="eyebrow">GET UNSTUCK  ·  LEADING YOURSELF FORWARD  ·  SESSION 3</div>
   <h1>Session 3  ·  Who You Serve</h1>
-  <div class="tagline">Identity meets the market. Choose the person. Lock the avatar.</div>
+  <div class="tagline">Identity meets the market. Choose the person. Lock the picture.</div>
 </div>
 
 <div class="submission-bar">
-  <strong>SUBMISSION:</strong> When complete, save this document and upload it using the worksheet upload field in your Post Session Commitment form in the portal at leadingyourselfforward.com.
+  <strong>WHEN YOU ARE DONE:</strong> Complete your Post Session Commitment form in the portal at leadingyourselfforward.com. Keep your saved copy of this document for your own reference.
 </div>
 
 <div class="meta-row">
@@ -494,6 +559,13 @@ body {
   <div class="meta-field"><label>DATE</label><input type="text" placeholder="Session date"></div>
   <div class="meta-field"><label>EMAIL</label><input type="text" placeholder="Your email"></div>
 </div>
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
+</div>
+
 
 <div class="content">
 
@@ -529,7 +601,7 @@ body {
   <div class="field"><label>The Pattern: What do my alignment clients or experiences have in common? What do my misaligned ones share?</label><textarea rows="4" placeholder="Name the pattern across both columns..."></textarea></div>
 </div>
 
-<div class="part-header">PART 2 <span>Your Ideal Client Avatar</span></div>
+<div class="part-header">PART 2 <span>Your Ideal Client</span></div>
 <div class="section">
   <p>A real person. Not a demographic. Give them a name. Put them in a situation. The more specific and human this description is, the more useful it becomes in every session that follows.</p>
 
@@ -572,15 +644,15 @@ body {
 
 <div class="part-header">PART 3 <span>The Matching Moment</span></div>
 <div class="section">
-  <p>Read your positioning statement. Then read back your avatar description. Now ask the only question that matters: Would this specific person feel immediately found by this message? Not vaguely interested. Not somewhat relevant. Found.</p>
+  <p>Read your positioning statement. Then read back your ideal client description. Now ask the only question that matters: Would this specific person feel immediately found by this message? Not vaguely interested. Not somewhat relevant. Found.</p>
   <table class="two-col-table">
     <tr><th>Yes: This is why it works</th><th>Not quite: Here is what is off</th></tr>
     <tr><td><textarea rows="5" placeholder="What makes the match strong..."></textarea></td><td><textarea rows="5" placeholder="What needs to be refined..."></textarea></td></tr>
   </table>
 
   <div class="q-box">
-    <div class="q-header"><span class="q-num" style="color:#C9941A">!</span>Diagnostic: Check the Avatar First</div>
-    <div class="q-prompt">Before changing your positioning statement, examine the avatar. Is this person specific enough? Does the problem match what your value words solve? Is the belief something you have actually heard from a real person? What would need to be true for your statement to land as an immediate yes?</div>
+    <div class="q-header"><span class="q-num" style="color:#C9941A">!</span>Diagnostic: Check the Ideal Client First</div>
+    <div class="q-prompt">Before changing your positioning statement, examine the ideal client. Is this person specific enough? Does the problem match what your value words solve? Is the belief something you have actually heard from a real person? What would need to be true for your statement to land as an immediate yes?</div>
     <textarea rows="5"></textarea>
   </div>
 </div>
@@ -588,23 +660,155 @@ body {
 <div class="part-header">PART 4 <span>Where Your Magnet Is Strongest</span></div>
 <div class="section">
   <p>This is not a lane decision. That is Session 4. This is about understanding which audience types give you the most natural access to the person you described.</p>
-  <table class="audience-table">
-    <tr><th>Audience Type</th><th>Description</th><th>Fit</th></tr>
-    <tr><td class="audience-type">Individual</td><td class="audience-desc">1 on 1 sessions. Deep presence. One transformation at a time.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Couples</td><td class="audience-desc">Holding two people and the space between them.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Group</td><td class="audience-desc">Facilitation at scale. Your energy holds a container for many.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Corporate</td><td class="audience-desc">Credibility first. Results delivered inside an organizational context.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Retreats</td><td class="audience-desc">Full immersion. All dimensions of your identity visible at once.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+  <table class="lane-table">
+    <tr><th style="width:22%">Audience Type</th><th style="width:48%">Description</th><th style="width:30%">Fit</th></tr>
+    <tr><td><strong>1 on 1 Sessions</strong></td><td>Deep presence. One transformation at a time.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Couples</strong></td><td>Holding two people and the space between them.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Groups</strong></td><td>Facilitation at scale. Your energy holds a container for many.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Retreats</strong></td><td>Full immersion. All dimensions of your identity visible at once.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Corporate</strong></td><td>Credibility first. Results delivered inside an organizational context.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Live Virtual Events</strong></td><td>Real time delivery without the room. Wider reach, still live and led by you.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Breathwork Parties</strong></td><td>Social entry point. Energy led. Reaches people who would not book a session first.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Other</strong></td><td><textarea rows="2" placeholder="Name the audience type and describe it..."></textarea></td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
   </table>
   <div class="accent-box">The lane evolves. The magnet stays. You are not choosing forever. You are choosing first, as a leader who has made a decision.</div>
 </div>
 
+<div class="part-header">WHAT COMES NEXT <span>One Signal</span></div>
+<div class="section">
+  <p>Your Post Session Commitment form asks you to send one signal into the world before Session 4. Not a campaign. One specific expression of the person you just described, placed somewhere they could actually encounter it. The rule is simple: after someone reads or hears it, does your ideal client feel seen rather than sold to? What comes back is the first real market data in this program, and Session 4 builds the lane decision on it.</p>
+</div>
+
+<div class="part-header">FROM THE ROOM <span>What You Took From the Discussion</span></div>
+<div class="section">
+  <p>You listened while others worked through their ideal client today. What they said applies to you more often than it looks like it does.</p>
+  <div class="field"><label>What I noticed in the discussion that applies to me:</label><textarea rows="3"></textarea></div>
+</div>
+
+</div>
+
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
 </div>
 
 <div class="doc-footer">
   <div><span class="dot"></span>#leading-yourself-forward · Slack</div>
   <div>leadingyourselfforward.com</div>
 </div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8464878ab2f44dc88994afdac9a925a9","r":1}' crossorigin="anonymous"></script>
+
+<div id="lyf-flash"></div>
+<script>
+(function(){
+  var KEY = 'lyf_' + (document.title || 'worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+  var SEL = 'textarea, input[type=text], input[type=checkbox], select';
+
+  function nodes(root){ return (root || document).querySelectorAll(SEL); }
+
+  function flash(msg){
+    var f = document.getElementById('lyf-flash');
+    if(!f) return;
+    f.textContent = msg;
+    f.className = 'on';
+    clearTimeout(f._t);
+    f._t = setTimeout(function(){ f.className = ''; }, 1600);
+  }
+
+  function collect(){
+    var out = [];
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      var el = list[i];
+      out.push(el.type === 'checkbox' ? el.checked : el.value);
+    }
+    return out;
+  }
+
+  function apply(data){
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      if(data[i] === undefined || data[i] === null) continue;
+      var el = list[i];
+      if(el.type === 'checkbox'){ el.checked = data[i]; } else { el.value = data[i]; }
+    }
+  }
+
+  var isSavedCopy = document.documentElement.getAttribute('data-lyf-saved') === '1';
+
+  if(!isSavedCopy){
+    try {
+      var stored = localStorage.getItem(KEY);
+      if(stored){ apply(JSON.parse(stored)); }
+    } catch(e){}
+  }
+
+  var timer;
+  function autosave(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      try { localStorage.setItem(KEY, JSON.stringify(collect())); } catch(e){}
+    }, 700);
+  }
+  document.addEventListener('input', autosave, true);
+  document.addEventListener('change', autosave, true);
+
+  window.lyfSave = function(){
+    var clone = document.documentElement.cloneNode(true);
+    clone.setAttribute('data-lyf-saved','1');
+    var src = nodes(document);
+    var dst = nodes(clone);
+    for(var i=0;i<src.length;i++){
+      var s = src[i], c = dst[i];
+      if(!c) continue;
+      if(s.tagName === 'TEXTAREA'){
+        c.textContent = s.value;
+      } else if(s.type === 'checkbox'){
+        if(s.checked){ c.setAttribute('checked','checked'); } else { c.removeAttribute('checked'); }
+      } else if(s.tagName === 'SELECT'){
+        var opts = c.querySelectorAll('option');
+        for(var j=0;j<opts.length;j++){ opts[j].removeAttribute('selected'); }
+        if(s.selectedIndex >= 0 && opts[s.selectedIndex]){ opts[s.selectedIndex].setAttribute('selected','selected'); }
+      } else {
+        c.setAttribute('value', s.value);
+      }
+    }
+    var ext = clone.querySelectorAll('script[src]');
+    for(var k=0;k<ext.length;k++){ ext[k].parentNode.removeChild(ext[k]); }
+
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var name = (document.title || 'LYF Worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+    var d = new Date();
+    var stamp = d.getFullYear() + '_' + ('0'+(d.getMonth()+1)).slice(-2) + '_' + ('0'+d.getDate()).slice(-2);
+    var blob = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '_' + stamp + '.html';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    flash('Downloaded. Check your Downloads folder.');
+  };
+
+  function expand(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){
+      ta[i].setAttribute('data-h', ta[i].style.height || '');
+      ta[i].style.height = 'auto';
+      ta[i].style.height = (ta[i].scrollHeight + 6) + 'px';
+    }
+  }
+  function restore(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){ ta[i].style.height = ta[i].getAttribute('data-h') || ''; }
+  }
+  window.addEventListener('beforeprint', expand);
+  window.addEventListener('afterprint', restore);
+})();
+</script>
 
 </body>
 </html>

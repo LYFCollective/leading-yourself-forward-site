@@ -475,6 +475,71 @@ body {
   background: #fff;
 }
 .q-box textarea:focus { background: #f9fbfc; }
+
+/* SAVE BAR */
+.save-bar {
+  background: #080E14;
+  border-top: 2px solid #C9941A;
+  border-bottom: 2px solid #C9941A;
+  padding: 12px 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.save-bar .save-note {
+  font-size: 11px;
+  color: #899AAF;
+  flex: 1;
+  min-width: 220px;
+  line-height: 1.5;
+}
+.save-bar button {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 9px 16px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.save-bar button.primary { background: #C9941A; color: #080E14; }
+.save-bar button.primary:hover { background: #e0a921; }
+.save-bar button.ghost {
+  background: transparent;
+  color: #00B5AD;
+  border: 1.5px solid #00B5AD;
+}
+.save-bar button.ghost:hover { background: #00B5AD; color: #080E14; }
+#lyf-flash {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #00B5AD;
+  color: #080E14;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+  z-index: 999;
+}
+#lyf-flash.on { opacity: 1; }
+
+@media print {
+  .save-bar, #lyf-flash { display: none !important; }
+  textarea, input[type=text] {
+    border: 1px solid #999 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    resize: none !important;
+  }
+  .q-box, .field { page-break-inside: avoid; }
+}
+
 </style>
 </head>
 <body>
@@ -486,7 +551,7 @@ body {
 </div>
 
 <div class="submission-bar">
-  <strong>SUBMISSION:</strong> When complete, save this document and upload it using the worksheet upload field in your Post Session Commitment form in the portal at leadingyourselfforward.com.
+  <strong>WHEN YOU ARE DONE:</strong> Complete your Post Session Commitment form in the portal at leadingyourselfforward.com. Keep your saved copy of this document for your own reference.
 </div>
 
 <div class="meta-row">
@@ -494,6 +559,13 @@ body {
   <div class="meta-field"><label>DATE</label><input type="text" placeholder="Session date"></div>
   <div class="meta-field"><label>EMAIL</label><input type="text" placeholder="Your email"></div>
 </div>
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
+</div>
+
 
 <div class="content">
 
@@ -507,14 +579,14 @@ body {
     <tr><th>My Lane (from Session 4)</th><th>My First Offer Structure</th></tr>
     <tr><td><textarea rows="3" placeholder="Your committed lane..."></textarea></td><td><textarea rows="3" placeholder="Format, duration, price range, outcome..."></textarea></td></tr>
   </table>
-  <div class="field"><label>My Ideal Client Avatar (one sentence):</label><textarea rows="2" placeholder="From Session 3..."></textarea></div>
+  <div class="field"><label>My Ideal Client (one sentence):</label><textarea rows="2" placeholder="From Session 3..."></textarea></div>
 </div>
 
 <div class="part-header">PART 1 <span>Your Journey Archetype</span></div>
 <div class="section">
   <p>Four archetypes. Each describes a different path from discovery to yes. Your archetype is the one that matches how your ideal client naturally moves toward a decision, not how you prefer to sell.</p>
   <table class="audience-table">
-    <tr><th style="width:20%">Archetype</th><th style="width:50%">How the Client Moves</th><th style="width:30%">Match for My Avatar</th></tr>
+    <tr><th style="width:20%">Archetype</th><th style="width:50%">How the Client Moves</th><th style="width:30%">Match for My Ideal Client</th></tr>
     <tr><td class="audience-type">The Guided Path</td><td class="audience-desc">Linear. Step by step. Client follows a clear structured sequence from awareness to commitment.</td><td><select><option>Select</option><option>Strong match</option><option>Possible match</option><option>Not this one</option></select></td></tr>
     <tr><td class="audience-type">The Immersion</td><td class="audience-desc">Full exposure first. Client experiences the depth of your work before committing. Trust built through presence.</td><td><select><option>Select</option><option>Strong match</option><option>Possible match</option><option>Not this one</option></select></td></tr>
     <tr><td class="audience-type">The Invitation</td><td class="audience-desc">Relationship led. Client is brought in through community, referral, or curated access. Not a funnel. A door.</td><td><select><option>Select</option><option>Strong match</option><option>Possible match</option><option>Not this one</option></select></td></tr>
@@ -529,7 +601,7 @@ body {
 
 <div class="part-header">PART 2 <span>The Five Touchpoints</span></div>
 <div class="section">
-  <p>Map the journey from the moment your ideal client first encounters you to the moment they say yes. Five touchpoints. Each one is specific to your archetype and your avatar.</p>
+  <p>Map the journey from the moment your ideal client first encounters you to the moment they say yes. Five touchpoints. Each one is specific to your archetype and your ideal client.</p>
   <div class="q-box"><div class="q-header"><span class="q-num">01</span>Discovery: How does your ideal client first find you?</div><textarea rows="3"></textarea></div>
   <div class="q-box"><div class="q-header"><span class="q-num">02</span>Interest: What makes them stop and pay attention?</div><textarea rows="3"></textarea></div>
   <div class="q-box"><div class="q-header"><span class="q-num">03</span>Trust: What builds enough confidence for them to take a step?</div><textarea rows="3"></textarea></div>
@@ -561,7 +633,7 @@ body {
       <td><textarea rows="4"></textarea></td>
     </tr>
     <tr>
-      <td style="padding:10px 12px;font-size:12px;font-weight:700;vertical-align:top;">Test 2: Avatar Fit<br><span style="font-weight:400;font-size:11px;color:#666;">Does every touchpoint serve the specific person you described in Session 3?</span></td>
+      <td style="padding:10px 12px;font-size:12px;font-weight:700;vertical-align:top;">Test 2: Ideal Client Fit<br><span style="font-weight:400;font-size:11px;color:#666;">Does every touchpoint serve the specific person you described in Session 3?</span></td>
       <td><textarea rows="4"></textarea></td>
     </tr>
     <tr>
@@ -576,12 +648,138 @@ body {
   <div class="accent-box">You are not building yet. You are deciding. The container that passes all four tests is the one you build. Nothing else gets built first.</div>
 </div>
 
+<hr class="gold-divider">
+
+<div class="part-header">FROM THE ROOM <span>What You Took From the Discussion</span></div>
+<div class="section">
+  <p>You listened while others tested their container today. A touchpoint that failed someone else's alignment test is often the same one quietly failing yours.</p>
+  <div class="field"><label>What I noticed in the discussion that applies to me:</label><textarea rows="3"></textarea></div>
+</div>
+
+</div>
+
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
 </div>
 
 <div class="doc-footer">
   <div><span class="dot"></span>#leading-yourself-forward · Slack</div>
   <div>leadingyourselfforward.com</div>
 </div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8464878ab2f44dc88994afdac9a925a9","r":1}' crossorigin="anonymous"></script>
+
+<div id="lyf-flash"></div>
+<script>
+(function(){
+  var KEY = 'lyf_' + (document.title || 'worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+  var SEL = 'textarea, input[type=text], input[type=checkbox], select';
+
+  function nodes(root){ return (root || document).querySelectorAll(SEL); }
+
+  function flash(msg){
+    var f = document.getElementById('lyf-flash');
+    if(!f) return;
+    f.textContent = msg;
+    f.className = 'on';
+    clearTimeout(f._t);
+    f._t = setTimeout(function(){ f.className = ''; }, 1600);
+  }
+
+  function collect(){
+    var out = [];
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      var el = list[i];
+      out.push(el.type === 'checkbox' ? el.checked : el.value);
+    }
+    return out;
+  }
+
+  function apply(data){
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      if(data[i] === undefined || data[i] === null) continue;
+      var el = list[i];
+      if(el.type === 'checkbox'){ el.checked = data[i]; } else { el.value = data[i]; }
+    }
+  }
+
+  var isSavedCopy = document.documentElement.getAttribute('data-lyf-saved') === '1';
+
+  if(!isSavedCopy){
+    try {
+      var stored = localStorage.getItem(KEY);
+      if(stored){ apply(JSON.parse(stored)); }
+    } catch(e){}
+  }
+
+  var timer;
+  function autosave(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      try { localStorage.setItem(KEY, JSON.stringify(collect())); } catch(e){}
+    }, 700);
+  }
+  document.addEventListener('input', autosave, true);
+  document.addEventListener('change', autosave, true);
+
+  window.lyfSave = function(){
+    var clone = document.documentElement.cloneNode(true);
+    clone.setAttribute('data-lyf-saved','1');
+    var src = nodes(document);
+    var dst = nodes(clone);
+    for(var i=0;i<src.length;i++){
+      var s = src[i], c = dst[i];
+      if(!c) continue;
+      if(s.tagName === 'TEXTAREA'){
+        c.textContent = s.value;
+      } else if(s.type === 'checkbox'){
+        if(s.checked){ c.setAttribute('checked','checked'); } else { c.removeAttribute('checked'); }
+      } else if(s.tagName === 'SELECT'){
+        var opts = c.querySelectorAll('option');
+        for(var j=0;j<opts.length;j++){ opts[j].removeAttribute('selected'); }
+        if(s.selectedIndex >= 0 && opts[s.selectedIndex]){ opts[s.selectedIndex].setAttribute('selected','selected'); }
+      } else {
+        c.setAttribute('value', s.value);
+      }
+    }
+    var ext = clone.querySelectorAll('script[src]');
+    for(var k=0;k<ext.length;k++){ ext[k].parentNode.removeChild(ext[k]); }
+
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var name = (document.title || 'LYF Worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+    var d = new Date();
+    var stamp = d.getFullYear() + '_' + ('0'+(d.getMonth()+1)).slice(-2) + '_' + ('0'+d.getDate()).slice(-2);
+    var blob = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '_' + stamp + '.html';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    flash('Downloaded. Check your Downloads folder.');
+  };
+
+  function expand(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){
+      ta[i].setAttribute('data-h', ta[i].style.height || '');
+      ta[i].style.height = 'auto';
+      ta[i].style.height = (ta[i].scrollHeight + 6) + 'px';
+    }
+  }
+  function restore(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){ ta[i].style.height = ta[i].getAttribute('data-h') || ''; }
+  }
+  window.addEventListener('beforeprint', expand);
+  window.addEventListener('afterprint', restore);
+})();
+</script>
 
 </body>
 </html>

@@ -475,6 +475,71 @@ body {
   background: #fff;
 }
 .q-box textarea:focus { background: #f9fbfc; }
+
+/* SAVE BAR */
+.save-bar {
+  background: #080E14;
+  border-top: 2px solid #C9941A;
+  border-bottom: 2px solid #C9941A;
+  padding: 12px 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.save-bar .save-note {
+  font-size: 11px;
+  color: #899AAF;
+  flex: 1;
+  min-width: 220px;
+  line-height: 1.5;
+}
+.save-bar button {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 9px 16px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.save-bar button.primary { background: #C9941A; color: #080E14; }
+.save-bar button.primary:hover { background: #e0a921; }
+.save-bar button.ghost {
+  background: transparent;
+  color: #00B5AD;
+  border: 1.5px solid #00B5AD;
+}
+.save-bar button.ghost:hover { background: #00B5AD; color: #080E14; }
+#lyf-flash {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #00B5AD;
+  color: #080E14;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+  z-index: 999;
+}
+#lyf-flash.on { opacity: 1; }
+
+@media print {
+  .save-bar, #lyf-flash { display: none !important; }
+  textarea, input[type=text] {
+    border: 1px solid #999 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    resize: none !important;
+  }
+  .q-box, .field { page-break-inside: avoid; }
+}
+
 </style>
 </head>
 <body>
@@ -486,7 +551,7 @@ body {
 </div>
 
 <div class="submission-bar">
-  <strong>SUBMISSION:</strong> When complete, save this document and upload it using the worksheet upload field in your Post Session Commitment form in the portal at leadingyourselfforward.com.
+  <strong>WHEN YOU ARE DONE:</strong> Complete your Post Session Commitment form in the portal at leadingyourselfforward.com. Keep your saved copy of this document for your own reference.
 </div>
 
 <div class="meta-row">
@@ -495,92 +560,233 @@ body {
   <div class="meta-field"><label>EMAIL</label><input type="text" placeholder="Your email"></div>
 </div>
 
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
+</div>
+
+
 <div class="content">
 
 <div class="section">
-  <div class="intro">You have your identity, your avatar, and your magnet. Session 4 is the commitment. Not a strategy conversation. A leadership decision about where you go deep first. One lane. Named. Owned. The rest follows from here.</div>
+  <div class="intro">You have your identity, your ideal client, and your magnet. Session 4 is the commitment. Not a strategy conversation. A leadership decision about where you go deep first. One lane. Named. Owned. The rest follows from here.</div>
 </div>
 
-<div class="part-header">FOUNDATION <span>Your Data from Sessions 2 and 3</span></div>
 <div class="section">
+  <div class="accent-box"><strong>Why a lane produces results.</strong> A practitioner who serves everyone competes with everyone. A practitioner who goes deep in one lane becomes the obvious choice for the person in it. Depth compounds. Every conversation teaches you more about the same person, every offer gets sharper, and referrals start arriving pre qualified because people know exactly who to send you. Breadth does the opposite. It spreads your learning thin, keeps your message general, and makes you forgettable to everyone. You are not choosing forever. You are choosing where to get good first.</div>
+</div>
+
+<div class="part-header">FOUNDATION <span>What You Already Know</span></div>
+<div class="section">
+  <p>Copy these across from your Pre-Work so they are in front of you while you work. You are not deciding these again. You are deciding where to point them.</p>
   <table class="two-col-table">
-    <tr><th>My Nine Words (Vision, Value, Voice)</th><th>My Ideal Client Avatar (one sentence)</th></tr>
-    <tr><td><textarea rows="4" placeholder="Your nine words..."></textarea></td><td><textarea rows="4" placeholder="Your avatar in one sentence..."></textarea></td></tr>
+    <tr><th>My Nine Words (Vision, Value, Voice)</th><th>My Ideal Client (one sentence)</th></tr>
+    <tr><td><textarea rows="4" placeholder="Your nine words..."></textarea></td><td><textarea rows="4" placeholder="Your ideal client in one sentence..."></textarea></td></tr>
   </table>
   <div class="field"><label>My Positioning Statement:</label><textarea rows="3" placeholder="From Session 2..."></textarea></div>
-  <div class="field"><label>My Strongest Audience Type (from Session 3):</label><input type="text" placeholder="Individual / Couples / Group / Corporate / Retreats"></div>
+  <div class="field"><label>What my Session 3 signal told me:</label><textarea rows="3" placeholder="Who responded, and were they the person you described? If nobody responded, that is data too."></textarea></div>
 </div>
 
-<div class="part-header">PART 1 <span>Signal Data</span></div>
-<div class="section">
-  <p>You sent three signals between sessions. What did each one reveal? This is real data. Your lane choice should be grounded in it.</p>
-  <div class="q-box">
-    <div class="q-header"><span class="q-num">01</span>Signal One</div>
-    <div class="q-prompt">What did you put out? Who responded? What did the response tell you?</div>
-    <textarea rows="4"></textarea>
-  </div>
-  <div class="q-box">
-    <div class="q-header"><span class="q-num">02</span>Signal Two</div>
-    <div class="q-prompt">What did you put out? Who responded? What did the response tell you?</div>
-    <textarea rows="4"></textarea>
-  </div>
-  <div class="q-box">
-    <div class="q-header"><span class="q-num">03</span>Signal Three</div>
-    <div class="q-prompt">What did you put out? Who responded? What did the response tell you?</div>
-    <textarea rows="4"></textarea>
-  </div>
-  <div class="field"><label>What the data points toward:</label><textarea rows="3" placeholder="What pattern do the three signals reveal about where your magnet is strongest?"></textarea></div>
-</div>
-
-<div class="part-header">PART 2 <span>The Six Lanes</span></div>
+<div class="part-header">PART 1 <span>The Six Lanes</span></div>
 <div class="section">
   <p>Each lane is a valid expression of your magnet. The question is not which lane is best. The question is which lane gives you the most access to your ideal client right now, with the identity and positioning you have built.</p>
-  <table class="audience-table">
-    <tr><th style="width:20%">Lane</th><th style="width:50%">What It Produces at Depth</th><th style="width:30%">Access to My Avatar</th></tr>
-    <tr><td class="audience-type">1 on 1 Coaching</td><td class="audience-desc">Deep individual transformation. Intimate presence. Premium positioning.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Group Coaching</td><td class="audience-desc">Facilitated cohort transformation. Your system at scale. Peer accountability.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Workshops</td><td class="audience-desc">Focused single outcome. Repeatable. Accessible entry point to your work.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Retreats</td><td class="audience-desc">Full immersion. All dimensions of your identity present. High transformation.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Corporate</td><td class="audience-desc">Organizational impact. Credibility led. Results inside existing structures.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
-    <tr><td class="audience-type">Digital</td><td class="audience-desc">Scalable delivery. Asynchronous. Broader reach. Requires strong content presence.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+  <table class="lane-table">
+    <tr><th style="width:20%">Lane</th><th style="width:50%">What It Produces at Depth</th><th style="width:30%">Access to My Ideal Client</th></tr>
+    <tr><td><strong>1 on 1 Sessions</strong></td><td>Deep individual transformation. Intimate presence. Premium positioning.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Couples</strong></td><td>Holding two people and the space between them.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Groups</strong></td><td>Facilitated cohort transformation. Your system at scale. Peer accountability.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Retreats</strong></td><td>Full immersion. All dimensions of your identity present. High transformation.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Corporate</strong></td><td>Organizational impact. Credibility led. Results inside existing structures.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Live Virtual Events</strong></td><td>Real time delivery without the room. Wider reach, lower barrier, still live and led by you.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Breathwork Parties</strong></td><td>Social entry point. Energy led. Introduces your work to people who would not book a session first.</td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
+    <tr><td><strong>Other</strong></td><td><textarea rows="2" placeholder="Name the lane and what it produces at depth..."></textarea></td><td><select><option>Select</option><option>Strong</option><option>Possible</option><option>Not yet</option></select></td></tr>
   </table>
 </div>
 
-<div class="part-header">PART 3 <span>The Lane Commitment</span></div>
+<div class="part-header">PART 2 <span>Your Lane</span></div>
 <div class="section">
   <div class="q-box">
     <div class="q-header"><span class="q-num">01</span>My Lane</div>
     <div class="q-prompt">Name it. One lane. Say it out loud before you write it.</div>
-    <textarea rows="3"></textarea>
+    <textarea rows="2"></textarea>
   </div>
   <div class="q-box">
-    <div class="q-header"><span class="q-num">02</span>Why This Lane</div>
-    <div class="q-prompt">Not why it seems safe. Why it gives you the most access to your ideal client with who you actually are right now.</div>
+    <div class="q-header"><span class="q-num">02</span>Why This Lane Fits</div>
+    <div class="q-prompt">Not why it seems safe, and not because there is demand for it. Why does this lane give your ideal client the most access to who you actually are right now?</div>
     <textarea rows="4"></textarea>
   </div>
   <div class="q-box">
-    <div class="q-header"><span class="q-num">03</span>First Offer Structure</div>
-    <div class="q-prompt">What does your first offer in this lane look like? Format, duration, price range, what the client walks away with.</div>
-    <textarea rows="5"></textarea>
+    <div class="q-header"><span class="q-num">03</span>How It Feels to Say It</div>
+    <div class="q-prompt">Relief, resistance, or something else? A lane that feels narrow is working. A lane that feels dead is a different problem. Which one is this?</div>
+    <textarea rows="3"></textarea>
   </div>
 </div>
 
-<div class="part-header">PART 4 <span>90 Day Action Plan</span></div>
+<div class="part-header">PART 3 <span>How You Speak Inside It</span></div>
 <div class="section">
-  <p>Three specific commitments. Not goals. Actions. Each one must be completable within the 90 day window.</p>
-  <div class="field"><label>Commitment 1:</label><textarea rows="3" placeholder="Specific action, not a goal..."></textarea></div>
-  <div class="field"><label>Commitment 2:</label><textarea rows="3" placeholder="Specific action, not a goal..."></textarea></div>
-  <div class="field"><label>Commitment 3:</label><textarea rows="3" placeholder="Specific action, not a goal..."></textarea></div>
-  <div class="field"><label>12 Month Vision: Where does this lane take you if you stay in it for a full year?</label><textarea rows="4" placeholder="Your 12 month vision..."></textarea></div>
+  <p>You have a positioning statement and nine words. Now you have a lane. This is where the three meet. If someone in this lane asked what you do, you should be able to answer without hedging.</p>
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">01</span>What I Say Now</div>
+    <div class="q-prompt">Write the sentence you would say to your ideal client inside this lane. Out loud, in your own voice, not website copy.</div>
+    <textarea rows="3"></textarea>
+  </div>
+  <div class="q-box">
+    <div class="q-header"><span class="q-num">02</span>What Changes</div>
+    <div class="q-prompt">How is that different from how you described your work six weeks ago? Name the specific difference.</div>
+    <textarea rows="3"></textarea>
+  </div>
+</div>
+
+<div class="part-header">PART 4 <span>The Cost</span></div>
+<div class="section">
+  <p>A lane you do not enforce is not a lane. This is the part that decides whether the decision holds after today.</p>
+  <div class="field"><label>What I am stopping:</label><textarea rows="4" placeholder="Name the work, audiences, or offers you will decline from today. Specific enough that you would recognize one in your inbox."></textarea></div>
+  <div class="field"><label>What this costs me:</label><textarea rows="3" placeholder="If nothing on that list costs you something, you have not stopped anything yet."></textarea></div>
+</div>
+
+<div class="part-header">PART 5 <span>Your One Move</span></div>
+<div class="section">
+  <p>One action before Session 5 that puts your lane in front of a real person. Not a strategy. Not material you build. One move, specific enough that you could not talk yourself out of it.</p>
+  <div class="field"><label>The move I will make:</label><textarea rows="3" placeholder="One specific action. Not a plan."></textarea></div>
+  <div class="field"><label>I will complete this by (day and time):</label><textarea rows="2"></textarea></div>
+  <div class="field"><label>Who or where this move is aimed at:</label><textarea rows="3" placeholder="A person, a platform, or a room. Be specific."></textarea></div>
+  <div class="field"><label>Why this move proves the lane is real:</label><textarea rows="3" placeholder="What makes this a test of this lane rather than general activity?"></textarea></div>
+</div>
+
+<div class="part-header">FROM THE ROOM <span>What You Took From the Discussion</span></div>
+<div class="section">
+  <p>You listened while others worked through their lane today. What they said applies to you more often than it looks like it does.</p>
+  <div class="field"><label>What I noticed in the discussion that applies to me:</label><textarea rows="3"></textarea></div>
   <div class="accent-box">The magnet does not change. The lane is where you point it. You are not choosing forever. You are choosing first.</div>
 </div>
 
+</div>
+
+</div>
+
+
+<div class="save-bar">
+  <div class="save-note"><strong style="color:#C9941A;">KEEP YOUR WORK.</strong> Nothing is stored on this page. Click Save My Work to download a copy with everything you have written. Open that copy any time to keep going.</div>
+  <button class="primary" onclick="lyfSave()">Save My Work</button>
+  <button class="ghost" onclick="window.print()">Print or Save as PDF</button>
 </div>
 
 <div class="doc-footer">
   <div><span class="dot"></span>#leading-yourself-forward · Slack</div>
   <div>leadingyourselfforward.com</div>
 </div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8464878ab2f44dc88994afdac9a925a9","r":1}' crossorigin="anonymous"></script>
+
+<div id="lyf-flash"></div>
+<script>
+(function(){
+  var KEY = 'lyf_' + (document.title || 'worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+  var SEL = 'textarea, input[type=text], input[type=checkbox], select';
+
+  function nodes(root){ return (root || document).querySelectorAll(SEL); }
+
+  function flash(msg){
+    var f = document.getElementById('lyf-flash');
+    if(!f) return;
+    f.textContent = msg;
+    f.className = 'on';
+    clearTimeout(f._t);
+    f._t = setTimeout(function(){ f.className = ''; }, 1600);
+  }
+
+  function collect(){
+    var out = [];
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      var el = list[i];
+      out.push(el.type === 'checkbox' ? el.checked : el.value);
+    }
+    return out;
+  }
+
+  function apply(data){
+    var list = nodes();
+    for(var i=0;i<list.length;i++){
+      if(data[i] === undefined || data[i] === null) continue;
+      var el = list[i];
+      if(el.type === 'checkbox'){ el.checked = data[i]; } else { el.value = data[i]; }
+    }
+  }
+
+  var isSavedCopy = document.documentElement.getAttribute('data-lyf-saved') === '1';
+
+  if(!isSavedCopy){
+    try {
+      var stored = localStorage.getItem(KEY);
+      if(stored){ apply(JSON.parse(stored)); }
+    } catch(e){}
+  }
+
+  var timer;
+  function autosave(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      try { localStorage.setItem(KEY, JSON.stringify(collect())); } catch(e){}
+    }, 700);
+  }
+  document.addEventListener('input', autosave, true);
+  document.addEventListener('change', autosave, true);
+
+  window.lyfSave = function(){
+    var clone = document.documentElement.cloneNode(true);
+    clone.setAttribute('data-lyf-saved','1');
+    var src = nodes(document);
+    var dst = nodes(clone);
+    for(var i=0;i<src.length;i++){
+      var s = src[i], c = dst[i];
+      if(!c) continue;
+      if(s.tagName === 'TEXTAREA'){
+        c.textContent = s.value;
+      } else if(s.type === 'checkbox'){
+        if(s.checked){ c.setAttribute('checked','checked'); } else { c.removeAttribute('checked'); }
+      } else if(s.tagName === 'SELECT'){
+        var opts = c.querySelectorAll('option');
+        for(var j=0;j<opts.length;j++){ opts[j].removeAttribute('selected'); }
+        if(s.selectedIndex >= 0 && opts[s.selectedIndex]){ opts[s.selectedIndex].setAttribute('selected','selected'); }
+      } else {
+        c.setAttribute('value', s.value);
+      }
+    }
+    var ext = clone.querySelectorAll('script[src]');
+    for(var k=0;k<ext.length;k++){ ext[k].parentNode.removeChild(ext[k]); }
+
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var name = (document.title || 'LYF Worksheet').replace(/[^A-Za-z0-9]+/g,'_');
+    var d = new Date();
+    var stamp = d.getFullYear() + '_' + ('0'+(d.getMonth()+1)).slice(-2) + '_' + ('0'+d.getDate()).slice(-2);
+    var blob = new Blob([html], {type:'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '_' + stamp + '.html';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    flash('Downloaded. Check your Downloads folder.');
+  };
+
+  function expand(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){
+      ta[i].setAttribute('data-h', ta[i].style.height || '');
+      ta[i].style.height = 'auto';
+      ta[i].style.height = (ta[i].scrollHeight + 6) + 'px';
+    }
+  }
+  function restore(){
+    var ta = document.getElementsByTagName('textarea');
+    for(var i=0;i<ta.length;i++){ ta[i].style.height = ta[i].getAttribute('data-h') || ''; }
+  }
+  window.addEventListener('beforeprint', expand);
+  window.addEventListener('afterprint', restore);
+})();
+</script>
 
 </body>
 </html>
