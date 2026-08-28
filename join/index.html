@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join Cohort 1 · Get Unstuck: Leading Yourself Forward</title>
+<meta name="description" content="Get Unstuck: Leading Yourself Forward. Six sessions over twelve weeks for breathwork practitioners. Cohort 1 begins September 8. Ten seats.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#080E14;
+    --card:#111922;
+    --line:#1C2733;
+    --teal:#00B5AD;
+    --gold:#C9941A;
+    --text:#F4F6F8;
+    --muted:#8A99A8;
+    --dim:#62707E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy);
+    color:var(--text);
+    font-family:"Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:14px;
+  }
+
+  /* ---------- hero ---------- */
+  header{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+  .mark{font-size:13px;font-weight:700;letter-spacing:.2em;
+        text-transform:uppercase;color:var(--muted);margin-bottom:36px}
+  h1{font-size:clamp(38px,7vw,60px);font-weight:700;line-height:1.08;
+     letter-spacing:-.015em}
+  h1 .gold{color:var(--gold);display:block}
+  .sub{color:var(--muted);font-size:18px;margin-top:20px;max-width:44ch}
+
+  /* ---------- buttons ---------- */
+  .cta{
+    display:inline-block;background:var(--gold);color:#0A0A0A;
+    font-weight:700;font-size:19px;text-decoration:none;
+    padding:20px 44px;border-radius:8px;margin-top:32px;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .cta:hover{background:#DDA52A;transform:translateY(-2px)}
+  .cta:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+  .cta-note{display:block;color:var(--dim);font-size:14px;margin-top:14px}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(24px,4vw,32px);font-weight:700;line-height:1.2;
+     margin-bottom:28px;letter-spacing:-.01em}
+
+  /* ---------- dates ---------- */
+  .dates{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .date{
+    background:var(--card);border-radius:8px;padding:16px 8px;
+    text-align:center;font-weight:600;font-size:15px;
+  }
+  .date span{display:block;color:var(--dim);font-size:12px;
+             font-weight:400;margin-top:4px}
+  .when{
+    text-align:center;color:var(--teal);font-weight:700;
+    font-size:18px;margin-top:20px;
+  }
+  .when em{color:var(--muted);font-weight:400;font-style:normal;
+           display:block;font-size:15px;margin-top:6px}
+
+  /* ---------- list ---------- */
+  ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;
+     gap:14px 40px}
+  li{position:relative;padding-left:22px;color:var(--text);font-size:16px}
+  li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:8px;height:8px;border-radius:50%;background:var(--teal);
+  }
+  li:nth-child(even)::before{background:var(--gold)}
+
+  /* ---------- price ---------- */
+  .price{background:var(--card);border-radius:12px;padding:36px 32px}
+  .price .big{font-size:clamp(34px,6vw,46px);font-weight:700;
+              color:var(--gold);line-height:1.1}
+  .price .next{font-size:20px;font-weight:700;margin-top:10px}
+  .price .fine{color:var(--muted);font-size:15px;margin-top:12px}
+  .guarantee{
+    margin-top:26px;padding-top:26px;border-top:1px solid var(--line);
+  }
+  .guarantee .eyebrow{color:var(--gold);margin-bottom:10px}
+  .guarantee p{font-size:17px}
+
+  /* ---------- waitlist ---------- */
+  .later{padding:44px 0 72px;border-bottom:none}
+  .later h3{font-size:19px;font-weight:700;margin-bottom:8px}
+  .later p{color:var(--muted);font-size:16px;margin-bottom:18px;
+           max-width:52ch}
+  .ghost{
+    display:inline-block;color:var(--teal);font-weight:600;
+    text-decoration:none;border:1px solid var(--teal);
+    padding:13px 28px;border-radius:8px;font-size:16px;
+    transition:background .15s ease,color .15s ease;
+  }
+  .ghost:hover{background:var(--teal);color:var(--navy)}
+  .ghost:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  footer{padding:28px 0 48px;color:var(--dim);font-size:13px}
+
+  @media (max-width:720px){
+    body{font-size:16px}
+    header{padding:40px 0 32px}
+    .mark{margin-bottom:26px}
+    section{padding:40px 0}
+    .dates{grid-template-columns:repeat(2,1fr)}
+    ul{grid-template-columns:1fr}
+    .cta{display:block;text-align:center;padding:20px 24px}
+    .price{padding:28px 22px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark">Get Unstuck &middot; Leading Yourself Forward</div>
+    <h1>Ten seats.<span class="gold">Starts September 8.</span></h1>
+    <p class="sub">Six sessions over twelve weeks for breathwork
+      practitioners who are capable, committed, and stuck.</p>
+    <a class="cta" href="https://buy.stripe.com/fZubJ3dvycpL6cl2UD6AM00">
+      Claim your seat</a>
+    <span class="cta-note">Enrollment closes Wednesday September 2 at
+      11:59 pm Pacific. The link closes at ten seats.</span>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">When we meet</div>
+    <div class="dates">
+      <div class="date">Sep 8<span>Session 1</span></div>
+      <div class="date">Sep 22<span>Session 2</span></div>
+      <div class="date">Oct 6<span>Session 3</span></div>
+      <div class="date">Oct 20<span>Session 4</span></div>
+      <div class="date">Nov 3<span>Session 5</span></div>
+      <div class="date">Nov 17<span>Session 6</span></div>
+    </div>
+    <p class="when">All sessions 11:00 am Pacific &middot; Ninety minutes
+      <em>Zoom, and every session is recorded.</em></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What you get</div>
+    <h2>Everything included.</h2>
+    <ul>
+      <li>Six live ninety minute sessions with coaching in front of the group</li>
+      <li>Pre-work and worksheets for all six sessions, yours to keep</li>
+      <li>Written feedback on everything you submit</li>
+      <li>A commitment and a 72 hour action after every session</li>
+      <li>Eight concrete outputs you own and use</li>
+      <li>Your completed positioning framework</li>
+      <li>A 90 Day Leadership Compass and a letter to your future self</li>
+      <li>Sharpen Your Offer, the bonus tool</li>
+      <li>A cohort of ten who hold you to what you said</li>
+      <li>Recordings of all six sessions</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The investment</div>
+    <div class="price">
+      <div class="big">Cohort 1 is $1,500.</div>
+      <div class="next">Every cohort after this is $2,500.</div>
+      <p class="fine">This is the first cohort. The price reflects that, and
+        it does not come back. One payment, and pay over time options are
+        available at checkout, so you do not need $1,500 today.</p>
+      <div class="guarantee">
+        <div class="eyebrow">My guarantee</div>
+        <p>Attend Session 1 and complete the pre-work. If it is not what you
+          expected, email me before Session 2 and I refund the full $1,500.</p>
+      </div>
+    </div>
+    <a class="cta" href="https://buy.stripe.com/fZubJ3dvycpL6cl2UD6AM00">
+      Claim your seat</a>
+    <span class="cta-note">Ten seats. When they are gone, the link closes.</span>
+  </div>
+</section>
+
+<section class="later">
+  <div class="wrap">
+    <h3>Not ready to decide today?</h3>
+    <p>Send me a note and I will answer your questions directly. If the ten
+      seats fill first, you go to the top of the list for Cohort 2.</p>
+    <!-- To use a Tally form instead, replace the href below with the form URL -->
+    <a class="ghost"
+       href="mailto:jimmy@leadingyourselfforward.com?subject=Get%20Unstuck%20Cohort%201&amp;body=Hi%20Jimmy%2C%20I%20have%20a%20question%20about%20the%20program%3A">
+      Ask me a question</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Get Unstuck: Leading Yourself Forward &middot; LYFCollective LLC
+  </div>
+</footer>
+
+</body>
+</html>
