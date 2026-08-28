@@ -324,13 +324,13 @@ body.portal-active #portal-root { display: block !important; }
 .timing-bridge { background: rgba(255,255,255,0.05); color: var(--portal-muted); }
 .form-row-arrow { color: var(--portal-muted); font-size: 0.85rem; flex-shrink: 0; margin-left: 4px; transition: color 0.2s, transform 0.2s; }
 .form-row:hover .form-row-arrow { color: var(--teal); transform: translateX(3px); }
-.slack-card { background: rgba(74,21,75,0.15); border: 1px solid rgba(74,21,75,0.35); border-radius: 6px; padding: 20px 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
-.slack-icon { width: 42px; height: 42px; border-radius: 8px; background: rgba(74,21,75,0.4); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-.slack-body { flex: 1; }
-.slack-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-.slack-body p { font-size: 0.78rem; color: var(--portal-text); line-height: 1.5; margin: 0; }
-.slack-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(74,21,75,0.5); border: 1px solid rgba(74,21,75,0.6); color: #e8b4e8; font-size: 0.75rem; font-weight: 600; padding: 8px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
-.slack-btn:hover { background: rgba(74,21,75,0.7); }
+.wa-card { background: rgba(0,181,173,0.10); border: 1px solid rgba(0,181,173,0.30); border-radius: 6px; padding: 20px 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+.wa-icon { width: 42px; height: 42px; border-radius: 8px; background: rgba(0,181,173,0.22); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.wa-body { flex: 1; }
+.wa-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.wa-body p { font-size: 0.78rem; color: var(--portal-text); line-height: 1.5; margin: 0; }
+.wa-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,181,173,0.20); border: 1px solid rgba(0,181,173,0.45); color: var(--teal); font-size: 0.75rem; font-weight: 600; padding: 8px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+.wa-btn:hover { background: rgba(0,181,173,0.32); }
 .guide-banner { background: rgba(201,148,26,0.08); border: 1px solid rgba(201,148,26,0.2); border-radius: 6px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
 .guide-banner-icon { font-size: 1.2rem; flex-shrink: 0; }
 .guide-banner-body { flex: 1; }
@@ -745,11 +745,11 @@ body.portal-active #portal-root { display: block !important; }
             <div class="portal-card">
               <span class="portal-card-label gold">Community</span>
               <div class="divider-sm gold"></div>
-              <p style="margin-bottom:16px;">Your cohort Slack workspace is where accountability happens between sessions. Post your wins, ask questions, and hold each other to commitments.</p>
+              <p style="margin-bottom:16px;">Your cohort WhatsApp community is where accountability happens between sessions. Post your wins, ask questions, and hold each other to commitments.</p>
               <div class="link-card">
                 <div class="link-card-icon">💬</div>
-                <div class="link-card-text"><h4>Cohort Slack</h4><p>LYF Cohort 1 workspace</p></div>
-                <a href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener" class="btn-link-sm">Join →</a>
+                <div class="link-card-text"><h4>Cohort Community</h4><p>LYF Cohort 1 on WhatsApp</p></div>
+                <a href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener" class="btn-link-sm">Join →</a>
               </div>
             </div>
           </div>
@@ -802,7 +802,7 @@ body.portal-active #portal-root { display: block !important; }
             </a>
             <a class="form-row" href="https://tally.so/r/J9RpVK?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=1&cohort_id=cohort1" target="_blank" rel="noopener">
               <div class="form-row-icon icon-navy">⚡</div>
-              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge</div><div class="form-row-meta">Due before Session 2 opens · One specific action taken in the world · Not homework · Execution · Report back here</div></div>
+              <div class="form-row-body"><div class="form-row-title">72 Hour Bridge</div><div class="form-row-meta">Due before Session 2 opens · One specific action taken in the world · Not homework · Execution · Report back here</div></div>
               <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
             </a>
           </div>
@@ -811,10 +811,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Leadership Decision + Stuck Diagnosis</h3>
             <p>By the end of Session 1, you will have a written leadership decision and a clear diagnosis of what has been keeping you stuck. This becomes the foundation every future session builds on.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post your 72-Hour Bridge result here. Share wins, ask brief questions, stay in motion between sessions.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post your 72 Hour Bridge result here. Share wins, ask brief questions, stay in motion between sessions.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
           <div style="margin-top:32px;">
             <span class="portal-card-label" style="display:block;margin-bottom:16px;padding:0;">The rest of your sessions</span>
@@ -881,7 +881,7 @@ body.portal-active #portal-root { display: block !important; }
             </a>
             <a class="form-row" href="https://tally.so/r/jaM6X6?participant_name=MEMBER_NAME&participant_email=MEMBER_EMAIL&session_number=2&cohort_id=cohort1" target="_blank" rel="noopener">
               <div class="form-row-icon icon-navy">⚡</div>
-              <div class="form-row-body"><div class="form-row-title">72-Hour Bridge</div><div class="form-row-meta">Your nine words need to touch the world once · One moment, one person or audience · Report back before Session 3</div></div>
+              <div class="form-row-body"><div class="form-row-title">72 Hour Bridge</div><div class="form-row-meta">Your nine words need to touch the world once · One moment, one person or audience · Report back before Session 3</div></div>
               <span class="form-row-timing timing-bridge">72 Hrs After</span><span class="form-row-arrow">→</span>
             </a>
           </div>
@@ -890,10 +890,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Nine Words + Positioning Statement</h3>
             <p>By the end of Session 2, you will have nine words, three each across Vision, Value, and Voice, and a first committed positioning statement built from them.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post your 72-Hour Bridge result here. Share your nine words with the group.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post your 72 Hour Bridge result here. Share your nine words with the group.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
         </div>
 
@@ -939,10 +939,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Ideal Client · Locked</h3>
             <p>By the end of Session 3, you will have one specific person described. Name, situation, problem, belief, and hope. Your positioning statement tested against that person.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post your 72-Hour Bridge signal here. Share who your ideal client is.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post your 72 Hour Bridge signal here. Share who your ideal client is.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
         </div>
 
@@ -988,10 +988,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Your Lane, Declared</h3>
             <p>By the end of Session 4 you will have named the one lane you are going deep in first, said why, and named what you are stopping in order to do it.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post your 72 hour bridge move here. Name your lane and what you did inside it.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post your 72 Hour Bridge move here. Name your lane and what you did inside it.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
         </div>
 
@@ -1052,10 +1052,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Your Customer Journey Map</h3>
             <p>By the end of Session 5 you will have chosen your archetype, named your access point, and confirmed your container passes all four alignment tests. You then map the five stages from discovery to yes on a single page you keep and build from.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post your container decision in the channel. Your archetype and your access point named.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post your container decision in the community. Your archetype and your access point named.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
         </div>
 
@@ -1111,10 +1111,10 @@ body.portal-active #portal-root { display: block !important; }
             <h3 style="font-size:1rem;color:var(--white);margin-bottom:8px;">Your Graduation Package</h3>
             <p>By the end of Session 6 you will have made your declaration out loud, named your pattern in front of the group, completed your 90-Day Leadership Compass, and written your Letter to Your Future Self.</p>
           </div>
-          <div class="slack-card">
-            <div class="slack-icon">💬</div>
-            <div class="slack-body"><h4>Accountability Channel · #leading-yourself-forward</h4><p>Post one sentence from your Letter to Your Future Self. The cohort witnessed your declaration. They hold you to it.</p></div>
-            <a class="slack-btn" href="https://app.slack.com/client/T5M6553/C0AJ14345T3" target="_blank" rel="noopener">Open Slack →</a>
+          <div class="wa-card">
+            <div class="wa-icon">💬</div>
+            <div class="wa-body"><h4>Cohort Community · LYF Cohort 1 on WhatsApp</h4><p>Post one sentence from your Letter to Your Future Self. The cohort witnessed your declaration. They hold you to it.</p></div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/LnU0kQMV05hGvsTbmZLeuC" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
         </div>
 
